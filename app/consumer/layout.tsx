@@ -27,6 +27,7 @@ export default function ConsumerLayout({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   const { theme, setTheme } = useNextTheme()
+  const [mounted, setMounted] = useState(false)
 
   const navigation = [
     { name: "Dashboard", href: "/consumer/dashboard", icon: Home },
@@ -36,12 +37,18 @@ export default function ConsumerLayout({
   ]
 
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
     setIsMobileMenuOpen(false)
   }, [pathname])
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
+
+  if (!mounted) return null
 
   return (
     <div className="min-h-screen bg-muted/30">
