@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, CheckCircle, Download, FileText, XCircle } from "lucide-react"
@@ -22,6 +22,8 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export default function VerificationDetailPage({ params }: { params: { id: string } }) {
+
+  const { id } = params
   const [status, setStatus] = useState<"pending" | "approved" | "rejected">("pending")
   const [feedback, setFeedback] = useState("")
   const [showApproveDialog, setShowApproveDialog] = useState(false)
@@ -32,7 +34,7 @@ export default function VerificationDetailPage({ params }: { params: { id: strin
 
   // Mock data
   const verification = {
-    id: params.id,
+    id:id,
     user: {
       id: "USR-1234",
       name: "John Doe",
