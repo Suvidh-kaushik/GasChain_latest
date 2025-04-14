@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Loader2, Moon, Sun } from "lucide-react"
+import { ArrowLeft, Loader2, Moon, Signature, Sun } from "lucide-react"
 import { useTheme as useNextTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
@@ -12,16 +12,48 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 // import { useTheme } from "@/components/theme-provider"
 
+import {ethers} from "ethers";
+import axios from "axios";
+
+
+async function getNonce(address: String, role: String): Promise<string> {
+
+  try{
+    const response = await axios.get(`http://localhost:3000/api/auth?address=${address}&role=${role}`);
+    console.log(response.data.msg);
+    return response.data.nonce;
+  }
+  catch(error){
+    console.log(error);
+    return "";
+  }
+
+}
+
+async function verifySignature(signature: string, address: String, role: String){
+  try{
+    const response = await axios.post('http://localhost:3000/api/auth/', {
+      signature: signature,
+      walletId: address,
+      role: role
+    });
+
+    return response.data;
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+
 export default function LoginPage() {
   const [isConnecting, setIsConnecting] = useState(false)
-  const [role, setRole] = useState<"consumer" | "admin">("consumer")
+  const [role, setRole] = useState<"consumer" | "admin" | "provider">("consumer")
   const router = useRouter()
   const { theme, setTheme } = useNextTheme()
 
   const handleConnect = async () => {
     setIsConnecting(true)
 
-    // Simulate MetaMask connection
     try {
       // Check if MetaMask is installed
       if (typeof window.ethereum === "undefined") {
@@ -33,16 +65,27 @@ export default function LoginPage() {
       // Request account access
       await window.ethereum.request({ method: "eth_requestAccounts" })
 
-      // Redirect based on role
-      setTimeout(() => {
-        if (role === "admin") {
-          router.push("/admin/dashboard")
-        } else {
-          router.push("/consumer/dashboard")
-        }
-      }, 1500)
+      //Connect to wallet
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const account = await signer.getAddress();
+      console.log("Account: " + account);
+      //Get nonce
+      const nonce: string = await getNonce(account, role);
+
+      //Sign the message
+      if(nonce){
+        const signature: string = await signer.signMessage(nonce);
+        console.log("Signature: " + signature);
+        const response = await verifySignature(signature, account, role);
+        console.log(response)
+        if(response.isVerified) router.push(`/${role}/dashboard`);
+        else alert("Invalid signature");
+      }
     } catch (error) {
       console.error("Error connecting to MetaMask:", error)
+    }
+    finally{
       setIsConnecting(false)
     }
   }
@@ -79,8 +122,9 @@ export default function LoginPage() {
               className="w-full"
               onValueChange={(value) => setRole(value as "consumer" | "admin")}
             >
-              <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger value="consumer">Gas Consumer</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-3 mb-6">
+                <TabsTrigger value="consumer">Consumer</TabsTrigger>
+                <TabsTrigger value="provider">Gas Provider</TabsTrigger>
                 <TabsTrigger value="admin">Admin</TabsTrigger>
               </TabsList>
               <TabsContent value="consumer">
@@ -90,10 +134,17 @@ export default function LoginPage() {
                   </p>
                 </div>
               </TabsContent>
+              <TabsContent value="provider">
+                <div className="text-center mb-4">
+                  <p className="text-sm text-muted-foreground">
+                  Connect as an admin to verify consumer documents and manage the platform
+                  </p>
+                </div>
+              </TabsContent>
               <TabsContent value="admin">
                 <div className="text-center mb-4">
                   <p className="text-sm text-muted-foreground">
-                    Connect as an admin to verify consumer documents and manage the platform
+                    Connect as an admin to verify providers and manage the platform
                   </p>
                 </div>
               </TabsContent>
