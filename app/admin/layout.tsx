@@ -1,5 +1,9 @@
-import AdminWrapper from "@/components/layout/AdminWrapper"
+import React, { JSX } from "react";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <AdminWrapper>{children}</AdminWrapper>
+export default function Adminlayout({children}: {children: React.ReactNode}): JSX.Element{
+    return (
+        <div>
+            {children}
+        </div>
+    )
 }
