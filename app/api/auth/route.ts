@@ -31,10 +31,9 @@ export async function GET(req: NextRequest){
         }
         if(role == "provider"){
             console.log("Role (provider): " + role);
-            user = await prisma.gasAdmin.upsert({
+            user = await prisma.gasAdmin.update({
                 where: {publicKey: walletId},
-                create: {publicKey: walletId, nonce},
-                update: {nonce},
+                data: {nonce},
             });
         }
         else if(role == "admin"){
