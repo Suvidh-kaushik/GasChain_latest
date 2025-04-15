@@ -1,13 +1,14 @@
 "use client"
 
 import DashboardLayout from "@/components/layout/DashboardLayout"
-import { Home, Settings, Store, FileText } from "lucide-react"
+import { Home, Settings, Store, FileText, Newspaper } from "lucide-react"
 
 const navigation = [
     { name: "Dashboard", href: "/consumer/dashboard", icon: Home },
     { name: "My Documents", href: "/consumer/documents", icon: FileText },
     { name: "Gas Providers", href: "/consumer/providers", icon: Store },
     { name: "Settings", href: "/consumer/settings", icon: Settings },
+    { name: "Submit KYC", href: "/consumer/submitkyc", icon: Newspaper}
   ]
 
 export default function AdminClientLayout({ children }: { children: React.ReactNode }) {

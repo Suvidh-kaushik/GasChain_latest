@@ -15,29 +15,60 @@ datasource db {
 }
 
 model Consumer {
-  id        String   @id @default(cuid())
-  publicKey String   @unique
-  nonce     String?
-  createdAt DateTime @default(now())
+  id          String                     @id @default(cuid())
+  publicKey   String                     @unique
+  nonce       String?
+  createdAt   DateTime                   @default(now())
+  kycRequests consumerProviderRequests[]
 
   @@index([publicKey])
 }
 
 model gasAdmin {
-  id          String   @id @default(cuid())
-  publicKey   String   @unique
-  nonce       String?
-  createdAt   DateTime @default(now())
-  companyName String?
+  id               String                     @id @default(cuid())
+  publicKey        String                     @unique
+  nonce            String?
+  createdAt        DateTime                   @default(now())
+  companyName      String?
+  approvalRequests providerRequest[]
+  consumerRequests consumerProviderRequests[]
 
   @@index([publicKey])
 }
 
 model Admin {
-  id        String   @id @default(cuid())
-  publicKey String   @unique
-  nonce     String?
-  createdAt DateTime @default(now())
+  id               String            @id @default(cuid())
+  publicKey        String            @unique
+  nonce            String?
+  createdAt        DateTime          @default(now())
+  providerRequests providerRequest[]
 
   @@index([publicKey])
+}
+
+model providerRequest {
+  id                String   @id @default(cuid())
+  providerPublicKey String
+  adminPublicKey    String
+  createdAt         DateTime @default(now())
+  status            Status
+  provider          gasAdmin @relation(fields: [providerPublicKey], references: [publicKey])
+  admin             Admin    @relation(fields: [adminPublicKey], references: [publicKey])
+}
+
+model consumerProviderRequests {
+  id                String   @id @default(cuid())
+  consumerPublicKey String
+  providerPublicKey String
+  createdAt         DateTime @default(now())
+  status            Status
+  transactionHash   String
+  consumer          Consumer @relation(fields: [consumerPublicKey], references: [publicKey])
+  provider          gasAdmin @relation(fields: [providerPublicKey], references: [publicKey])
+}
+
+enum Status {
+  PENDING
+  ACCEPTED
+  REJECTED
 }

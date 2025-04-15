@@ -28,6 +28,34 @@ export type gasAdmin = $Result.DefaultSelection<Prisma.$gasAdminPayload>
  * 
  */
 export type Admin = $Result.DefaultSelection<Prisma.$AdminPayload>
+/**
+ * Model providerRequest
+ * 
+ */
+export type providerRequest = $Result.DefaultSelection<Prisma.$providerRequestPayload>
+/**
+ * Model consumerProviderRequests
+ * 
+ */
+export type consumerProviderRequests = $Result.DefaultSelection<Prisma.$consumerProviderRequestsPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const Status: {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+};
+
+export type Status = (typeof Status)[keyof typeof Status]
+
+}
+
+export type Status = $Enums.Status
+
+export const Status: typeof $Enums.Status
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +211,26 @@ export class PrismaClient<
     * ```
     */
   get admin(): Prisma.AdminDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.providerRequest`: Exposes CRUD operations for the **providerRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProviderRequests
+    * const providerRequests = await prisma.providerRequest.findMany()
+    * ```
+    */
+  get providerRequest(): Prisma.providerRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.consumerProviderRequests`: Exposes CRUD operations for the **consumerProviderRequests** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ConsumerProviderRequests
+    * const consumerProviderRequests = await prisma.consumerProviderRequests.findMany()
+    * ```
+    */
+  get consumerProviderRequests(): Prisma.consumerProviderRequestsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +673,9 @@ export namespace Prisma {
   export const ModelName: {
     Consumer: 'Consumer',
     gasAdmin: 'gasAdmin',
-    Admin: 'Admin'
+    Admin: 'Admin',
+    providerRequest: 'providerRequest',
+    consumerProviderRequests: 'consumerProviderRequests'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +694,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "consumer" | "gasAdmin" | "admin"
+      modelProps: "consumer" | "gasAdmin" | "admin" | "providerRequest" | "consumerProviderRequests"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +920,154 @@ export namespace Prisma {
           }
         }
       }
+      providerRequest: {
+        payload: Prisma.$providerRequestPayload<ExtArgs>
+        fields: Prisma.providerRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.providerRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.providerRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.providerRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.providerRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>
+          }
+          findMany: {
+            args: Prisma.providerRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>[]
+          }
+          create: {
+            args: Prisma.providerRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>
+          }
+          createMany: {
+            args: Prisma.providerRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.providerRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.providerRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>
+          }
+          update: {
+            args: Prisma.providerRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.providerRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.providerRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.providerRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.providerRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$providerRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.ProviderRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProviderRequest>
+          }
+          groupBy: {
+            args: Prisma.providerRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProviderRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.providerRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<ProviderRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      consumerProviderRequests: {
+        payload: Prisma.$consumerProviderRequestsPayload<ExtArgs>
+        fields: Prisma.consumerProviderRequestsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.consumerProviderRequestsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.consumerProviderRequestsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>
+          }
+          findFirst: {
+            args: Prisma.consumerProviderRequestsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.consumerProviderRequestsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>
+          }
+          findMany: {
+            args: Prisma.consumerProviderRequestsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>[]
+          }
+          create: {
+            args: Prisma.consumerProviderRequestsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>
+          }
+          createMany: {
+            args: Prisma.consumerProviderRequestsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.consumerProviderRequestsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>[]
+          }
+          delete: {
+            args: Prisma.consumerProviderRequestsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>
+          }
+          update: {
+            args: Prisma.consumerProviderRequestsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>
+          }
+          deleteMany: {
+            args: Prisma.consumerProviderRequestsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.consumerProviderRequestsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.consumerProviderRequestsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>[]
+          }
+          upsert: {
+            args: Prisma.consumerProviderRequestsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$consumerProviderRequestsPayload>
+          }
+          aggregate: {
+            args: Prisma.ConsumerProviderRequestsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateConsumerProviderRequests>
+          }
+          groupBy: {
+            args: Prisma.consumerProviderRequestsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ConsumerProviderRequestsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.consumerProviderRequestsCountArgs<ExtArgs>
+            result: $Utils.Optional<ConsumerProviderRequestsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1155,8 @@ export namespace Prisma {
     consumer?: ConsumerOmit
     gasAdmin?: gasAdminOmit
     admin?: AdminOmit
+    providerRequest?: providerRequestOmit
+    consumerProviderRequests?: consumerProviderRequestsOmit
   }
 
   /* Types for Logging */
@@ -1045,6 +1245,107 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type ConsumerCountOutputType
+   */
+
+  export type ConsumerCountOutputType = {
+    kycRequests: number
+  }
+
+  export type ConsumerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kycRequests?: boolean | ConsumerCountOutputTypeCountKycRequestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ConsumerCountOutputType without action
+   */
+  export type ConsumerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsumerCountOutputType
+     */
+    select?: ConsumerCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ConsumerCountOutputType without action
+   */
+  export type ConsumerCountOutputTypeCountKycRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: consumerProviderRequestsWhereInput
+  }
+
+
+  /**
+   * Count Type GasAdminCountOutputType
+   */
+
+  export type GasAdminCountOutputType = {
+    approvalRequests: number
+    consumerRequests: number
+  }
+
+  export type GasAdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    approvalRequests?: boolean | GasAdminCountOutputTypeCountApprovalRequestsArgs
+    consumerRequests?: boolean | GasAdminCountOutputTypeCountConsumerRequestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GasAdminCountOutputType without action
+   */
+  export type GasAdminCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GasAdminCountOutputType
+     */
+    select?: GasAdminCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GasAdminCountOutputType without action
+   */
+  export type GasAdminCountOutputTypeCountApprovalRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: providerRequestWhereInput
+  }
+
+  /**
+   * GasAdminCountOutputType without action
+   */
+  export type GasAdminCountOutputTypeCountConsumerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: consumerProviderRequestsWhereInput
+  }
+
+
+  /**
+   * Count Type AdminCountOutputType
+   */
+
+  export type AdminCountOutputType = {
+    providerRequests: number
+  }
+
+  export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    providerRequests?: boolean | AdminCountOutputTypeCountProviderRequestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminCountOutputType
+     */
+    select?: AdminCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AdminCountOutputType without action
+   */
+  export type AdminCountOutputTypeCountProviderRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: providerRequestWhereInput
+  }
 
 
   /**
@@ -1207,6 +1508,8 @@ export namespace Prisma {
     publicKey?: boolean
     nonce?: boolean
     createdAt?: boolean
+    kycRequests?: boolean | Consumer$kycRequestsArgs<ExtArgs>
+    _count?: boolean | ConsumerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consumer"]>
 
   export type ConsumerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1231,10 +1534,18 @@ export namespace Prisma {
   }
 
   export type ConsumerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "nonce" | "createdAt", ExtArgs["result"]["consumer"]>
+  export type ConsumerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kycRequests?: boolean | Consumer$kycRequestsArgs<ExtArgs>
+    _count?: boolean | ConsumerCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ConsumerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ConsumerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ConsumerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Consumer"
-    objects: {}
+    objects: {
+      kycRequests: Prisma.$consumerProviderRequestsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       publicKey: string
@@ -1634,6 +1945,7 @@ export namespace Prisma {
    */
   export interface Prisma__ConsumerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    kycRequests<T extends Consumer$kycRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Consumer$kycRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1684,6 +1996,10 @@ export namespace Prisma {
      */
     omit?: ConsumerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
+    /**
      * Filter, which Consumer to fetch.
      */
     where: ConsumerWhereUniqueInput
@@ -1702,6 +2018,10 @@ export namespace Prisma {
      */
     omit?: ConsumerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
+    /**
      * Filter, which Consumer to fetch.
      */
     where: ConsumerWhereUniqueInput
@@ -1719,6 +2039,10 @@ export namespace Prisma {
      * Omit specific fields from the Consumer
      */
     omit?: ConsumerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
     /**
      * Filter, which Consumer to fetch.
      */
@@ -1768,6 +2092,10 @@ export namespace Prisma {
      */
     omit?: ConsumerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
+    /**
      * Filter, which Consumer to fetch.
      */
     where?: ConsumerWhereInput
@@ -1816,6 +2144,10 @@ export namespace Prisma {
      */
     omit?: ConsumerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
+    /**
      * Filter, which Consumers to fetch.
      */
     where?: ConsumerWhereInput
@@ -1858,6 +2190,10 @@ export namespace Prisma {
      * Omit specific fields from the Consumer
      */
     omit?: ConsumerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
     /**
      * The data needed to create a Consumer.
      */
@@ -1906,6 +2242,10 @@ export namespace Prisma {
      * Omit specific fields from the Consumer
      */
     omit?: ConsumerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
     /**
      * The data needed to update a Consumer.
      */
@@ -1973,6 +2313,10 @@ export namespace Prisma {
      */
     omit?: ConsumerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
+    /**
      * The filter to search for the Consumer to update in case it exists.
      */
     where: ConsumerWhereUniqueInput
@@ -1999,6 +2343,10 @@ export namespace Prisma {
      */
     omit?: ConsumerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
+    /**
      * Filter which Consumer to delete.
      */
     where: ConsumerWhereUniqueInput
@@ -2019,6 +2367,30 @@ export namespace Prisma {
   }
 
   /**
+   * Consumer.kycRequests
+   */
+  export type Consumer$kycRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    where?: consumerProviderRequestsWhereInput
+    orderBy?: consumerProviderRequestsOrderByWithRelationInput | consumerProviderRequestsOrderByWithRelationInput[]
+    cursor?: consumerProviderRequestsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ConsumerProviderRequestsScalarFieldEnum | ConsumerProviderRequestsScalarFieldEnum[]
+  }
+
+  /**
    * Consumer without action
    */
   export type ConsumerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2030,6 +2402,10 @@ export namespace Prisma {
      * Omit specific fields from the Consumer
      */
     omit?: ConsumerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsumerInclude<ExtArgs> | null
   }
 
 
@@ -2197,6 +2573,9 @@ export namespace Prisma {
     nonce?: boolean
     createdAt?: boolean
     companyName?: boolean
+    approvalRequests?: boolean | gasAdmin$approvalRequestsArgs<ExtArgs>
+    consumerRequests?: boolean | gasAdmin$consumerRequestsArgs<ExtArgs>
+    _count?: boolean | GasAdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gasAdmin"]>
 
   export type gasAdminSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2224,10 +2603,20 @@ export namespace Prisma {
   }
 
   export type gasAdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "nonce" | "createdAt" | "companyName", ExtArgs["result"]["gasAdmin"]>
+  export type gasAdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    approvalRequests?: boolean | gasAdmin$approvalRequestsArgs<ExtArgs>
+    consumerRequests?: boolean | gasAdmin$consumerRequestsArgs<ExtArgs>
+    _count?: boolean | GasAdminCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type gasAdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type gasAdminIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $gasAdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "gasAdmin"
-    objects: {}
+    objects: {
+      approvalRequests: Prisma.$providerRequestPayload<ExtArgs>[]
+      consumerRequests: Prisma.$consumerProviderRequestsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       publicKey: string
@@ -2628,6 +3017,8 @@ export namespace Prisma {
    */
   export interface Prisma__gasAdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    approvalRequests<T extends gasAdmin$approvalRequestsArgs<ExtArgs> = {}>(args?: Subset<T, gasAdmin$approvalRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    consumerRequests<T extends gasAdmin$consumerRequestsArgs<ExtArgs> = {}>(args?: Subset<T, gasAdmin$consumerRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2679,6 +3070,10 @@ export namespace Prisma {
      */
     omit?: gasAdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
+    /**
      * Filter, which gasAdmin to fetch.
      */
     where: gasAdminWhereUniqueInput
@@ -2697,6 +3092,10 @@ export namespace Prisma {
      */
     omit?: gasAdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
+    /**
      * Filter, which gasAdmin to fetch.
      */
     where: gasAdminWhereUniqueInput
@@ -2714,6 +3113,10 @@ export namespace Prisma {
      * Omit specific fields from the gasAdmin
      */
     omit?: gasAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
     /**
      * Filter, which gasAdmin to fetch.
      */
@@ -2763,6 +3166,10 @@ export namespace Prisma {
      */
     omit?: gasAdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
+    /**
      * Filter, which gasAdmin to fetch.
      */
     where?: gasAdminWhereInput
@@ -2811,6 +3218,10 @@ export namespace Prisma {
      */
     omit?: gasAdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
+    /**
      * Filter, which gasAdmins to fetch.
      */
     where?: gasAdminWhereInput
@@ -2853,6 +3264,10 @@ export namespace Prisma {
      * Omit specific fields from the gasAdmin
      */
     omit?: gasAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
     /**
      * The data needed to create a gasAdmin.
      */
@@ -2901,6 +3316,10 @@ export namespace Prisma {
      * Omit specific fields from the gasAdmin
      */
     omit?: gasAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
     /**
      * The data needed to update a gasAdmin.
      */
@@ -2968,6 +3387,10 @@ export namespace Prisma {
      */
     omit?: gasAdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
+    /**
      * The filter to search for the gasAdmin to update in case it exists.
      */
     where: gasAdminWhereUniqueInput
@@ -2994,6 +3417,10 @@ export namespace Prisma {
      */
     omit?: gasAdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
+    /**
      * Filter which gasAdmin to delete.
      */
     where: gasAdminWhereUniqueInput
@@ -3014,6 +3441,54 @@ export namespace Prisma {
   }
 
   /**
+   * gasAdmin.approvalRequests
+   */
+  export type gasAdmin$approvalRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    where?: providerRequestWhereInput
+    orderBy?: providerRequestOrderByWithRelationInput | providerRequestOrderByWithRelationInput[]
+    cursor?: providerRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProviderRequestScalarFieldEnum | ProviderRequestScalarFieldEnum[]
+  }
+
+  /**
+   * gasAdmin.consumerRequests
+   */
+  export type gasAdmin$consumerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    where?: consumerProviderRequestsWhereInput
+    orderBy?: consumerProviderRequestsOrderByWithRelationInput | consumerProviderRequestsOrderByWithRelationInput[]
+    cursor?: consumerProviderRequestsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ConsumerProviderRequestsScalarFieldEnum | ConsumerProviderRequestsScalarFieldEnum[]
+  }
+
+  /**
    * gasAdmin without action
    */
   export type gasAdminDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3025,6 +3500,10 @@ export namespace Prisma {
      * Omit specific fields from the gasAdmin
      */
     omit?: gasAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: gasAdminInclude<ExtArgs> | null
   }
 
 
@@ -3184,6 +3663,8 @@ export namespace Prisma {
     publicKey?: boolean
     nonce?: boolean
     createdAt?: boolean
+    providerRequests?: boolean | Admin$providerRequestsArgs<ExtArgs>
+    _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
   export type AdminSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3208,10 +3689,18 @@ export namespace Prisma {
   }
 
   export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "nonce" | "createdAt", ExtArgs["result"]["admin"]>
+  export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    providerRequests?: boolean | Admin$providerRequestsArgs<ExtArgs>
+    _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AdminIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
-    objects: {}
+    objects: {
+      providerRequests: Prisma.$providerRequestPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       publicKey: string
@@ -3611,6 +4100,7 @@ export namespace Prisma {
    */
   export interface Prisma__AdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    providerRequests<T extends Admin$providerRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Admin$providerRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3661,6 +4151,10 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    /**
      * Filter, which Admin to fetch.
      */
     where: AdminWhereUniqueInput
@@ -3679,6 +4173,10 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    /**
      * Filter, which Admin to fetch.
      */
     where: AdminWhereUniqueInput
@@ -3696,6 +4194,10 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
     /**
      * Filter, which Admin to fetch.
      */
@@ -3745,6 +4247,10 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    /**
      * Filter, which Admin to fetch.
      */
     where?: AdminWhereInput
@@ -3793,6 +4299,10 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    /**
      * Filter, which Admins to fetch.
      */
     where?: AdminWhereInput
@@ -3835,6 +4345,10 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
     /**
      * The data needed to create a Admin.
      */
@@ -3883,6 +4397,10 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
     /**
      * The data needed to update a Admin.
      */
@@ -3950,6 +4468,10 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    /**
      * The filter to search for the Admin to update in case it exists.
      */
     where: AdminWhereUniqueInput
@@ -3976,6 +4498,10 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+    /**
      * Filter which Admin to delete.
      */
     where: AdminWhereUniqueInput
@@ -3996,6 +4522,30 @@ export namespace Prisma {
   }
 
   /**
+   * Admin.providerRequests
+   */
+  export type Admin$providerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    where?: providerRequestWhereInput
+    orderBy?: providerRequestOrderByWithRelationInput | providerRequestOrderByWithRelationInput[]
+    cursor?: providerRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProviderRequestScalarFieldEnum | ProviderRequestScalarFieldEnum[]
+  }
+
+  /**
    * Admin without action
    */
   export type AdminDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4007,6 +4557,2155 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model providerRequest
+   */
+
+  export type AggregateProviderRequest = {
+    _count: ProviderRequestCountAggregateOutputType | null
+    _min: ProviderRequestMinAggregateOutputType | null
+    _max: ProviderRequestMaxAggregateOutputType | null
+  }
+
+  export type ProviderRequestMinAggregateOutputType = {
+    id: string | null
+    providerPublicKey: string | null
+    adminPublicKey: string | null
+    createdAt: Date | null
+    status: $Enums.Status | null
+  }
+
+  export type ProviderRequestMaxAggregateOutputType = {
+    id: string | null
+    providerPublicKey: string | null
+    adminPublicKey: string | null
+    createdAt: Date | null
+    status: $Enums.Status | null
+  }
+
+  export type ProviderRequestCountAggregateOutputType = {
+    id: number
+    providerPublicKey: number
+    adminPublicKey: number
+    createdAt: number
+    status: number
+    _all: number
+  }
+
+
+  export type ProviderRequestMinAggregateInputType = {
+    id?: true
+    providerPublicKey?: true
+    adminPublicKey?: true
+    createdAt?: true
+    status?: true
+  }
+
+  export type ProviderRequestMaxAggregateInputType = {
+    id?: true
+    providerPublicKey?: true
+    adminPublicKey?: true
+    createdAt?: true
+    status?: true
+  }
+
+  export type ProviderRequestCountAggregateInputType = {
+    id?: true
+    providerPublicKey?: true
+    adminPublicKey?: true
+    createdAt?: true
+    status?: true
+    _all?: true
+  }
+
+  export type ProviderRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which providerRequest to aggregate.
+     */
+    where?: providerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of providerRequests to fetch.
+     */
+    orderBy?: providerRequestOrderByWithRelationInput | providerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: providerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` providerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` providerRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned providerRequests
+    **/
+    _count?: true | ProviderRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProviderRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProviderRequestMaxAggregateInputType
+  }
+
+  export type GetProviderRequestAggregateType<T extends ProviderRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateProviderRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProviderRequest[P]>
+      : GetScalarType<T[P], AggregateProviderRequest[P]>
+  }
+
+
+
+
+  export type providerRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: providerRequestWhereInput
+    orderBy?: providerRequestOrderByWithAggregationInput | providerRequestOrderByWithAggregationInput[]
+    by: ProviderRequestScalarFieldEnum[] | ProviderRequestScalarFieldEnum
+    having?: providerRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProviderRequestCountAggregateInputType | true
+    _min?: ProviderRequestMinAggregateInputType
+    _max?: ProviderRequestMaxAggregateInputType
+  }
+
+  export type ProviderRequestGroupByOutputType = {
+    id: string
+    providerPublicKey: string
+    adminPublicKey: string
+    createdAt: Date
+    status: $Enums.Status
+    _count: ProviderRequestCountAggregateOutputType | null
+    _min: ProviderRequestMinAggregateOutputType | null
+    _max: ProviderRequestMaxAggregateOutputType | null
+  }
+
+  type GetProviderRequestGroupByPayload<T extends providerRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProviderRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProviderRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProviderRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], ProviderRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type providerRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerPublicKey?: boolean
+    adminPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["providerRequest"]>
+
+  export type providerRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerPublicKey?: boolean
+    adminPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["providerRequest"]>
+
+  export type providerRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerPublicKey?: boolean
+    adminPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["providerRequest"]>
+
+  export type providerRequestSelectScalar = {
+    id?: boolean
+    providerPublicKey?: boolean
+    adminPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+  }
+
+  export type providerRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerPublicKey" | "adminPublicKey" | "createdAt" | "status", ExtArgs["result"]["providerRequest"]>
+  export type providerRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+  export type providerRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+  export type providerRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    admin?: boolean | AdminDefaultArgs<ExtArgs>
+  }
+
+  export type $providerRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "providerRequest"
+    objects: {
+      provider: Prisma.$gasAdminPayload<ExtArgs>
+      admin: Prisma.$AdminPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      providerPublicKey: string
+      adminPublicKey: string
+      createdAt: Date
+      status: $Enums.Status
+    }, ExtArgs["result"]["providerRequest"]>
+    composites: {}
+  }
+
+  type providerRequestGetPayload<S extends boolean | null | undefined | providerRequestDefaultArgs> = $Result.GetResult<Prisma.$providerRequestPayload, S>
+
+  type providerRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<providerRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProviderRequestCountAggregateInputType | true
+    }
+
+  export interface providerRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['providerRequest'], meta: { name: 'providerRequest' } }
+    /**
+     * Find zero or one ProviderRequest that matches the filter.
+     * @param {providerRequestFindUniqueArgs} args - Arguments to find a ProviderRequest
+     * @example
+     * // Get one ProviderRequest
+     * const providerRequest = await prisma.providerRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends providerRequestFindUniqueArgs>(args: SelectSubset<T, providerRequestFindUniqueArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProviderRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {providerRequestFindUniqueOrThrowArgs} args - Arguments to find a ProviderRequest
+     * @example
+     * // Get one ProviderRequest
+     * const providerRequest = await prisma.providerRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends providerRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, providerRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProviderRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {providerRequestFindFirstArgs} args - Arguments to find a ProviderRequest
+     * @example
+     * // Get one ProviderRequest
+     * const providerRequest = await prisma.providerRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends providerRequestFindFirstArgs>(args?: SelectSubset<T, providerRequestFindFirstArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProviderRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {providerRequestFindFirstOrThrowArgs} args - Arguments to find a ProviderRequest
+     * @example
+     * // Get one ProviderRequest
+     * const providerRequest = await prisma.providerRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends providerRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, providerRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProviderRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {providerRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProviderRequests
+     * const providerRequests = await prisma.providerRequest.findMany()
+     * 
+     * // Get first 10 ProviderRequests
+     * const providerRequests = await prisma.providerRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const providerRequestWithIdOnly = await prisma.providerRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends providerRequestFindManyArgs>(args?: SelectSubset<T, providerRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProviderRequest.
+     * @param {providerRequestCreateArgs} args - Arguments to create a ProviderRequest.
+     * @example
+     * // Create one ProviderRequest
+     * const ProviderRequest = await prisma.providerRequest.create({
+     *   data: {
+     *     // ... data to create a ProviderRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends providerRequestCreateArgs>(args: SelectSubset<T, providerRequestCreateArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProviderRequests.
+     * @param {providerRequestCreateManyArgs} args - Arguments to create many ProviderRequests.
+     * @example
+     * // Create many ProviderRequests
+     * const providerRequest = await prisma.providerRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends providerRequestCreateManyArgs>(args?: SelectSubset<T, providerRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProviderRequests and returns the data saved in the database.
+     * @param {providerRequestCreateManyAndReturnArgs} args - Arguments to create many ProviderRequests.
+     * @example
+     * // Create many ProviderRequests
+     * const providerRequest = await prisma.providerRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProviderRequests and only return the `id`
+     * const providerRequestWithIdOnly = await prisma.providerRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends providerRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, providerRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProviderRequest.
+     * @param {providerRequestDeleteArgs} args - Arguments to delete one ProviderRequest.
+     * @example
+     * // Delete one ProviderRequest
+     * const ProviderRequest = await prisma.providerRequest.delete({
+     *   where: {
+     *     // ... filter to delete one ProviderRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends providerRequestDeleteArgs>(args: SelectSubset<T, providerRequestDeleteArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProviderRequest.
+     * @param {providerRequestUpdateArgs} args - Arguments to update one ProviderRequest.
+     * @example
+     * // Update one ProviderRequest
+     * const providerRequest = await prisma.providerRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends providerRequestUpdateArgs>(args: SelectSubset<T, providerRequestUpdateArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProviderRequests.
+     * @param {providerRequestDeleteManyArgs} args - Arguments to filter ProviderRequests to delete.
+     * @example
+     * // Delete a few ProviderRequests
+     * const { count } = await prisma.providerRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends providerRequestDeleteManyArgs>(args?: SelectSubset<T, providerRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProviderRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {providerRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProviderRequests
+     * const providerRequest = await prisma.providerRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends providerRequestUpdateManyArgs>(args: SelectSubset<T, providerRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProviderRequests and returns the data updated in the database.
+     * @param {providerRequestUpdateManyAndReturnArgs} args - Arguments to update many ProviderRequests.
+     * @example
+     * // Update many ProviderRequests
+     * const providerRequest = await prisma.providerRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProviderRequests and only return the `id`
+     * const providerRequestWithIdOnly = await prisma.providerRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends providerRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, providerRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProviderRequest.
+     * @param {providerRequestUpsertArgs} args - Arguments to update or create a ProviderRequest.
+     * @example
+     * // Update or create a ProviderRequest
+     * const providerRequest = await prisma.providerRequest.upsert({
+     *   create: {
+     *     // ... data to create a ProviderRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProviderRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends providerRequestUpsertArgs>(args: SelectSubset<T, providerRequestUpsertArgs<ExtArgs>>): Prisma__providerRequestClient<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProviderRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {providerRequestCountArgs} args - Arguments to filter ProviderRequests to count.
+     * @example
+     * // Count the number of ProviderRequests
+     * const count = await prisma.providerRequest.count({
+     *   where: {
+     *     // ... the filter for the ProviderRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends providerRequestCountArgs>(
+      args?: Subset<T, providerRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProviderRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProviderRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProviderRequestAggregateArgs>(args: Subset<T, ProviderRequestAggregateArgs>): Prisma.PrismaPromise<GetProviderRequestAggregateType<T>>
+
+    /**
+     * Group by ProviderRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {providerRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends providerRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: providerRequestGroupByArgs['orderBy'] }
+        : { orderBy?: providerRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, providerRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProviderRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the providerRequest model
+   */
+  readonly fields: providerRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for providerRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__providerRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    provider<T extends gasAdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, gasAdminDefaultArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the providerRequest model
+   */
+  interface providerRequestFieldRefs {
+    readonly id: FieldRef<"providerRequest", 'String'>
+    readonly providerPublicKey: FieldRef<"providerRequest", 'String'>
+    readonly adminPublicKey: FieldRef<"providerRequest", 'String'>
+    readonly createdAt: FieldRef<"providerRequest", 'DateTime'>
+    readonly status: FieldRef<"providerRequest", 'Status'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * providerRequest findUnique
+   */
+  export type providerRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which providerRequest to fetch.
+     */
+    where: providerRequestWhereUniqueInput
+  }
+
+  /**
+   * providerRequest findUniqueOrThrow
+   */
+  export type providerRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which providerRequest to fetch.
+     */
+    where: providerRequestWhereUniqueInput
+  }
+
+  /**
+   * providerRequest findFirst
+   */
+  export type providerRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which providerRequest to fetch.
+     */
+    where?: providerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of providerRequests to fetch.
+     */
+    orderBy?: providerRequestOrderByWithRelationInput | providerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for providerRequests.
+     */
+    cursor?: providerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` providerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` providerRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of providerRequests.
+     */
+    distinct?: ProviderRequestScalarFieldEnum | ProviderRequestScalarFieldEnum[]
+  }
+
+  /**
+   * providerRequest findFirstOrThrow
+   */
+  export type providerRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which providerRequest to fetch.
+     */
+    where?: providerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of providerRequests to fetch.
+     */
+    orderBy?: providerRequestOrderByWithRelationInput | providerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for providerRequests.
+     */
+    cursor?: providerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` providerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` providerRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of providerRequests.
+     */
+    distinct?: ProviderRequestScalarFieldEnum | ProviderRequestScalarFieldEnum[]
+  }
+
+  /**
+   * providerRequest findMany
+   */
+  export type providerRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which providerRequests to fetch.
+     */
+    where?: providerRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of providerRequests to fetch.
+     */
+    orderBy?: providerRequestOrderByWithRelationInput | providerRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing providerRequests.
+     */
+    cursor?: providerRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` providerRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` providerRequests.
+     */
+    skip?: number
+    distinct?: ProviderRequestScalarFieldEnum | ProviderRequestScalarFieldEnum[]
+  }
+
+  /**
+   * providerRequest create
+   */
+  export type providerRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a providerRequest.
+     */
+    data: XOR<providerRequestCreateInput, providerRequestUncheckedCreateInput>
+  }
+
+  /**
+   * providerRequest createMany
+   */
+  export type providerRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many providerRequests.
+     */
+    data: providerRequestCreateManyInput | providerRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * providerRequest createManyAndReturn
+   */
+  export type providerRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many providerRequests.
+     */
+    data: providerRequestCreateManyInput | providerRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * providerRequest update
+   */
+  export type providerRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a providerRequest.
+     */
+    data: XOR<providerRequestUpdateInput, providerRequestUncheckedUpdateInput>
+    /**
+     * Choose, which providerRequest to update.
+     */
+    where: providerRequestWhereUniqueInput
+  }
+
+  /**
+   * providerRequest updateMany
+   */
+  export type providerRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update providerRequests.
+     */
+    data: XOR<providerRequestUpdateManyMutationInput, providerRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which providerRequests to update
+     */
+    where?: providerRequestWhereInput
+    /**
+     * Limit how many providerRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * providerRequest updateManyAndReturn
+   */
+  export type providerRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update providerRequests.
+     */
+    data: XOR<providerRequestUpdateManyMutationInput, providerRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which providerRequests to update
+     */
+    where?: providerRequestWhereInput
+    /**
+     * Limit how many providerRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * providerRequest upsert
+   */
+  export type providerRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the providerRequest to update in case it exists.
+     */
+    where: providerRequestWhereUniqueInput
+    /**
+     * In case the providerRequest found by the `where` argument doesn't exist, create a new providerRequest with this data.
+     */
+    create: XOR<providerRequestCreateInput, providerRequestUncheckedCreateInput>
+    /**
+     * In case the providerRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<providerRequestUpdateInput, providerRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * providerRequest delete
+   */
+  export type providerRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+    /**
+     * Filter which providerRequest to delete.
+     */
+    where: providerRequestWhereUniqueInput
+  }
+
+  /**
+   * providerRequest deleteMany
+   */
+  export type providerRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which providerRequests to delete
+     */
+    where?: providerRequestWhereInput
+    /**
+     * Limit how many providerRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * providerRequest without action
+   */
+  export type providerRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the providerRequest
+     */
+    select?: providerRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the providerRequest
+     */
+    omit?: providerRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: providerRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model consumerProviderRequests
+   */
+
+  export type AggregateConsumerProviderRequests = {
+    _count: ConsumerProviderRequestsCountAggregateOutputType | null
+    _min: ConsumerProviderRequestsMinAggregateOutputType | null
+    _max: ConsumerProviderRequestsMaxAggregateOutputType | null
+  }
+
+  export type ConsumerProviderRequestsMinAggregateOutputType = {
+    id: string | null
+    consumerPublicKey: string | null
+    providerPublicKey: string | null
+    createdAt: Date | null
+    status: $Enums.Status | null
+    transactionHash: string | null
+  }
+
+  export type ConsumerProviderRequestsMaxAggregateOutputType = {
+    id: string | null
+    consumerPublicKey: string | null
+    providerPublicKey: string | null
+    createdAt: Date | null
+    status: $Enums.Status | null
+    transactionHash: string | null
+  }
+
+  export type ConsumerProviderRequestsCountAggregateOutputType = {
+    id: number
+    consumerPublicKey: number
+    providerPublicKey: number
+    createdAt: number
+    status: number
+    transactionHash: number
+    _all: number
+  }
+
+
+  export type ConsumerProviderRequestsMinAggregateInputType = {
+    id?: true
+    consumerPublicKey?: true
+    providerPublicKey?: true
+    createdAt?: true
+    status?: true
+    transactionHash?: true
+  }
+
+  export type ConsumerProviderRequestsMaxAggregateInputType = {
+    id?: true
+    consumerPublicKey?: true
+    providerPublicKey?: true
+    createdAt?: true
+    status?: true
+    transactionHash?: true
+  }
+
+  export type ConsumerProviderRequestsCountAggregateInputType = {
+    id?: true
+    consumerPublicKey?: true
+    providerPublicKey?: true
+    createdAt?: true
+    status?: true
+    transactionHash?: true
+    _all?: true
+  }
+
+  export type ConsumerProviderRequestsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which consumerProviderRequests to aggregate.
+     */
+    where?: consumerProviderRequestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consumerProviderRequests to fetch.
+     */
+    orderBy?: consumerProviderRequestsOrderByWithRelationInput | consumerProviderRequestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: consumerProviderRequestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consumerProviderRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consumerProviderRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned consumerProviderRequests
+    **/
+    _count?: true | ConsumerProviderRequestsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ConsumerProviderRequestsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ConsumerProviderRequestsMaxAggregateInputType
+  }
+
+  export type GetConsumerProviderRequestsAggregateType<T extends ConsumerProviderRequestsAggregateArgs> = {
+        [P in keyof T & keyof AggregateConsumerProviderRequests]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateConsumerProviderRequests[P]>
+      : GetScalarType<T[P], AggregateConsumerProviderRequests[P]>
+  }
+
+
+
+
+  export type consumerProviderRequestsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: consumerProviderRequestsWhereInput
+    orderBy?: consumerProviderRequestsOrderByWithAggregationInput | consumerProviderRequestsOrderByWithAggregationInput[]
+    by: ConsumerProviderRequestsScalarFieldEnum[] | ConsumerProviderRequestsScalarFieldEnum
+    having?: consumerProviderRequestsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ConsumerProviderRequestsCountAggregateInputType | true
+    _min?: ConsumerProviderRequestsMinAggregateInputType
+    _max?: ConsumerProviderRequestsMaxAggregateInputType
+  }
+
+  export type ConsumerProviderRequestsGroupByOutputType = {
+    id: string
+    consumerPublicKey: string
+    providerPublicKey: string
+    createdAt: Date
+    status: $Enums.Status
+    transactionHash: string
+    _count: ConsumerProviderRequestsCountAggregateOutputType | null
+    _min: ConsumerProviderRequestsMinAggregateOutputType | null
+    _max: ConsumerProviderRequestsMaxAggregateOutputType | null
+  }
+
+  type GetConsumerProviderRequestsGroupByPayload<T extends consumerProviderRequestsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ConsumerProviderRequestsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ConsumerProviderRequestsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ConsumerProviderRequestsGroupByOutputType[P]>
+            : GetScalarType<T[P], ConsumerProviderRequestsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type consumerProviderRequestsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    consumerPublicKey?: boolean
+    providerPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+    transactionHash?: boolean
+    consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["consumerProviderRequests"]>
+
+  export type consumerProviderRequestsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    consumerPublicKey?: boolean
+    providerPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+    transactionHash?: boolean
+    consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["consumerProviderRequests"]>
+
+  export type consumerProviderRequestsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    consumerPublicKey?: boolean
+    providerPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+    transactionHash?: boolean
+    consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["consumerProviderRequests"]>
+
+  export type consumerProviderRequestsSelectScalar = {
+    id?: boolean
+    consumerPublicKey?: boolean
+    providerPublicKey?: boolean
+    createdAt?: boolean
+    status?: boolean
+    transactionHash?: boolean
+  }
+
+  export type consumerProviderRequestsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "consumerPublicKey" | "providerPublicKey" | "createdAt" | "status" | "transactionHash", ExtArgs["result"]["consumerProviderRequests"]>
+  export type consumerProviderRequestsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+  }
+  export type consumerProviderRequestsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+  }
+  export type consumerProviderRequestsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
+    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+  }
+
+  export type $consumerProviderRequestsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "consumerProviderRequests"
+    objects: {
+      consumer: Prisma.$ConsumerPayload<ExtArgs>
+      provider: Prisma.$gasAdminPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      consumerPublicKey: string
+      providerPublicKey: string
+      createdAt: Date
+      status: $Enums.Status
+      transactionHash: string
+    }, ExtArgs["result"]["consumerProviderRequests"]>
+    composites: {}
+  }
+
+  type consumerProviderRequestsGetPayload<S extends boolean | null | undefined | consumerProviderRequestsDefaultArgs> = $Result.GetResult<Prisma.$consumerProviderRequestsPayload, S>
+
+  type consumerProviderRequestsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<consumerProviderRequestsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ConsumerProviderRequestsCountAggregateInputType | true
+    }
+
+  export interface consumerProviderRequestsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['consumerProviderRequests'], meta: { name: 'consumerProviderRequests' } }
+    /**
+     * Find zero or one ConsumerProviderRequests that matches the filter.
+     * @param {consumerProviderRequestsFindUniqueArgs} args - Arguments to find a ConsumerProviderRequests
+     * @example
+     * // Get one ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends consumerProviderRequestsFindUniqueArgs>(args: SelectSubset<T, consumerProviderRequestsFindUniqueArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ConsumerProviderRequests that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {consumerProviderRequestsFindUniqueOrThrowArgs} args - Arguments to find a ConsumerProviderRequests
+     * @example
+     * // Get one ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends consumerProviderRequestsFindUniqueOrThrowArgs>(args: SelectSubset<T, consumerProviderRequestsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ConsumerProviderRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consumerProviderRequestsFindFirstArgs} args - Arguments to find a ConsumerProviderRequests
+     * @example
+     * // Get one ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends consumerProviderRequestsFindFirstArgs>(args?: SelectSubset<T, consumerProviderRequestsFindFirstArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ConsumerProviderRequests that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consumerProviderRequestsFindFirstOrThrowArgs} args - Arguments to find a ConsumerProviderRequests
+     * @example
+     * // Get one ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends consumerProviderRequestsFindFirstOrThrowArgs>(args?: SelectSubset<T, consumerProviderRequestsFindFirstOrThrowArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ConsumerProviderRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consumerProviderRequestsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.findMany()
+     * 
+     * // Get first 10 ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const consumerProviderRequestsWithIdOnly = await prisma.consumerProviderRequests.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends consumerProviderRequestsFindManyArgs>(args?: SelectSubset<T, consumerProviderRequestsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ConsumerProviderRequests.
+     * @param {consumerProviderRequestsCreateArgs} args - Arguments to create a ConsumerProviderRequests.
+     * @example
+     * // Create one ConsumerProviderRequests
+     * const ConsumerProviderRequests = await prisma.consumerProviderRequests.create({
+     *   data: {
+     *     // ... data to create a ConsumerProviderRequests
+     *   }
+     * })
+     * 
+     */
+    create<T extends consumerProviderRequestsCreateArgs>(args: SelectSubset<T, consumerProviderRequestsCreateArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ConsumerProviderRequests.
+     * @param {consumerProviderRequestsCreateManyArgs} args - Arguments to create many ConsumerProviderRequests.
+     * @example
+     * // Create many ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends consumerProviderRequestsCreateManyArgs>(args?: SelectSubset<T, consumerProviderRequestsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ConsumerProviderRequests and returns the data saved in the database.
+     * @param {consumerProviderRequestsCreateManyAndReturnArgs} args - Arguments to create many ConsumerProviderRequests.
+     * @example
+     * // Create many ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ConsumerProviderRequests and only return the `id`
+     * const consumerProviderRequestsWithIdOnly = await prisma.consumerProviderRequests.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends consumerProviderRequestsCreateManyAndReturnArgs>(args?: SelectSubset<T, consumerProviderRequestsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ConsumerProviderRequests.
+     * @param {consumerProviderRequestsDeleteArgs} args - Arguments to delete one ConsumerProviderRequests.
+     * @example
+     * // Delete one ConsumerProviderRequests
+     * const ConsumerProviderRequests = await prisma.consumerProviderRequests.delete({
+     *   where: {
+     *     // ... filter to delete one ConsumerProviderRequests
+     *   }
+     * })
+     * 
+     */
+    delete<T extends consumerProviderRequestsDeleteArgs>(args: SelectSubset<T, consumerProviderRequestsDeleteArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ConsumerProviderRequests.
+     * @param {consumerProviderRequestsUpdateArgs} args - Arguments to update one ConsumerProviderRequests.
+     * @example
+     * // Update one ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends consumerProviderRequestsUpdateArgs>(args: SelectSubset<T, consumerProviderRequestsUpdateArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ConsumerProviderRequests.
+     * @param {consumerProviderRequestsDeleteManyArgs} args - Arguments to filter ConsumerProviderRequests to delete.
+     * @example
+     * // Delete a few ConsumerProviderRequests
+     * const { count } = await prisma.consumerProviderRequests.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends consumerProviderRequestsDeleteManyArgs>(args?: SelectSubset<T, consumerProviderRequestsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ConsumerProviderRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consumerProviderRequestsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends consumerProviderRequestsUpdateManyArgs>(args: SelectSubset<T, consumerProviderRequestsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ConsumerProviderRequests and returns the data updated in the database.
+     * @param {consumerProviderRequestsUpdateManyAndReturnArgs} args - Arguments to update many ConsumerProviderRequests.
+     * @example
+     * // Update many ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ConsumerProviderRequests and only return the `id`
+     * const consumerProviderRequestsWithIdOnly = await prisma.consumerProviderRequests.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends consumerProviderRequestsUpdateManyAndReturnArgs>(args: SelectSubset<T, consumerProviderRequestsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ConsumerProviderRequests.
+     * @param {consumerProviderRequestsUpsertArgs} args - Arguments to update or create a ConsumerProviderRequests.
+     * @example
+     * // Update or create a ConsumerProviderRequests
+     * const consumerProviderRequests = await prisma.consumerProviderRequests.upsert({
+     *   create: {
+     *     // ... data to create a ConsumerProviderRequests
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ConsumerProviderRequests we want to update
+     *   }
+     * })
+     */
+    upsert<T extends consumerProviderRequestsUpsertArgs>(args: SelectSubset<T, consumerProviderRequestsUpsertArgs<ExtArgs>>): Prisma__consumerProviderRequestsClient<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ConsumerProviderRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consumerProviderRequestsCountArgs} args - Arguments to filter ConsumerProviderRequests to count.
+     * @example
+     * // Count the number of ConsumerProviderRequests
+     * const count = await prisma.consumerProviderRequests.count({
+     *   where: {
+     *     // ... the filter for the ConsumerProviderRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends consumerProviderRequestsCountArgs>(
+      args?: Subset<T, consumerProviderRequestsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ConsumerProviderRequestsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ConsumerProviderRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsumerProviderRequestsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ConsumerProviderRequestsAggregateArgs>(args: Subset<T, ConsumerProviderRequestsAggregateArgs>): Prisma.PrismaPromise<GetConsumerProviderRequestsAggregateType<T>>
+
+    /**
+     * Group by ConsumerProviderRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {consumerProviderRequestsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends consumerProviderRequestsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: consumerProviderRequestsGroupByArgs['orderBy'] }
+        : { orderBy?: consumerProviderRequestsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, consumerProviderRequestsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConsumerProviderRequestsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the consumerProviderRequests model
+   */
+  readonly fields: consumerProviderRequestsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for consumerProviderRequests.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__consumerProviderRequestsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    consumer<T extends ConsumerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ConsumerDefaultArgs<ExtArgs>>): Prisma__ConsumerClient<$Result.GetResult<Prisma.$ConsumerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    provider<T extends gasAdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, gasAdminDefaultArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the consumerProviderRequests model
+   */
+  interface consumerProviderRequestsFieldRefs {
+    readonly id: FieldRef<"consumerProviderRequests", 'String'>
+    readonly consumerPublicKey: FieldRef<"consumerProviderRequests", 'String'>
+    readonly providerPublicKey: FieldRef<"consumerProviderRequests", 'String'>
+    readonly createdAt: FieldRef<"consumerProviderRequests", 'DateTime'>
+    readonly status: FieldRef<"consumerProviderRequests", 'Status'>
+    readonly transactionHash: FieldRef<"consumerProviderRequests", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * consumerProviderRequests findUnique
+   */
+  export type consumerProviderRequestsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * Filter, which consumerProviderRequests to fetch.
+     */
+    where: consumerProviderRequestsWhereUniqueInput
+  }
+
+  /**
+   * consumerProviderRequests findUniqueOrThrow
+   */
+  export type consumerProviderRequestsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * Filter, which consumerProviderRequests to fetch.
+     */
+    where: consumerProviderRequestsWhereUniqueInput
+  }
+
+  /**
+   * consumerProviderRequests findFirst
+   */
+  export type consumerProviderRequestsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * Filter, which consumerProviderRequests to fetch.
+     */
+    where?: consumerProviderRequestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consumerProviderRequests to fetch.
+     */
+    orderBy?: consumerProviderRequestsOrderByWithRelationInput | consumerProviderRequestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for consumerProviderRequests.
+     */
+    cursor?: consumerProviderRequestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consumerProviderRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consumerProviderRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of consumerProviderRequests.
+     */
+    distinct?: ConsumerProviderRequestsScalarFieldEnum | ConsumerProviderRequestsScalarFieldEnum[]
+  }
+
+  /**
+   * consumerProviderRequests findFirstOrThrow
+   */
+  export type consumerProviderRequestsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * Filter, which consumerProviderRequests to fetch.
+     */
+    where?: consumerProviderRequestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consumerProviderRequests to fetch.
+     */
+    orderBy?: consumerProviderRequestsOrderByWithRelationInput | consumerProviderRequestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for consumerProviderRequests.
+     */
+    cursor?: consumerProviderRequestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consumerProviderRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consumerProviderRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of consumerProviderRequests.
+     */
+    distinct?: ConsumerProviderRequestsScalarFieldEnum | ConsumerProviderRequestsScalarFieldEnum[]
+  }
+
+  /**
+   * consumerProviderRequests findMany
+   */
+  export type consumerProviderRequestsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * Filter, which consumerProviderRequests to fetch.
+     */
+    where?: consumerProviderRequestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of consumerProviderRequests to fetch.
+     */
+    orderBy?: consumerProviderRequestsOrderByWithRelationInput | consumerProviderRequestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing consumerProviderRequests.
+     */
+    cursor?: consumerProviderRequestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` consumerProviderRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` consumerProviderRequests.
+     */
+    skip?: number
+    distinct?: ConsumerProviderRequestsScalarFieldEnum | ConsumerProviderRequestsScalarFieldEnum[]
+  }
+
+  /**
+   * consumerProviderRequests create
+   */
+  export type consumerProviderRequestsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a consumerProviderRequests.
+     */
+    data: XOR<consumerProviderRequestsCreateInput, consumerProviderRequestsUncheckedCreateInput>
+  }
+
+  /**
+   * consumerProviderRequests createMany
+   */
+  export type consumerProviderRequestsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many consumerProviderRequests.
+     */
+    data: consumerProviderRequestsCreateManyInput | consumerProviderRequestsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * consumerProviderRequests createManyAndReturn
+   */
+  export type consumerProviderRequestsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * The data used to create many consumerProviderRequests.
+     */
+    data: consumerProviderRequestsCreateManyInput | consumerProviderRequestsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * consumerProviderRequests update
+   */
+  export type consumerProviderRequestsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a consumerProviderRequests.
+     */
+    data: XOR<consumerProviderRequestsUpdateInput, consumerProviderRequestsUncheckedUpdateInput>
+    /**
+     * Choose, which consumerProviderRequests to update.
+     */
+    where: consumerProviderRequestsWhereUniqueInput
+  }
+
+  /**
+   * consumerProviderRequests updateMany
+   */
+  export type consumerProviderRequestsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update consumerProviderRequests.
+     */
+    data: XOR<consumerProviderRequestsUpdateManyMutationInput, consumerProviderRequestsUncheckedUpdateManyInput>
+    /**
+     * Filter which consumerProviderRequests to update
+     */
+    where?: consumerProviderRequestsWhereInput
+    /**
+     * Limit how many consumerProviderRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * consumerProviderRequests updateManyAndReturn
+   */
+  export type consumerProviderRequestsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * The data used to update consumerProviderRequests.
+     */
+    data: XOR<consumerProviderRequestsUpdateManyMutationInput, consumerProviderRequestsUncheckedUpdateManyInput>
+    /**
+     * Filter which consumerProviderRequests to update
+     */
+    where?: consumerProviderRequestsWhereInput
+    /**
+     * Limit how many consumerProviderRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * consumerProviderRequests upsert
+   */
+  export type consumerProviderRequestsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the consumerProviderRequests to update in case it exists.
+     */
+    where: consumerProviderRequestsWhereUniqueInput
+    /**
+     * In case the consumerProviderRequests found by the `where` argument doesn't exist, create a new consumerProviderRequests with this data.
+     */
+    create: XOR<consumerProviderRequestsCreateInput, consumerProviderRequestsUncheckedCreateInput>
+    /**
+     * In case the consumerProviderRequests was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<consumerProviderRequestsUpdateInput, consumerProviderRequestsUncheckedUpdateInput>
+  }
+
+  /**
+   * consumerProviderRequests delete
+   */
+  export type consumerProviderRequestsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
+    /**
+     * Filter which consumerProviderRequests to delete.
+     */
+    where: consumerProviderRequestsWhereUniqueInput
+  }
+
+  /**
+   * consumerProviderRequests deleteMany
+   */
+  export type consumerProviderRequestsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which consumerProviderRequests to delete
+     */
+    where?: consumerProviderRequestsWhereInput
+    /**
+     * Limit how many consumerProviderRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * consumerProviderRequests without action
+   */
+  export type consumerProviderRequestsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the consumerProviderRequests
+     */
+    select?: consumerProviderRequestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the consumerProviderRequests
+     */
+    omit?: consumerProviderRequestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: consumerProviderRequestsInclude<ExtArgs> | null
   }
 
 
@@ -4053,6 +6752,29 @@ export namespace Prisma {
   };
 
   export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
+
+
+  export const ProviderRequestScalarFieldEnum: {
+    id: 'id',
+    providerPublicKey: 'providerPublicKey',
+    adminPublicKey: 'adminPublicKey',
+    createdAt: 'createdAt',
+    status: 'status'
+  };
+
+  export type ProviderRequestScalarFieldEnum = (typeof ProviderRequestScalarFieldEnum)[keyof typeof ProviderRequestScalarFieldEnum]
+
+
+  export const ConsumerProviderRequestsScalarFieldEnum: {
+    id: 'id',
+    consumerPublicKey: 'consumerPublicKey',
+    providerPublicKey: 'providerPublicKey',
+    createdAt: 'createdAt',
+    status: 'status',
+    transactionHash: 'transactionHash'
+  };
+
+  export type ConsumerProviderRequestsScalarFieldEnum = (typeof ConsumerProviderRequestsScalarFieldEnum)[keyof typeof ConsumerProviderRequestsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4113,6 +6835,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Status'
+   */
+  export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
+    
+
+
+  /**
+   * Reference to a field of type 'Status[]'
+   */
+  export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4137,6 +6873,7 @@ export namespace Prisma {
     publicKey?: StringFilter<"Consumer"> | string
     nonce?: StringNullableFilter<"Consumer"> | string | null
     createdAt?: DateTimeFilter<"Consumer"> | Date | string
+    kycRequests?: ConsumerProviderRequestsListRelationFilter
   }
 
   export type ConsumerOrderByWithRelationInput = {
@@ -4144,6 +6881,7 @@ export namespace Prisma {
     publicKey?: SortOrder
     nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    kycRequests?: consumerProviderRequestsOrderByRelationAggregateInput
   }
 
   export type ConsumerWhereUniqueInput = Prisma.AtLeast<{
@@ -4154,6 +6892,7 @@ export namespace Prisma {
     NOT?: ConsumerWhereInput | ConsumerWhereInput[]
     nonce?: StringNullableFilter<"Consumer"> | string | null
     createdAt?: DateTimeFilter<"Consumer"> | Date | string
+    kycRequests?: ConsumerProviderRequestsListRelationFilter
   }, "id" | "publicKey">
 
   export type ConsumerOrderByWithAggregationInput = {
@@ -4185,6 +6924,8 @@ export namespace Prisma {
     nonce?: StringNullableFilter<"gasAdmin"> | string | null
     createdAt?: DateTimeFilter<"gasAdmin"> | Date | string
     companyName?: StringNullableFilter<"gasAdmin"> | string | null
+    approvalRequests?: ProviderRequestListRelationFilter
+    consumerRequests?: ConsumerProviderRequestsListRelationFilter
   }
 
   export type gasAdminOrderByWithRelationInput = {
@@ -4193,6 +6934,8 @@ export namespace Prisma {
     nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     companyName?: SortOrderInput | SortOrder
+    approvalRequests?: providerRequestOrderByRelationAggregateInput
+    consumerRequests?: consumerProviderRequestsOrderByRelationAggregateInput
   }
 
   export type gasAdminWhereUniqueInput = Prisma.AtLeast<{
@@ -4204,6 +6947,8 @@ export namespace Prisma {
     nonce?: StringNullableFilter<"gasAdmin"> | string | null
     createdAt?: DateTimeFilter<"gasAdmin"> | Date | string
     companyName?: StringNullableFilter<"gasAdmin"> | string | null
+    approvalRequests?: ProviderRequestListRelationFilter
+    consumerRequests?: ConsumerProviderRequestsListRelationFilter
   }, "id" | "publicKey">
 
   export type gasAdminOrderByWithAggregationInput = {
@@ -4236,6 +6981,7 @@ export namespace Prisma {
     publicKey?: StringFilter<"Admin"> | string
     nonce?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
+    providerRequests?: ProviderRequestListRelationFilter
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -4243,6 +6989,7 @@ export namespace Prisma {
     publicKey?: SortOrder
     nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    providerRequests?: providerRequestOrderByRelationAggregateInput
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -4253,6 +7000,7 @@ export namespace Prisma {
     NOT?: AdminWhereInput | AdminWhereInput[]
     nonce?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
+    providerRequests?: ProviderRequestListRelationFilter
   }, "id" | "publicKey">
 
   export type AdminOrderByWithAggregationInput = {
@@ -4275,11 +7023,133 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
   }
 
+  export type providerRequestWhereInput = {
+    AND?: providerRequestWhereInput | providerRequestWhereInput[]
+    OR?: providerRequestWhereInput[]
+    NOT?: providerRequestWhereInput | providerRequestWhereInput[]
+    id?: StringFilter<"providerRequest"> | string
+    providerPublicKey?: StringFilter<"providerRequest"> | string
+    adminPublicKey?: StringFilter<"providerRequest"> | string
+    createdAt?: DateTimeFilter<"providerRequest"> | Date | string
+    status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
+    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+  }
+
+  export type providerRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    providerPublicKey?: SortOrder
+    adminPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    provider?: gasAdminOrderByWithRelationInput
+    admin?: AdminOrderByWithRelationInput
+  }
+
+  export type providerRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: providerRequestWhereInput | providerRequestWhereInput[]
+    OR?: providerRequestWhereInput[]
+    NOT?: providerRequestWhereInput | providerRequestWhereInput[]
+    providerPublicKey?: StringFilter<"providerRequest"> | string
+    adminPublicKey?: StringFilter<"providerRequest"> | string
+    createdAt?: DateTimeFilter<"providerRequest"> | Date | string
+    status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
+    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+  }, "id">
+
+  export type providerRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    providerPublicKey?: SortOrder
+    adminPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    _count?: providerRequestCountOrderByAggregateInput
+    _max?: providerRequestMaxOrderByAggregateInput
+    _min?: providerRequestMinOrderByAggregateInput
+  }
+
+  export type providerRequestScalarWhereWithAggregatesInput = {
+    AND?: providerRequestScalarWhereWithAggregatesInput | providerRequestScalarWhereWithAggregatesInput[]
+    OR?: providerRequestScalarWhereWithAggregatesInput[]
+    NOT?: providerRequestScalarWhereWithAggregatesInput | providerRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"providerRequest"> | string
+    providerPublicKey?: StringWithAggregatesFilter<"providerRequest"> | string
+    adminPublicKey?: StringWithAggregatesFilter<"providerRequest"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"providerRequest"> | Date | string
+    status?: EnumStatusWithAggregatesFilter<"providerRequest"> | $Enums.Status
+  }
+
+  export type consumerProviderRequestsWhereInput = {
+    AND?: consumerProviderRequestsWhereInput | consumerProviderRequestsWhereInput[]
+    OR?: consumerProviderRequestsWhereInput[]
+    NOT?: consumerProviderRequestsWhereInput | consumerProviderRequestsWhereInput[]
+    id?: StringFilter<"consumerProviderRequests"> | string
+    consumerPublicKey?: StringFilter<"consumerProviderRequests"> | string
+    providerPublicKey?: StringFilter<"consumerProviderRequests"> | string
+    createdAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
+    status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
+    transactionHash?: StringFilter<"consumerProviderRequests"> | string
+    consumer?: XOR<ConsumerScalarRelationFilter, ConsumerWhereInput>
+    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+  }
+
+  export type consumerProviderRequestsOrderByWithRelationInput = {
+    id?: SortOrder
+    consumerPublicKey?: SortOrder
+    providerPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    transactionHash?: SortOrder
+    consumer?: ConsumerOrderByWithRelationInput
+    provider?: gasAdminOrderByWithRelationInput
+  }
+
+  export type consumerProviderRequestsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: consumerProviderRequestsWhereInput | consumerProviderRequestsWhereInput[]
+    OR?: consumerProviderRequestsWhereInput[]
+    NOT?: consumerProviderRequestsWhereInput | consumerProviderRequestsWhereInput[]
+    consumerPublicKey?: StringFilter<"consumerProviderRequests"> | string
+    providerPublicKey?: StringFilter<"consumerProviderRequests"> | string
+    createdAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
+    status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
+    transactionHash?: StringFilter<"consumerProviderRequests"> | string
+    consumer?: XOR<ConsumerScalarRelationFilter, ConsumerWhereInput>
+    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+  }, "id">
+
+  export type consumerProviderRequestsOrderByWithAggregationInput = {
+    id?: SortOrder
+    consumerPublicKey?: SortOrder
+    providerPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    transactionHash?: SortOrder
+    _count?: consumerProviderRequestsCountOrderByAggregateInput
+    _max?: consumerProviderRequestsMaxOrderByAggregateInput
+    _min?: consumerProviderRequestsMinOrderByAggregateInput
+  }
+
+  export type consumerProviderRequestsScalarWhereWithAggregatesInput = {
+    AND?: consumerProviderRequestsScalarWhereWithAggregatesInput | consumerProviderRequestsScalarWhereWithAggregatesInput[]
+    OR?: consumerProviderRequestsScalarWhereWithAggregatesInput[]
+    NOT?: consumerProviderRequestsScalarWhereWithAggregatesInput | consumerProviderRequestsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"consumerProviderRequests"> | string
+    consumerPublicKey?: StringWithAggregatesFilter<"consumerProviderRequests"> | string
+    providerPublicKey?: StringWithAggregatesFilter<"consumerProviderRequests"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"consumerProviderRequests"> | Date | string
+    status?: EnumStatusWithAggregatesFilter<"consumerProviderRequests"> | $Enums.Status
+    transactionHash?: StringWithAggregatesFilter<"consumerProviderRequests"> | string
+  }
+
   export type ConsumerCreateInput = {
     id?: string
     publicKey: string
     nonce?: string | null
     createdAt?: Date | string
+    kycRequests?: consumerProviderRequestsCreateNestedManyWithoutConsumerInput
   }
 
   export type ConsumerUncheckedCreateInput = {
@@ -4287,6 +7157,7 @@ export namespace Prisma {
     publicKey: string
     nonce?: string | null
     createdAt?: Date | string
+    kycRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutConsumerInput
   }
 
   export type ConsumerUpdateInput = {
@@ -4294,6 +7165,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kycRequests?: consumerProviderRequestsUpdateManyWithoutConsumerNestedInput
   }
 
   export type ConsumerUncheckedUpdateInput = {
@@ -4301,6 +7173,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    kycRequests?: consumerProviderRequestsUncheckedUpdateManyWithoutConsumerNestedInput
   }
 
   export type ConsumerCreateManyInput = {
@@ -4330,6 +7203,8 @@ export namespace Prisma {
     nonce?: string | null
     createdAt?: Date | string
     companyName?: string | null
+    approvalRequests?: providerRequestCreateNestedManyWithoutProviderInput
+    consumerRequests?: consumerProviderRequestsCreateNestedManyWithoutProviderInput
   }
 
   export type gasAdminUncheckedCreateInput = {
@@ -4338,6 +7213,8 @@ export namespace Prisma {
     nonce?: string | null
     createdAt?: Date | string
     companyName?: string | null
+    approvalRequests?: providerRequestUncheckedCreateNestedManyWithoutProviderInput
+    consumerRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutProviderInput
   }
 
   export type gasAdminUpdateInput = {
@@ -4346,6 +7223,8 @@ export namespace Prisma {
     nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    approvalRequests?: providerRequestUpdateManyWithoutProviderNestedInput
+    consumerRequests?: consumerProviderRequestsUpdateManyWithoutProviderNestedInput
   }
 
   export type gasAdminUncheckedUpdateInput = {
@@ -4354,6 +7233,8 @@ export namespace Prisma {
     nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    approvalRequests?: providerRequestUncheckedUpdateManyWithoutProviderNestedInput
+    consumerRequests?: consumerProviderRequestsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
   export type gasAdminCreateManyInput = {
@@ -4385,6 +7266,7 @@ export namespace Prisma {
     publicKey: string
     nonce?: string | null
     createdAt?: Date | string
+    providerRequests?: providerRequestCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateInput = {
@@ -4392,6 +7274,7 @@ export namespace Prisma {
     publicKey: string
     nonce?: string | null
     createdAt?: Date | string
+    providerRequests?: providerRequestUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUpdateInput = {
@@ -4399,6 +7282,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    providerRequests?: providerRequestUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateInput = {
@@ -4406,6 +7290,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    providerRequests?: providerRequestUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateManyInput = {
@@ -4427,6 +7312,121 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type providerRequestCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
+    admin: AdminCreateNestedOneWithoutProviderRequestsInput
+  }
+
+  export type providerRequestUncheckedCreateInput = {
+    id?: string
+    providerPublicKey: string
+    adminPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+  }
+
+  export type providerRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    provider?: gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput
+    admin?: AdminUpdateOneRequiredWithoutProviderRequestsNestedInput
+  }
+
+  export type providerRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    adminPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type providerRequestCreateManyInput = {
+    id?: string
+    providerPublicKey: string
+    adminPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+  }
+
+  export type providerRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type providerRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    adminPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type consumerProviderRequestsCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+    consumer: ConsumerCreateNestedOneWithoutKycRequestsInput
+    provider: gasAdminCreateNestedOneWithoutConsumerRequestsInput
+  }
+
+  export type consumerProviderRequestsUncheckedCreateInput = {
+    id?: string
+    consumerPublicKey: string
+    providerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+  }
+
+  export type consumerProviderRequestsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+    consumer?: ConsumerUpdateOneRequiredWithoutKycRequestsNestedInput
+    provider?: gasAdminUpdateOneRequiredWithoutConsumerRequestsNestedInput
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    consumerPublicKey?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type consumerProviderRequestsCreateManyInput = {
+    id?: string
+    consumerPublicKey: string
+    providerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+  }
+
+  export type consumerProviderRequestsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    consumerPublicKey?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4470,9 +7470,19 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type ConsumerProviderRequestsListRelationFilter = {
+    every?: consumerProviderRequestsWhereInput
+    some?: consumerProviderRequestsWhereInput
+    none?: consumerProviderRequestsWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type consumerProviderRequestsOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ConsumerCountOrderByAggregateInput = {
@@ -4546,6 +7556,16 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type ProviderRequestListRelationFilter = {
+    every?: providerRequestWhereInput
+    some?: providerRequestWhereInput
+    none?: providerRequestWhereInput
+  }
+
+  export type providerRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type gasAdminCountOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
@@ -4591,6 +7611,103 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type EnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type GasAdminScalarRelationFilter = {
+    is?: gasAdminWhereInput
+    isNot?: gasAdminWhereInput
+  }
+
+  export type AdminScalarRelationFilter = {
+    is?: AdminWhereInput
+    isNot?: AdminWhereInput
+  }
+
+  export type providerRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    providerPublicKey?: SortOrder
+    adminPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+  }
+
+  export type providerRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    providerPublicKey?: SortOrder
+    adminPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+  }
+
+  export type providerRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    providerPublicKey?: SortOrder
+    adminPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+  }
+
+  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
+  export type ConsumerScalarRelationFilter = {
+    is?: ConsumerWhereInput
+    isNot?: ConsumerWhereInput
+  }
+
+  export type consumerProviderRequestsCountOrderByAggregateInput = {
+    id?: SortOrder
+    consumerPublicKey?: SortOrder
+    providerPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    transactionHash?: SortOrder
+  }
+
+  export type consumerProviderRequestsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    consumerPublicKey?: SortOrder
+    providerPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    transactionHash?: SortOrder
+  }
+
+  export type consumerProviderRequestsMinOrderByAggregateInput = {
+    id?: SortOrder
+    consumerPublicKey?: SortOrder
+    providerPublicKey?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    transactionHash?: SortOrder
+  }
+
+  export type consumerProviderRequestsCreateNestedManyWithoutConsumerInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutConsumerInput, consumerProviderRequestsUncheckedCreateWithoutConsumerInput> | consumerProviderRequestsCreateWithoutConsumerInput[] | consumerProviderRequestsUncheckedCreateWithoutConsumerInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutConsumerInput | consumerProviderRequestsCreateOrConnectWithoutConsumerInput[]
+    createMany?: consumerProviderRequestsCreateManyConsumerInputEnvelope
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+  }
+
+  export type consumerProviderRequestsUncheckedCreateNestedManyWithoutConsumerInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutConsumerInput, consumerProviderRequestsUncheckedCreateWithoutConsumerInput> | consumerProviderRequestsCreateWithoutConsumerInput[] | consumerProviderRequestsUncheckedCreateWithoutConsumerInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutConsumerInput | consumerProviderRequestsCreateOrConnectWithoutConsumerInput[]
+    createMany?: consumerProviderRequestsCreateManyConsumerInputEnvelope
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -4601,6 +7718,220 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type consumerProviderRequestsUpdateManyWithoutConsumerNestedInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutConsumerInput, consumerProviderRequestsUncheckedCreateWithoutConsumerInput> | consumerProviderRequestsCreateWithoutConsumerInput[] | consumerProviderRequestsUncheckedCreateWithoutConsumerInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutConsumerInput | consumerProviderRequestsCreateOrConnectWithoutConsumerInput[]
+    upsert?: consumerProviderRequestsUpsertWithWhereUniqueWithoutConsumerInput | consumerProviderRequestsUpsertWithWhereUniqueWithoutConsumerInput[]
+    createMany?: consumerProviderRequestsCreateManyConsumerInputEnvelope
+    set?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    disconnect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    delete?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    update?: consumerProviderRequestsUpdateWithWhereUniqueWithoutConsumerInput | consumerProviderRequestsUpdateWithWhereUniqueWithoutConsumerInput[]
+    updateMany?: consumerProviderRequestsUpdateManyWithWhereWithoutConsumerInput | consumerProviderRequestsUpdateManyWithWhereWithoutConsumerInput[]
+    deleteMany?: consumerProviderRequestsScalarWhereInput | consumerProviderRequestsScalarWhereInput[]
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateManyWithoutConsumerNestedInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutConsumerInput, consumerProviderRequestsUncheckedCreateWithoutConsumerInput> | consumerProviderRequestsCreateWithoutConsumerInput[] | consumerProviderRequestsUncheckedCreateWithoutConsumerInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutConsumerInput | consumerProviderRequestsCreateOrConnectWithoutConsumerInput[]
+    upsert?: consumerProviderRequestsUpsertWithWhereUniqueWithoutConsumerInput | consumerProviderRequestsUpsertWithWhereUniqueWithoutConsumerInput[]
+    createMany?: consumerProviderRequestsCreateManyConsumerInputEnvelope
+    set?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    disconnect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    delete?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    update?: consumerProviderRequestsUpdateWithWhereUniqueWithoutConsumerInput | consumerProviderRequestsUpdateWithWhereUniqueWithoutConsumerInput[]
+    updateMany?: consumerProviderRequestsUpdateManyWithWhereWithoutConsumerInput | consumerProviderRequestsUpdateManyWithWhereWithoutConsumerInput[]
+    deleteMany?: consumerProviderRequestsScalarWhereInput | consumerProviderRequestsScalarWhereInput[]
+  }
+
+  export type providerRequestCreateNestedManyWithoutProviderInput = {
+    create?: XOR<providerRequestCreateWithoutProviderInput, providerRequestUncheckedCreateWithoutProviderInput> | providerRequestCreateWithoutProviderInput[] | providerRequestUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutProviderInput | providerRequestCreateOrConnectWithoutProviderInput[]
+    createMany?: providerRequestCreateManyProviderInputEnvelope
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+  }
+
+  export type consumerProviderRequestsCreateNestedManyWithoutProviderInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutProviderInput, consumerProviderRequestsUncheckedCreateWithoutProviderInput> | consumerProviderRequestsCreateWithoutProviderInput[] | consumerProviderRequestsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutProviderInput | consumerProviderRequestsCreateOrConnectWithoutProviderInput[]
+    createMany?: consumerProviderRequestsCreateManyProviderInputEnvelope
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+  }
+
+  export type providerRequestUncheckedCreateNestedManyWithoutProviderInput = {
+    create?: XOR<providerRequestCreateWithoutProviderInput, providerRequestUncheckedCreateWithoutProviderInput> | providerRequestCreateWithoutProviderInput[] | providerRequestUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutProviderInput | providerRequestCreateOrConnectWithoutProviderInput[]
+    createMany?: providerRequestCreateManyProviderInputEnvelope
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+  }
+
+  export type consumerProviderRequestsUncheckedCreateNestedManyWithoutProviderInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutProviderInput, consumerProviderRequestsUncheckedCreateWithoutProviderInput> | consumerProviderRequestsCreateWithoutProviderInput[] | consumerProviderRequestsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutProviderInput | consumerProviderRequestsCreateOrConnectWithoutProviderInput[]
+    createMany?: consumerProviderRequestsCreateManyProviderInputEnvelope
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+  }
+
+  export type providerRequestUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<providerRequestCreateWithoutProviderInput, providerRequestUncheckedCreateWithoutProviderInput> | providerRequestCreateWithoutProviderInput[] | providerRequestUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutProviderInput | providerRequestCreateOrConnectWithoutProviderInput[]
+    upsert?: providerRequestUpsertWithWhereUniqueWithoutProviderInput | providerRequestUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: providerRequestCreateManyProviderInputEnvelope
+    set?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    disconnect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    delete?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    update?: providerRequestUpdateWithWhereUniqueWithoutProviderInput | providerRequestUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: providerRequestUpdateManyWithWhereWithoutProviderInput | providerRequestUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: providerRequestScalarWhereInput | providerRequestScalarWhereInput[]
+  }
+
+  export type consumerProviderRequestsUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutProviderInput, consumerProviderRequestsUncheckedCreateWithoutProviderInput> | consumerProviderRequestsCreateWithoutProviderInput[] | consumerProviderRequestsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutProviderInput | consumerProviderRequestsCreateOrConnectWithoutProviderInput[]
+    upsert?: consumerProviderRequestsUpsertWithWhereUniqueWithoutProviderInput | consumerProviderRequestsUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: consumerProviderRequestsCreateManyProviderInputEnvelope
+    set?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    disconnect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    delete?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    update?: consumerProviderRequestsUpdateWithWhereUniqueWithoutProviderInput | consumerProviderRequestsUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: consumerProviderRequestsUpdateManyWithWhereWithoutProviderInput | consumerProviderRequestsUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: consumerProviderRequestsScalarWhereInput | consumerProviderRequestsScalarWhereInput[]
+  }
+
+  export type providerRequestUncheckedUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<providerRequestCreateWithoutProviderInput, providerRequestUncheckedCreateWithoutProviderInput> | providerRequestCreateWithoutProviderInput[] | providerRequestUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutProviderInput | providerRequestCreateOrConnectWithoutProviderInput[]
+    upsert?: providerRequestUpsertWithWhereUniqueWithoutProviderInput | providerRequestUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: providerRequestCreateManyProviderInputEnvelope
+    set?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    disconnect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    delete?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    update?: providerRequestUpdateWithWhereUniqueWithoutProviderInput | providerRequestUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: providerRequestUpdateManyWithWhereWithoutProviderInput | providerRequestUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: providerRequestScalarWhereInput | providerRequestScalarWhereInput[]
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<consumerProviderRequestsCreateWithoutProviderInput, consumerProviderRequestsUncheckedCreateWithoutProviderInput> | consumerProviderRequestsCreateWithoutProviderInput[] | consumerProviderRequestsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: consumerProviderRequestsCreateOrConnectWithoutProviderInput | consumerProviderRequestsCreateOrConnectWithoutProviderInput[]
+    upsert?: consumerProviderRequestsUpsertWithWhereUniqueWithoutProviderInput | consumerProviderRequestsUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: consumerProviderRequestsCreateManyProviderInputEnvelope
+    set?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    disconnect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    delete?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    connect?: consumerProviderRequestsWhereUniqueInput | consumerProviderRequestsWhereUniqueInput[]
+    update?: consumerProviderRequestsUpdateWithWhereUniqueWithoutProviderInput | consumerProviderRequestsUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: consumerProviderRequestsUpdateManyWithWhereWithoutProviderInput | consumerProviderRequestsUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: consumerProviderRequestsScalarWhereInput | consumerProviderRequestsScalarWhereInput[]
+  }
+
+  export type providerRequestCreateNestedManyWithoutAdminInput = {
+    create?: XOR<providerRequestCreateWithoutAdminInput, providerRequestUncheckedCreateWithoutAdminInput> | providerRequestCreateWithoutAdminInput[] | providerRequestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutAdminInput | providerRequestCreateOrConnectWithoutAdminInput[]
+    createMany?: providerRequestCreateManyAdminInputEnvelope
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+  }
+
+  export type providerRequestUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<providerRequestCreateWithoutAdminInput, providerRequestUncheckedCreateWithoutAdminInput> | providerRequestCreateWithoutAdminInput[] | providerRequestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutAdminInput | providerRequestCreateOrConnectWithoutAdminInput[]
+    createMany?: providerRequestCreateManyAdminInputEnvelope
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+  }
+
+  export type providerRequestUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<providerRequestCreateWithoutAdminInput, providerRequestUncheckedCreateWithoutAdminInput> | providerRequestCreateWithoutAdminInput[] | providerRequestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutAdminInput | providerRequestCreateOrConnectWithoutAdminInput[]
+    upsert?: providerRequestUpsertWithWhereUniqueWithoutAdminInput | providerRequestUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: providerRequestCreateManyAdminInputEnvelope
+    set?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    disconnect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    delete?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    update?: providerRequestUpdateWithWhereUniqueWithoutAdminInput | providerRequestUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: providerRequestUpdateManyWithWhereWithoutAdminInput | providerRequestUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: providerRequestScalarWhereInput | providerRequestScalarWhereInput[]
+  }
+
+  export type providerRequestUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<providerRequestCreateWithoutAdminInput, providerRequestUncheckedCreateWithoutAdminInput> | providerRequestCreateWithoutAdminInput[] | providerRequestUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: providerRequestCreateOrConnectWithoutAdminInput | providerRequestCreateOrConnectWithoutAdminInput[]
+    upsert?: providerRequestUpsertWithWhereUniqueWithoutAdminInput | providerRequestUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: providerRequestCreateManyAdminInputEnvelope
+    set?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    disconnect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    delete?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    connect?: providerRequestWhereUniqueInput | providerRequestWhereUniqueInput[]
+    update?: providerRequestUpdateWithWhereUniqueWithoutAdminInput | providerRequestUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: providerRequestUpdateManyWithWhereWithoutAdminInput | providerRequestUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: providerRequestScalarWhereInput | providerRequestScalarWhereInput[]
+  }
+
+  export type gasAdminCreateNestedOneWithoutApprovalRequestsInput = {
+    create?: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
+    connectOrCreate?: gasAdminCreateOrConnectWithoutApprovalRequestsInput
+    connect?: gasAdminWhereUniqueInput
+  }
+
+  export type AdminCreateNestedOneWithoutProviderRequestsInput = {
+    create?: XOR<AdminCreateWithoutProviderRequestsInput, AdminUncheckedCreateWithoutProviderRequestsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutProviderRequestsInput
+    connect?: AdminWhereUniqueInput
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
+  }
+
+  export type gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput = {
+    create?: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
+    connectOrCreate?: gasAdminCreateOrConnectWithoutApprovalRequestsInput
+    upsert?: gasAdminUpsertWithoutApprovalRequestsInput
+    connect?: gasAdminWhereUniqueInput
+    update?: XOR<XOR<gasAdminUpdateToOneWithWhereWithoutApprovalRequestsInput, gasAdminUpdateWithoutApprovalRequestsInput>, gasAdminUncheckedUpdateWithoutApprovalRequestsInput>
+  }
+
+  export type AdminUpdateOneRequiredWithoutProviderRequestsNestedInput = {
+    create?: XOR<AdminCreateWithoutProviderRequestsInput, AdminUncheckedCreateWithoutProviderRequestsInput>
+    connectOrCreate?: AdminCreateOrConnectWithoutProviderRequestsInput
+    upsert?: AdminUpsertWithoutProviderRequestsInput
+    connect?: AdminWhereUniqueInput
+    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutProviderRequestsInput, AdminUpdateWithoutProviderRequestsInput>, AdminUncheckedUpdateWithoutProviderRequestsInput>
+  }
+
+  export type ConsumerCreateNestedOneWithoutKycRequestsInput = {
+    create?: XOR<ConsumerCreateWithoutKycRequestsInput, ConsumerUncheckedCreateWithoutKycRequestsInput>
+    connectOrCreate?: ConsumerCreateOrConnectWithoutKycRequestsInput
+    connect?: ConsumerWhereUniqueInput
+  }
+
+  export type gasAdminCreateNestedOneWithoutConsumerRequestsInput = {
+    create?: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
+    connectOrCreate?: gasAdminCreateOrConnectWithoutConsumerRequestsInput
+    connect?: gasAdminWhereUniqueInput
+  }
+
+  export type ConsumerUpdateOneRequiredWithoutKycRequestsNestedInput = {
+    create?: XOR<ConsumerCreateWithoutKycRequestsInput, ConsumerUncheckedCreateWithoutKycRequestsInput>
+    connectOrCreate?: ConsumerCreateOrConnectWithoutKycRequestsInput
+    upsert?: ConsumerUpsertWithoutKycRequestsInput
+    connect?: ConsumerWhereUniqueInput
+    update?: XOR<XOR<ConsumerUpdateToOneWithWhereWithoutKycRequestsInput, ConsumerUpdateWithoutKycRequestsInput>, ConsumerUncheckedUpdateWithoutKycRequestsInput>
+  }
+
+  export type gasAdminUpdateOneRequiredWithoutConsumerRequestsNestedInput = {
+    create?: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
+    connectOrCreate?: gasAdminCreateOrConnectWithoutConsumerRequestsInput
+    upsert?: gasAdminUpsertWithoutConsumerRequestsInput
+    connect?: gasAdminWhereUniqueInput
+    update?: XOR<XOR<gasAdminUpdateToOneWithWhereWithoutConsumerRequestsInput, gasAdminUpdateWithoutConsumerRequestsInput>, gasAdminUncheckedUpdateWithoutConsumerRequestsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4710,6 +8041,522 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
+  export type consumerProviderRequestsCreateWithoutConsumerInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+    provider: gasAdminCreateNestedOneWithoutConsumerRequestsInput
+  }
+
+  export type consumerProviderRequestsUncheckedCreateWithoutConsumerInput = {
+    id?: string
+    providerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+  }
+
+  export type consumerProviderRequestsCreateOrConnectWithoutConsumerInput = {
+    where: consumerProviderRequestsWhereUniqueInput
+    create: XOR<consumerProviderRequestsCreateWithoutConsumerInput, consumerProviderRequestsUncheckedCreateWithoutConsumerInput>
+  }
+
+  export type consumerProviderRequestsCreateManyConsumerInputEnvelope = {
+    data: consumerProviderRequestsCreateManyConsumerInput | consumerProviderRequestsCreateManyConsumerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type consumerProviderRequestsUpsertWithWhereUniqueWithoutConsumerInput = {
+    where: consumerProviderRequestsWhereUniqueInput
+    update: XOR<consumerProviderRequestsUpdateWithoutConsumerInput, consumerProviderRequestsUncheckedUpdateWithoutConsumerInput>
+    create: XOR<consumerProviderRequestsCreateWithoutConsumerInput, consumerProviderRequestsUncheckedCreateWithoutConsumerInput>
+  }
+
+  export type consumerProviderRequestsUpdateWithWhereUniqueWithoutConsumerInput = {
+    where: consumerProviderRequestsWhereUniqueInput
+    data: XOR<consumerProviderRequestsUpdateWithoutConsumerInput, consumerProviderRequestsUncheckedUpdateWithoutConsumerInput>
+  }
+
+  export type consumerProviderRequestsUpdateManyWithWhereWithoutConsumerInput = {
+    where: consumerProviderRequestsScalarWhereInput
+    data: XOR<consumerProviderRequestsUpdateManyMutationInput, consumerProviderRequestsUncheckedUpdateManyWithoutConsumerInput>
+  }
+
+  export type consumerProviderRequestsScalarWhereInput = {
+    AND?: consumerProviderRequestsScalarWhereInput | consumerProviderRequestsScalarWhereInput[]
+    OR?: consumerProviderRequestsScalarWhereInput[]
+    NOT?: consumerProviderRequestsScalarWhereInput | consumerProviderRequestsScalarWhereInput[]
+    id?: StringFilter<"consumerProviderRequests"> | string
+    consumerPublicKey?: StringFilter<"consumerProviderRequests"> | string
+    providerPublicKey?: StringFilter<"consumerProviderRequests"> | string
+    createdAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
+    status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
+    transactionHash?: StringFilter<"consumerProviderRequests"> | string
+  }
+
+  export type providerRequestCreateWithoutProviderInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    admin: AdminCreateNestedOneWithoutProviderRequestsInput
+  }
+
+  export type providerRequestUncheckedCreateWithoutProviderInput = {
+    id?: string
+    adminPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+  }
+
+  export type providerRequestCreateOrConnectWithoutProviderInput = {
+    where: providerRequestWhereUniqueInput
+    create: XOR<providerRequestCreateWithoutProviderInput, providerRequestUncheckedCreateWithoutProviderInput>
+  }
+
+  export type providerRequestCreateManyProviderInputEnvelope = {
+    data: providerRequestCreateManyProviderInput | providerRequestCreateManyProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type consumerProviderRequestsCreateWithoutProviderInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+    consumer: ConsumerCreateNestedOneWithoutKycRequestsInput
+  }
+
+  export type consumerProviderRequestsUncheckedCreateWithoutProviderInput = {
+    id?: string
+    consumerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+  }
+
+  export type consumerProviderRequestsCreateOrConnectWithoutProviderInput = {
+    where: consumerProviderRequestsWhereUniqueInput
+    create: XOR<consumerProviderRequestsCreateWithoutProviderInput, consumerProviderRequestsUncheckedCreateWithoutProviderInput>
+  }
+
+  export type consumerProviderRequestsCreateManyProviderInputEnvelope = {
+    data: consumerProviderRequestsCreateManyProviderInput | consumerProviderRequestsCreateManyProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type providerRequestUpsertWithWhereUniqueWithoutProviderInput = {
+    where: providerRequestWhereUniqueInput
+    update: XOR<providerRequestUpdateWithoutProviderInput, providerRequestUncheckedUpdateWithoutProviderInput>
+    create: XOR<providerRequestCreateWithoutProviderInput, providerRequestUncheckedCreateWithoutProviderInput>
+  }
+
+  export type providerRequestUpdateWithWhereUniqueWithoutProviderInput = {
+    where: providerRequestWhereUniqueInput
+    data: XOR<providerRequestUpdateWithoutProviderInput, providerRequestUncheckedUpdateWithoutProviderInput>
+  }
+
+  export type providerRequestUpdateManyWithWhereWithoutProviderInput = {
+    where: providerRequestScalarWhereInput
+    data: XOR<providerRequestUpdateManyMutationInput, providerRequestUncheckedUpdateManyWithoutProviderInput>
+  }
+
+  export type providerRequestScalarWhereInput = {
+    AND?: providerRequestScalarWhereInput | providerRequestScalarWhereInput[]
+    OR?: providerRequestScalarWhereInput[]
+    NOT?: providerRequestScalarWhereInput | providerRequestScalarWhereInput[]
+    id?: StringFilter<"providerRequest"> | string
+    providerPublicKey?: StringFilter<"providerRequest"> | string
+    adminPublicKey?: StringFilter<"providerRequest"> | string
+    createdAt?: DateTimeFilter<"providerRequest"> | Date | string
+    status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
+  }
+
+  export type consumerProviderRequestsUpsertWithWhereUniqueWithoutProviderInput = {
+    where: consumerProviderRequestsWhereUniqueInput
+    update: XOR<consumerProviderRequestsUpdateWithoutProviderInput, consumerProviderRequestsUncheckedUpdateWithoutProviderInput>
+    create: XOR<consumerProviderRequestsCreateWithoutProviderInput, consumerProviderRequestsUncheckedCreateWithoutProviderInput>
+  }
+
+  export type consumerProviderRequestsUpdateWithWhereUniqueWithoutProviderInput = {
+    where: consumerProviderRequestsWhereUniqueInput
+    data: XOR<consumerProviderRequestsUpdateWithoutProviderInput, consumerProviderRequestsUncheckedUpdateWithoutProviderInput>
+  }
+
+  export type consumerProviderRequestsUpdateManyWithWhereWithoutProviderInput = {
+    where: consumerProviderRequestsScalarWhereInput
+    data: XOR<consumerProviderRequestsUpdateManyMutationInput, consumerProviderRequestsUncheckedUpdateManyWithoutProviderInput>
+  }
+
+  export type providerRequestCreateWithoutAdminInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
+  }
+
+  export type providerRequestUncheckedCreateWithoutAdminInput = {
+    id?: string
+    providerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+  }
+
+  export type providerRequestCreateOrConnectWithoutAdminInput = {
+    where: providerRequestWhereUniqueInput
+    create: XOR<providerRequestCreateWithoutAdminInput, providerRequestUncheckedCreateWithoutAdminInput>
+  }
+
+  export type providerRequestCreateManyAdminInputEnvelope = {
+    data: providerRequestCreateManyAdminInput | providerRequestCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type providerRequestUpsertWithWhereUniqueWithoutAdminInput = {
+    where: providerRequestWhereUniqueInput
+    update: XOR<providerRequestUpdateWithoutAdminInput, providerRequestUncheckedUpdateWithoutAdminInput>
+    create: XOR<providerRequestCreateWithoutAdminInput, providerRequestUncheckedCreateWithoutAdminInput>
+  }
+
+  export type providerRequestUpdateWithWhereUniqueWithoutAdminInput = {
+    where: providerRequestWhereUniqueInput
+    data: XOR<providerRequestUpdateWithoutAdminInput, providerRequestUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type providerRequestUpdateManyWithWhereWithoutAdminInput = {
+    where: providerRequestScalarWhereInput
+    data: XOR<providerRequestUpdateManyMutationInput, providerRequestUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type gasAdminCreateWithoutApprovalRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+    companyName?: string | null
+    consumerRequests?: consumerProviderRequestsCreateNestedManyWithoutProviderInput
+  }
+
+  export type gasAdminUncheckedCreateWithoutApprovalRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+    companyName?: string | null
+    consumerRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutProviderInput
+  }
+
+  export type gasAdminCreateOrConnectWithoutApprovalRequestsInput = {
+    where: gasAdminWhereUniqueInput
+    create: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
+  }
+
+  export type AdminCreateWithoutProviderRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+  }
+
+  export type AdminUncheckedCreateWithoutProviderRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+  }
+
+  export type AdminCreateOrConnectWithoutProviderRequestsInput = {
+    where: AdminWhereUniqueInput
+    create: XOR<AdminCreateWithoutProviderRequestsInput, AdminUncheckedCreateWithoutProviderRequestsInput>
+  }
+
+  export type gasAdminUpsertWithoutApprovalRequestsInput = {
+    update: XOR<gasAdminUpdateWithoutApprovalRequestsInput, gasAdminUncheckedUpdateWithoutApprovalRequestsInput>
+    create: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
+    where?: gasAdminWhereInput
+  }
+
+  export type gasAdminUpdateToOneWithWhereWithoutApprovalRequestsInput = {
+    where?: gasAdminWhereInput
+    data: XOR<gasAdminUpdateWithoutApprovalRequestsInput, gasAdminUncheckedUpdateWithoutApprovalRequestsInput>
+  }
+
+  export type gasAdminUpdateWithoutApprovalRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    consumerRequests?: consumerProviderRequestsUpdateManyWithoutProviderNestedInput
+  }
+
+  export type gasAdminUncheckedUpdateWithoutApprovalRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    consumerRequests?: consumerProviderRequestsUncheckedUpdateManyWithoutProviderNestedInput
+  }
+
+  export type AdminUpsertWithoutProviderRequestsInput = {
+    update: XOR<AdminUpdateWithoutProviderRequestsInput, AdminUncheckedUpdateWithoutProviderRequestsInput>
+    create: XOR<AdminCreateWithoutProviderRequestsInput, AdminUncheckedCreateWithoutProviderRequestsInput>
+    where?: AdminWhereInput
+  }
+
+  export type AdminUpdateToOneWithWhereWithoutProviderRequestsInput = {
+    where?: AdminWhereInput
+    data: XOR<AdminUpdateWithoutProviderRequestsInput, AdminUncheckedUpdateWithoutProviderRequestsInput>
+  }
+
+  export type AdminUpdateWithoutProviderRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminUncheckedUpdateWithoutProviderRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConsumerCreateWithoutKycRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ConsumerUncheckedCreateWithoutKycRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ConsumerCreateOrConnectWithoutKycRequestsInput = {
+    where: ConsumerWhereUniqueInput
+    create: XOR<ConsumerCreateWithoutKycRequestsInput, ConsumerUncheckedCreateWithoutKycRequestsInput>
+  }
+
+  export type gasAdminCreateWithoutConsumerRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+    companyName?: string | null
+    approvalRequests?: providerRequestCreateNestedManyWithoutProviderInput
+  }
+
+  export type gasAdminUncheckedCreateWithoutConsumerRequestsInput = {
+    id?: string
+    publicKey: string
+    nonce?: string | null
+    createdAt?: Date | string
+    companyName?: string | null
+    approvalRequests?: providerRequestUncheckedCreateNestedManyWithoutProviderInput
+  }
+
+  export type gasAdminCreateOrConnectWithoutConsumerRequestsInput = {
+    where: gasAdminWhereUniqueInput
+    create: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
+  }
+
+  export type ConsumerUpsertWithoutKycRequestsInput = {
+    update: XOR<ConsumerUpdateWithoutKycRequestsInput, ConsumerUncheckedUpdateWithoutKycRequestsInput>
+    create: XOR<ConsumerCreateWithoutKycRequestsInput, ConsumerUncheckedCreateWithoutKycRequestsInput>
+    where?: ConsumerWhereInput
+  }
+
+  export type ConsumerUpdateToOneWithWhereWithoutKycRequestsInput = {
+    where?: ConsumerWhereInput
+    data: XOR<ConsumerUpdateWithoutKycRequestsInput, ConsumerUncheckedUpdateWithoutKycRequestsInput>
+  }
+
+  export type ConsumerUpdateWithoutKycRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConsumerUncheckedUpdateWithoutKycRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type gasAdminUpsertWithoutConsumerRequestsInput = {
+    update: XOR<gasAdminUpdateWithoutConsumerRequestsInput, gasAdminUncheckedUpdateWithoutConsumerRequestsInput>
+    create: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
+    where?: gasAdminWhereInput
+  }
+
+  export type gasAdminUpdateToOneWithWhereWithoutConsumerRequestsInput = {
+    where?: gasAdminWhereInput
+    data: XOR<gasAdminUpdateWithoutConsumerRequestsInput, gasAdminUncheckedUpdateWithoutConsumerRequestsInput>
+  }
+
+  export type gasAdminUpdateWithoutConsumerRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    approvalRequests?: providerRequestUpdateManyWithoutProviderNestedInput
+  }
+
+  export type gasAdminUncheckedUpdateWithoutConsumerRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    approvalRequests?: providerRequestUncheckedUpdateManyWithoutProviderNestedInput
+  }
+
+  export type consumerProviderRequestsCreateManyConsumerInput = {
+    id?: string
+    providerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+  }
+
+  export type consumerProviderRequestsUpdateWithoutConsumerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+    provider?: gasAdminUpdateOneRequiredWithoutConsumerRequestsNestedInput
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateWithoutConsumerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateManyWithoutConsumerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type providerRequestCreateManyProviderInput = {
+    id?: string
+    adminPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+  }
+
+  export type consumerProviderRequestsCreateManyProviderInput = {
+    id?: string
+    consumerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+    transactionHash: string
+  }
+
+  export type providerRequestUpdateWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    admin?: AdminUpdateOneRequiredWithoutProviderRequestsNestedInput
+  }
+
+  export type providerRequestUncheckedUpdateWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type providerRequestUncheckedUpdateManyWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type consumerProviderRequestsUpdateWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+    consumer?: ConsumerUpdateOneRequiredWithoutKycRequestsNestedInput
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    consumerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type consumerProviderRequestsUncheckedUpdateManyWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    consumerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type providerRequestCreateManyAdminInput = {
+    id?: string
+    providerPublicKey: string
+    createdAt?: Date | string
+    status: $Enums.Status
+  }
+
+  export type providerRequestUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    provider?: gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput
+  }
+
+  export type providerRequestUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type providerRequestUncheckedUpdateManyWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerPublicKey?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
 

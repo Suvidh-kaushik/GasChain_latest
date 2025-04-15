@@ -20,7 +20,7 @@ export async function GET(req: NextRequest){
     const nonce = getNonce(walletId, role);
 
     try{
-        console.log("Nonce: " + nonce);
+        // console.log("Nonce: " + nonce);
         let user;
         if(role == "consumer"){
             user = await prisma.consumer.upsert({
@@ -29,20 +29,23 @@ export async function GET(req: NextRequest){
                 update: {nonce},
             });
         }
-        else if(role == "provider"){
-            user = await prisma.admin.upsert({
+        if(role == "provider"){
+            console.log("Role (provider): " + role);
+            user = await prisma.gasAdmin.upsert({
                 where: {publicKey: walletId},
                 create: {publicKey: walletId, nonce},
                 update: {nonce},
             });
         }
         else if(role == "admin"){
+            console.log("Role (admin): " + role);
             user = await prisma.admin.upsert({
                 where: {publicKey: walletId},
                 create: {publicKey: walletId, nonce},
                 update: {nonce},
             });
         }
+
         return NextResponse.json({nonce: nonce, msg: "Nonce created"});
     }
     catch(error: any){
@@ -71,7 +74,7 @@ export async function POST(req: NextRequest){
             });
         }
         else if(role == "provider"){
-            user = await prisma.admin.findUnique({
+            user = await prisma.gasAdmin.findUnique({
                 where: {publicKey: walletId},
             });
         }
