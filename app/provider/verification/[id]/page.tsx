@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import { useParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, CheckCircle, Download, FileText, XCircle } from "lucide-react"
@@ -21,9 +22,12 @@ import {
 } from "@/components/ui/dialog"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
-export default function VerificationDetailPage({ params }: { params: { id: string } }) {
+export default  function VerificationDetailPage({ params }: { params: { id: string } }) {
 
-  const { id } = params
+  const localParams = useParams() as { id: string }
+  const { id } = localParams
+
+
   const [status, setStatus] = useState<"pending" | "approved" | "rejected">("pending")
   const [feedback, setFeedback] = useState("")
   const [showApproveDialog, setShowApproveDialog] = useState(false)
@@ -108,7 +112,7 @@ export default function VerificationDetailPage({ params }: { params: { id: strin
 
       <div className="flex items-center mb-6">
         <Button variant="outline" size="icon" asChild className="mr-4">
-          <Link href="/admin/verification">
+          <Link href="/provider/verification">
             <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
@@ -250,7 +254,7 @@ export default function VerificationDetailPage({ params }: { params: { id: strin
             </CardContent>
             <CardFooter>
               <Button variant="outline" asChild className="w-full">
-                <Link href={`/admin/users/${verification.user.id}`}>View Full Profile</Link>
+                <Link href={`/provider/users/${verification.user.id}`}>View Full Profile</Link>
               </Button>
             </CardFooter>
           </Card>

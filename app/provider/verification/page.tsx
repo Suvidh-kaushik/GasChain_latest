@@ -190,7 +190,7 @@ export default function VerificationPage() {
                         <td className="py-3 px-4">
                           <div className="flex space-x-2">
                             <Button size="sm" variant="outline" asChild>
-                              <Link href={`/admin/verification/${verification.id}`}>
+                              <Link href={`/provider/verification/${verification.id}`}>
                                 <Eye className="h-4 w-4 mr-1" />
                                 View
                               </Link>
