@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import axios from "axios"
+import { Card, CardContent } from "@/components/ui/card"
 
 
 export default function KYCSubmission(){
@@ -37,7 +38,7 @@ export default function KYCSubmission(){
 
 function KYCForm() {
 
-    const [check, setCheck] = useState<string | null>(null)
+    const [check, setCheck] = useState<null | "true" | "false">("false")
     const [aadharCard, setAadharCard] = useState<File | null>(null)
     const [electricityBill, setElectricityBill] = useState<File | null>(null);
     const [gasProviders, setGasProviders] = useState([]);
@@ -78,6 +79,9 @@ function KYCForm() {
         form.append("email", formData.email);
         form.append("dateOfBirth", formData.dateOfBirth);
         form.append("phoneNumber", formData.phoneNumber);
+        form.append("consumerPublicKey", localStorage.getItem("walletId"));
+        form.append("gasProviderPublicKey", formData.gasProvider);
+        console.log(formData);
         if(aadharCard) form.append("aadharCard", aadharCard);
         if(electricityBill) form.append("electricityBill", electricityBill);
 
@@ -104,67 +108,71 @@ function KYCForm() {
   
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 max-w-3xl mx-auto py-10">
-        <div>
-            <Label>Enter Your Name</Label>
-            <Input required onChange={handleChange} name="fullName" value={formData.fullName} placeholder="Enter your name" />
-        </div>
-        <div>
-            <Label>Enter Your Email</Label>
-            <Input required onChange={handleChange} name="email" value={formData.email} type="email" placeholder="Email" />
-        </div>
-        <div>
-            <Label>Enter Your DOB</Label>
-            <Input required onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value})} name="dateOfBirth" value={formData.dateOfBirth || ""}  type="date"/>
-        </div>
-        <div>
-            <Label>Enter Your Phone Number</Label>
-            <Input required onChange={handleChange} type="tel" name="phoneNumber" value={formData.phoneNumber} placeholder="Phone Number"/>
-        </div>
-        <div>
-            <Label>Upload Aadhar Card PDf</Label>
-            <Input required onChange={(e) => setAadharCard(e.target.files?.[0] || null)} type="file" name="aadharCard" accept="application/pdf"/>
-        </div>
-        <div>
-            <Label>Upload Electricity Bill PDf</Label>
-            <Input required onChange={(e) => setElectricityBill(e.target.files?.[0] || null)} type="file" name="electricityBill" accept="application/pdf"/>
-        </div>
-        <div>
-            <Select onValueChange={(e: string) => setFormData({...formData, gasProvider: e})}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select Gas Provider" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                {
-                  gasProviders.map((provider) =>{
-                    return <SelectItem value={provider.companyName || "ABC"} >{provider.companyName || "ABC"}</SelectItem>
-                  })
-                }
-                  {/* <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem> */}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-        </div>
-        <div className="flex items-center space-x-2">
-            <Checkbox required onClick={(e) => setCheck(e.currentTarget.ariaChecked)} />
-            <label
-              htmlFor="terms"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Please check files before submitting
-            </label>
-        </div>
-        <div>
-            {
-                (check == "true") ? <Button disabled >Submit KYC</Button>
-                : <Button>Submit KYC</Button>
-            }
-        </div>
-    </form>
+    <Card>
+      <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-8 max-w-3xl mx-auto py-10">
+              <div className="space-y-2">
+                  <Label>Enter Your Name</Label>
+                  <Input required onChange={handleChange} name="fullName" value={formData.fullName} placeholder="Enter your name" />
+              </div>
+              <div className="space-y-2">
+                  <Label>Enter Your Email</Label>
+                  <Input required onChange={handleChange} name="email" value={formData.email} type="email" placeholder="Email" />
+              </div>
+              <div className="space-y-2">
+                  <Label>Enter Your DOB</Label>
+                  <Input required onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value})} name="dateOfBirth" value={formData.dateOfBirth || ""}  type="date"/>
+              </div>
+              <div className="space-y-2">
+                  <Label>Enter Your Phone Number</Label>
+                  <Input required onChange={handleChange} type="tel" name="phoneNumber" value={formData.phoneNumber} placeholder="Phone Number"/>
+              </div>
+              <div className="space-y-2">
+                  <Label>Upload Aadhar Card PDf</Label>
+                  <Input required onChange={(e) => setAadharCard(e.target.files?.[0] || null)} type="file" name="aadharCard" accept="application/pdf"/>
+              </div>
+              <div className="space-y-2">
+                  <Label>Upload Electricity Bill PDf</Label>
+                  <Input required onChange={(e) => setElectricityBill(e.target.files?.[0] || null)} type="file" name="electricityBill" accept="application/pdf"/>
+              </div>
+              <div className="space-y-2">
+                  <Select onValueChange={(e: string) =>{setFormData({...formData, "gasProvider": e})}}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Gas Provider" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                      {
+                        gasProviders.map((provider) =>{
+                          return <SelectItem value={provider.publicKey} >{provider.companyName || "ABC"}</SelectItem>
+                        })
+                      }
+                        {/* <SelectItem value="apple">Apple</SelectItem>
+                        <SelectItem value="banana">Banana</SelectItem>
+                        <SelectItem value="blueberry">Blueberry</SelectItem>
+                        <SelectItem value="grapes">Grapes</SelectItem>
+                        <SelectItem value="pineapple">Pineapple</SelectItem> */}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+              </div>
+              <div className="flex items-center space-x-2">
+                <p>Checked: {check}</p>
+                  <Checkbox required onClick={(e) => setCheck(e.currentTarget.ariaChecked?.toString())} />
+                  <label
+                    htmlFor="terms"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Please check files before submitting
+                  </label>
+              </div>
+              <div>
+                  
+              <Button disabled={check=="true" ? true : false} >Submit KYC</Button>
+
+              </div>
+          </form>
+      </CardContent>
+    </Card>
   )
 }

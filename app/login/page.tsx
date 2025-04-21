@@ -10,22 +10,25 @@ import { useTheme as useNextTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-// import { useTheme } from "@/components/theme-provider"
 
 import {ethers} from "ethers";
 import axios from "axios";
 
+type NonceType = {
+    nonce: string,
+    msg: string
+}
 
-async function getNonce(address: String, role: String): Promise<string> {
+async function getNonce(address: String, role: String): Promise<NonceType> {
 
   try{
     const response = await axios.get(`http://localhost:3000/api/auth?address=${address}&role=${role}`);
-    console.log(response.data.msg);
-    return response.data.nonce;
+
+    return response.data;
   }
-  catch(error){
+  catch(error: any){
     console.log(error);
-    return "";
+    return {nonce: "", msg: error.message};
   }
 
 }
@@ -71,18 +74,32 @@ export default function LoginPage() {
       const account = await signer.getAddress();
       console.log("Account: " + account);
       //Get nonce
-      const nonce: string = await getNonce(account, role);
+      console.log("Role: " + role);
+      if(role == "provider"){
+        const response = await axios.get(`http://localhost:3000/api/auth/login?address=${account}`)
+        if(!response.data.isAccepted){
+          alert(response.data.msg);
+          return;
+        }
+      }
 
+      const data: NonceType = await getNonce(account, role);
+      console.log("Nonce: " + data.nonce);
       //Sign the message
-      if(nonce){
-        const signature: string = await signer.signMessage(nonce);
+      if(data.nonce){
+        const signature: string = await signer.signMessage(data.nonce);
         console.log("Signature: " + signature);
         const response = await verifySignature(signature, account, role);
         console.log(response)
-        if(response.isVerified) router.push(`/${role}/dashboard`);
+        if(response.isVerified){
+          localStorage.setItem("walletId", account);
+          router.push(`/${role}/dashboard`);
+        }
         else alert("Invalid signature");
       }
-    } catch (error) {
+      else alert(data.msg);
+    } 
+    catch (error) {
       console.error("Error connecting to MetaMask:", error)
     }
     finally{
@@ -154,7 +171,6 @@ export default function LoginPage() {
               className="w-full relative group overflow-hidden"
               size="lg"
               onClick={handleConnect}
-              disabled={isConnecting}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               {isConnecting ? (

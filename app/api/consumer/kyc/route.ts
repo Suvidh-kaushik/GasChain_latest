@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { pinata } from "@/lib/pinata";
+import prisma from "@/lib/db";
+import { request } from "http";
 
 async function uploadFileToPinata(file: File){
     const formData = new FormData();
@@ -27,10 +29,36 @@ export async function POST(req: NextRequest){
     const electricity: File | null  = data.get("electricityBill") as unknown as File;
     const dateOfBirth = data.get("dateOfBirth");
     const phoneNumber = data.get("phoneNumber");
+    const consumerPublicKey = data.get("consumerPublicKey");
+    const providerPublicKey = data.get("gasProviderPublicKey");
+
+    if(!consumerPublicKey) return NextResponse.json({isSubmitted: false, msg: "Require consumer walletId"})
+    if(!providerPublicKey) return NextResponse.json({isSubmitted: false, msg: "Require gas provider walletId"});
 
     const aadharRespones = await uploadFileToPinata(aadhar);
     const electricityRespones = await uploadFileToPinata(electricity);
 
+    console.log(aadharRespones);
+    console.log(electricityRespones);
+    // Call the contract
+    //It returns
 
-    return NextResponse.json({aadharRespones, electricityRespones});
+    try{
+        const requestRespone = await prisma.consumerProviderRequests.create({
+            data: {
+                consumerPublicKey: consumerPublicKey.toString(),
+                providerPublicKey: providerPublicKey.toString(),
+                status: "PENDING",
+                transactionHash: "#",
+
+            },
+        })
+
+        if(requestRespone) return NextResponse.json({isSubmitted: true, msg: "KYC submitted"});
+        else return NextResponse.json({isSubmitted: false, msg: "Failed to submit KYC"});
+    }
+    catch(error: any){
+        console.error(error.message);
+        return NextResponse.json({isSubmitted: false, msg: "Something went wrong, Try again later."})
+    }
 }

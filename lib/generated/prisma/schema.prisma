@@ -16,10 +16,11 @@ datasource db {
 
 model Consumer {
   id          String                     @id @default(cuid())
+  fullName    String
   publicKey   String                     @unique
-  nonce       String?
   createdAt   DateTime                   @default(now())
   kycRequests consumerProviderRequests[]
+  status      Status                     @default(PENDING)
 
   @@index([publicKey])
 }
@@ -27,11 +28,11 @@ model Consumer {
 model gasAdmin {
   id               String                     @id @default(cuid())
   publicKey        String                     @unique
-  nonce            String?
   createdAt        DateTime                   @default(now())
-  companyName      String?
+  companyName      String                     @unique
   approvalRequests providerRequest[]
   consumerRequests consumerProviderRequests[]
+  status           Status                     @default(PENDING)
 
   @@index([publicKey])
 }
@@ -39,11 +40,16 @@ model gasAdmin {
 model Admin {
   id               String            @id @default(cuid())
   publicKey        String            @unique
-  nonce            String?
   createdAt        DateTime          @default(now())
   providerRequests providerRequest[]
 
   @@index([publicKey])
+}
+
+model Temp {
+  publicKey String   @id
+  nonce     String
+  createdAt DateTime @default(now())
 }
 
 model providerRequest {
@@ -51,7 +57,7 @@ model providerRequest {
   providerPublicKey String
   adminPublicKey    String
   createdAt         DateTime @default(now())
-  status            Status
+  status            Status   @default(PENDING)
   provider          gasAdmin @relation(fields: [providerPublicKey], references: [publicKey])
   admin             Admin    @relation(fields: [adminPublicKey], references: [publicKey])
 }
@@ -61,7 +67,7 @@ model consumerProviderRequests {
   consumerPublicKey String
   providerPublicKey String
   createdAt         DateTime @default(now())
-  status            Status
+  status            Status   @default(PENDING)
   transactionHash   String
   consumer          Consumer @relation(fields: [consumerPublicKey], references: [publicKey])
   provider          gasAdmin @relation(fields: [providerPublicKey], references: [publicKey])

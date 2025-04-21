@@ -48,7 +48,11 @@ export default function LandingPage() {
     },
   ]
 
-  const handleConnect = () => {
+  const handleRegister = () => {
+    router.push("/register")
+  }
+
+  const handleLogin = () => {
     router.push("/login")
   }
 
@@ -90,7 +94,8 @@ export default function LandingPage() {
           <Button variant="ghost" size="icon" onClick={toggleTheme} className="mr-2">
             {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
-          <Button onClick={handleConnect}>Connect Wallet</Button>
+          <Button className="" onClick={handleRegister}>Register</Button>
+          <Button className="" onClick={handleLogin}>Login</Button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -118,9 +123,9 @@ export default function LandingPage() {
                 {item.title}
               </Link>
             ))}
-            <Button onClick={handleConnect} className="w-full">
+            {/* <Button onClick={handleConnect} className="w-full">
               Connect Wallet
-            </Button>
+            </Button> */}
           </nav>
         </div>
       )}
@@ -135,7 +140,7 @@ export default function LandingPage() {
           Secure, transparent, and efficient KYC verification for gas connections using blockchain technology
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button size="lg" onClick={handleConnect}>
+          <Button size="lg" onClick={handleRegister}>
             Get Started <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
           <Button size="lg" variant="outline" asChild>
@@ -242,7 +247,7 @@ export default function LandingPage() {
           <Button
             size="lg"
             variant="secondary"
-            onClick={handleConnect}
+            onClick={handleRegister}
             className="bg-white text-purple-600 hover:bg-white/90"
           >
             Connect Wallet

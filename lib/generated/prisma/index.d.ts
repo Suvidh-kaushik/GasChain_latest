@@ -29,6 +29,11 @@ export type gasAdmin = $Result.DefaultSelection<Prisma.$gasAdminPayload>
  */
 export type Admin = $Result.DefaultSelection<Prisma.$AdminPayload>
 /**
+ * Model Temp
+ * 
+ */
+export type Temp = $Result.DefaultSelection<Prisma.$TempPayload>
+/**
  * Model providerRequest
  * 
  */
@@ -211,6 +216,16 @@ export class PrismaClient<
     * ```
     */
   get admin(): Prisma.AdminDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.temp`: Exposes CRUD operations for the **Temp** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Temps
+    * const temps = await prisma.temp.findMany()
+    * ```
+    */
+  get temp(): Prisma.TempDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.providerRequest`: Exposes CRUD operations for the **providerRequest** model.
@@ -674,6 +689,7 @@ export namespace Prisma {
     Consumer: 'Consumer',
     gasAdmin: 'gasAdmin',
     Admin: 'Admin',
+    Temp: 'Temp',
     providerRequest: 'providerRequest',
     consumerProviderRequests: 'consumerProviderRequests'
   };
@@ -694,7 +710,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "consumer" | "gasAdmin" | "admin" | "providerRequest" | "consumerProviderRequests"
+      modelProps: "consumer" | "gasAdmin" | "admin" | "temp" | "providerRequest" | "consumerProviderRequests"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -917,6 +933,80 @@ export namespace Prisma {
           count: {
             args: Prisma.AdminCountArgs<ExtArgs>
             result: $Utils.Optional<AdminCountAggregateOutputType> | number
+          }
+        }
+      }
+      Temp: {
+        payload: Prisma.$TempPayload<ExtArgs>
+        fields: Prisma.TempFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TempFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TempFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>
+          }
+          findFirst: {
+            args: Prisma.TempFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TempFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>
+          }
+          findMany: {
+            args: Prisma.TempFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>[]
+          }
+          create: {
+            args: Prisma.TempCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>
+          }
+          createMany: {
+            args: Prisma.TempCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TempCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>[]
+          }
+          delete: {
+            args: Prisma.TempDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>
+          }
+          update: {
+            args: Prisma.TempUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>
+          }
+          deleteMany: {
+            args: Prisma.TempDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TempUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TempUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>[]
+          }
+          upsert: {
+            args: Prisma.TempUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPayload>
+          }
+          aggregate: {
+            args: Prisma.TempAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTemp>
+          }
+          groupBy: {
+            args: Prisma.TempGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TempGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TempCountArgs<ExtArgs>
+            result: $Utils.Optional<TempCountAggregateOutputType> | number
           }
         }
       }
@@ -1155,6 +1245,7 @@ export namespace Prisma {
     consumer?: ConsumerOmit
     gasAdmin?: gasAdminOmit
     admin?: AdminOmit
+    temp?: TempOmit
     providerRequest?: providerRequestOmit
     consumerProviderRequests?: consumerProviderRequestsOmit
   }
@@ -1364,46 +1455,52 @@ export namespace Prisma {
 
   export type ConsumerMinAggregateOutputType = {
     id: string | null
+    fullName: string | null
     publicKey: string | null
-    nonce: string | null
     createdAt: Date | null
+    status: $Enums.Status | null
   }
 
   export type ConsumerMaxAggregateOutputType = {
     id: string | null
+    fullName: string | null
     publicKey: string | null
-    nonce: string | null
     createdAt: Date | null
+    status: $Enums.Status | null
   }
 
   export type ConsumerCountAggregateOutputType = {
     id: number
+    fullName: number
     publicKey: number
-    nonce: number
     createdAt: number
+    status: number
     _all: number
   }
 
 
   export type ConsumerMinAggregateInputType = {
     id?: true
+    fullName?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
+    status?: true
   }
 
   export type ConsumerMaxAggregateInputType = {
     id?: true
+    fullName?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
+    status?: true
   }
 
   export type ConsumerCountAggregateInputType = {
     id?: true
+    fullName?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
+    status?: true
     _all?: true
   }
 
@@ -1481,9 +1578,10 @@ export namespace Prisma {
 
   export type ConsumerGroupByOutputType = {
     id: string
+    fullName: string
     publicKey: string
-    nonce: string | null
     createdAt: Date
+    status: $Enums.Status
     _count: ConsumerCountAggregateOutputType | null
     _min: ConsumerMinAggregateOutputType | null
     _max: ConsumerMaxAggregateOutputType | null
@@ -1505,35 +1603,39 @@ export namespace Prisma {
 
   export type ConsumerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    fullName?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
+    status?: boolean
     kycRequests?: boolean | Consumer$kycRequestsArgs<ExtArgs>
     _count?: boolean | ConsumerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consumer"]>
 
   export type ConsumerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    fullName?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
+    status?: boolean
   }, ExtArgs["result"]["consumer"]>
 
   export type ConsumerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    fullName?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
+    status?: boolean
   }, ExtArgs["result"]["consumer"]>
 
   export type ConsumerSelectScalar = {
     id?: boolean
+    fullName?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
+    status?: boolean
   }
 
-  export type ConsumerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "nonce" | "createdAt", ExtArgs["result"]["consumer"]>
+  export type ConsumerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "publicKey" | "createdAt" | "status", ExtArgs["result"]["consumer"]>
   export type ConsumerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     kycRequests?: boolean | Consumer$kycRequestsArgs<ExtArgs>
     _count?: boolean | ConsumerCountOutputTypeDefaultArgs<ExtArgs>
@@ -1548,9 +1650,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      fullName: string
       publicKey: string
-      nonce: string | null
       createdAt: Date
+      status: $Enums.Status
     }, ExtArgs["result"]["consumer"]>
     composites: {}
   }
@@ -1976,9 +2079,10 @@ export namespace Prisma {
    */
   interface ConsumerFieldRefs {
     readonly id: FieldRef<"Consumer", 'String'>
+    readonly fullName: FieldRef<"Consumer", 'String'>
     readonly publicKey: FieldRef<"Consumer", 'String'>
-    readonly nonce: FieldRef<"Consumer", 'String'>
     readonly createdAt: FieldRef<"Consumer", 'DateTime'>
+    readonly status: FieldRef<"Consumer", 'Status'>
   }
     
 
@@ -2422,25 +2526,25 @@ export namespace Prisma {
   export type GasAdminMinAggregateOutputType = {
     id: string | null
     publicKey: string | null
-    nonce: string | null
     createdAt: Date | null
     companyName: string | null
+    status: $Enums.Status | null
   }
 
   export type GasAdminMaxAggregateOutputType = {
     id: string | null
     publicKey: string | null
-    nonce: string | null
     createdAt: Date | null
     companyName: string | null
+    status: $Enums.Status | null
   }
 
   export type GasAdminCountAggregateOutputType = {
     id: number
     publicKey: number
-    nonce: number
     createdAt: number
     companyName: number
+    status: number
     _all: number
   }
 
@@ -2448,25 +2552,25 @@ export namespace Prisma {
   export type GasAdminMinAggregateInputType = {
     id?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
     companyName?: true
+    status?: true
   }
 
   export type GasAdminMaxAggregateInputType = {
     id?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
     companyName?: true
+    status?: true
   }
 
   export type GasAdminCountAggregateInputType = {
     id?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
     companyName?: true
+    status?: true
     _all?: true
   }
 
@@ -2545,9 +2649,9 @@ export namespace Prisma {
   export type GasAdminGroupByOutputType = {
     id: string
     publicKey: string
-    nonce: string | null
     createdAt: Date
-    companyName: string | null
+    companyName: string
+    status: $Enums.Status
     _count: GasAdminCountAggregateOutputType | null
     _min: GasAdminMinAggregateOutputType | null
     _max: GasAdminMaxAggregateOutputType | null
@@ -2570,9 +2674,9 @@ export namespace Prisma {
   export type gasAdminSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
     companyName?: boolean
+    status?: boolean
     approvalRequests?: boolean | gasAdmin$approvalRequestsArgs<ExtArgs>
     consumerRequests?: boolean | gasAdmin$consumerRequestsArgs<ExtArgs>
     _count?: boolean | GasAdminCountOutputTypeDefaultArgs<ExtArgs>
@@ -2581,28 +2685,28 @@ export namespace Prisma {
   export type gasAdminSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
     companyName?: boolean
+    status?: boolean
   }, ExtArgs["result"]["gasAdmin"]>
 
   export type gasAdminSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
     companyName?: boolean
+    status?: boolean
   }, ExtArgs["result"]["gasAdmin"]>
 
   export type gasAdminSelectScalar = {
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
     companyName?: boolean
+    status?: boolean
   }
 
-  export type gasAdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "nonce" | "createdAt" | "companyName", ExtArgs["result"]["gasAdmin"]>
+  export type gasAdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "createdAt" | "companyName" | "status", ExtArgs["result"]["gasAdmin"]>
   export type gasAdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     approvalRequests?: boolean | gasAdmin$approvalRequestsArgs<ExtArgs>
     consumerRequests?: boolean | gasAdmin$consumerRequestsArgs<ExtArgs>
@@ -2620,9 +2724,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       publicKey: string
-      nonce: string | null
       createdAt: Date
-      companyName: string | null
+      companyName: string
+      status: $Enums.Status
     }, ExtArgs["result"]["gasAdmin"]>
     composites: {}
   }
@@ -3050,9 +3154,9 @@ export namespace Prisma {
   interface gasAdminFieldRefs {
     readonly id: FieldRef<"gasAdmin", 'String'>
     readonly publicKey: FieldRef<"gasAdmin", 'String'>
-    readonly nonce: FieldRef<"gasAdmin", 'String'>
     readonly createdAt: FieldRef<"gasAdmin", 'DateTime'>
     readonly companyName: FieldRef<"gasAdmin", 'String'>
+    readonly status: FieldRef<"gasAdmin", 'Status'>
   }
     
 
@@ -3520,21 +3624,18 @@ export namespace Prisma {
   export type AdminMinAggregateOutputType = {
     id: string | null
     publicKey: string | null
-    nonce: string | null
     createdAt: Date | null
   }
 
   export type AdminMaxAggregateOutputType = {
     id: string | null
     publicKey: string | null
-    nonce: string | null
     createdAt: Date | null
   }
 
   export type AdminCountAggregateOutputType = {
     id: number
     publicKey: number
-    nonce: number
     createdAt: number
     _all: number
   }
@@ -3543,21 +3644,18 @@ export namespace Prisma {
   export type AdminMinAggregateInputType = {
     id?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
   }
 
   export type AdminMaxAggregateInputType = {
     id?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
   }
 
   export type AdminCountAggregateInputType = {
     id?: true
     publicKey?: true
-    nonce?: true
     createdAt?: true
     _all?: true
   }
@@ -3637,7 +3735,6 @@ export namespace Prisma {
   export type AdminGroupByOutputType = {
     id: string
     publicKey: string
-    nonce: string | null
     createdAt: Date
     _count: AdminCountAggregateOutputType | null
     _min: AdminMinAggregateOutputType | null
@@ -3661,7 +3758,6 @@ export namespace Prisma {
   export type AdminSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
     providerRequests?: boolean | Admin$providerRequestsArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
@@ -3670,25 +3766,22 @@ export namespace Prisma {
   export type AdminSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["admin"]>
 
   export type AdminSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["admin"]>
 
   export type AdminSelectScalar = {
     id?: boolean
     publicKey?: boolean
-    nonce?: boolean
     createdAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "nonce" | "createdAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "createdAt", ExtArgs["result"]["admin"]>
   export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     providerRequests?: boolean | Admin$providerRequestsArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
@@ -3704,7 +3797,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       publicKey: string
-      nonce: string | null
       createdAt: Date
     }, ExtArgs["result"]["admin"]>
     composites: {}
@@ -4132,7 +4224,6 @@ export namespace Prisma {
   interface AdminFieldRefs {
     readonly id: FieldRef<"Admin", 'String'>
     readonly publicKey: FieldRef<"Admin", 'String'>
-    readonly nonce: FieldRef<"Admin", 'String'>
     readonly createdAt: FieldRef<"Admin", 'DateTime'>
   }
     
@@ -4561,6 +4652,975 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: AdminInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Temp
+   */
+
+  export type AggregateTemp = {
+    _count: TempCountAggregateOutputType | null
+    _min: TempMinAggregateOutputType | null
+    _max: TempMaxAggregateOutputType | null
+  }
+
+  export type TempMinAggregateOutputType = {
+    publicKey: string | null
+    nonce: string | null
+    createdAt: Date | null
+  }
+
+  export type TempMaxAggregateOutputType = {
+    publicKey: string | null
+    nonce: string | null
+    createdAt: Date | null
+  }
+
+  export type TempCountAggregateOutputType = {
+    publicKey: number
+    nonce: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TempMinAggregateInputType = {
+    publicKey?: true
+    nonce?: true
+    createdAt?: true
+  }
+
+  export type TempMaxAggregateInputType = {
+    publicKey?: true
+    nonce?: true
+    createdAt?: true
+  }
+
+  export type TempCountAggregateInputType = {
+    publicKey?: true
+    nonce?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TempAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Temp to aggregate.
+     */
+    where?: TempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Temps to fetch.
+     */
+    orderBy?: TempOrderByWithRelationInput | TempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Temps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Temps
+    **/
+    _count?: true | TempCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TempMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TempMaxAggregateInputType
+  }
+
+  export type GetTempAggregateType<T extends TempAggregateArgs> = {
+        [P in keyof T & keyof AggregateTemp]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTemp[P]>
+      : GetScalarType<T[P], AggregateTemp[P]>
+  }
+
+
+
+
+  export type TempGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TempWhereInput
+    orderBy?: TempOrderByWithAggregationInput | TempOrderByWithAggregationInput[]
+    by: TempScalarFieldEnum[] | TempScalarFieldEnum
+    having?: TempScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TempCountAggregateInputType | true
+    _min?: TempMinAggregateInputType
+    _max?: TempMaxAggregateInputType
+  }
+
+  export type TempGroupByOutputType = {
+    publicKey: string
+    nonce: string
+    createdAt: Date
+    _count: TempCountAggregateOutputType | null
+    _min: TempMinAggregateOutputType | null
+    _max: TempMaxAggregateOutputType | null
+  }
+
+  type GetTempGroupByPayload<T extends TempGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TempGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TempGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TempGroupByOutputType[P]>
+            : GetScalarType<T[P], TempGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TempSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    publicKey?: boolean
+    nonce?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["temp"]>
+
+  export type TempSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    publicKey?: boolean
+    nonce?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["temp"]>
+
+  export type TempSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    publicKey?: boolean
+    nonce?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["temp"]>
+
+  export type TempSelectScalar = {
+    publicKey?: boolean
+    nonce?: boolean
+    createdAt?: boolean
+  }
+
+  export type TempOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"publicKey" | "nonce" | "createdAt", ExtArgs["result"]["temp"]>
+
+  export type $TempPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Temp"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      publicKey: string
+      nonce: string
+      createdAt: Date
+    }, ExtArgs["result"]["temp"]>
+    composites: {}
+  }
+
+  type TempGetPayload<S extends boolean | null | undefined | TempDefaultArgs> = $Result.GetResult<Prisma.$TempPayload, S>
+
+  type TempCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TempFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TempCountAggregateInputType | true
+    }
+
+  export interface TempDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Temp'], meta: { name: 'Temp' } }
+    /**
+     * Find zero or one Temp that matches the filter.
+     * @param {TempFindUniqueArgs} args - Arguments to find a Temp
+     * @example
+     * // Get one Temp
+     * const temp = await prisma.temp.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TempFindUniqueArgs>(args: SelectSubset<T, TempFindUniqueArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Temp that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TempFindUniqueOrThrowArgs} args - Arguments to find a Temp
+     * @example
+     * // Get one Temp
+     * const temp = await prisma.temp.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TempFindUniqueOrThrowArgs>(args: SelectSubset<T, TempFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Temp that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempFindFirstArgs} args - Arguments to find a Temp
+     * @example
+     * // Get one Temp
+     * const temp = await prisma.temp.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TempFindFirstArgs>(args?: SelectSubset<T, TempFindFirstArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Temp that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempFindFirstOrThrowArgs} args - Arguments to find a Temp
+     * @example
+     * // Get one Temp
+     * const temp = await prisma.temp.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TempFindFirstOrThrowArgs>(args?: SelectSubset<T, TempFindFirstOrThrowArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Temps that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Temps
+     * const temps = await prisma.temp.findMany()
+     * 
+     * // Get first 10 Temps
+     * const temps = await prisma.temp.findMany({ take: 10 })
+     * 
+     * // Only select the `publicKey`
+     * const tempWithPublicKeyOnly = await prisma.temp.findMany({ select: { publicKey: true } })
+     * 
+     */
+    findMany<T extends TempFindManyArgs>(args?: SelectSubset<T, TempFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Temp.
+     * @param {TempCreateArgs} args - Arguments to create a Temp.
+     * @example
+     * // Create one Temp
+     * const Temp = await prisma.temp.create({
+     *   data: {
+     *     // ... data to create a Temp
+     *   }
+     * })
+     * 
+     */
+    create<T extends TempCreateArgs>(args: SelectSubset<T, TempCreateArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Temps.
+     * @param {TempCreateManyArgs} args - Arguments to create many Temps.
+     * @example
+     * // Create many Temps
+     * const temp = await prisma.temp.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TempCreateManyArgs>(args?: SelectSubset<T, TempCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Temps and returns the data saved in the database.
+     * @param {TempCreateManyAndReturnArgs} args - Arguments to create many Temps.
+     * @example
+     * // Create many Temps
+     * const temp = await prisma.temp.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Temps and only return the `publicKey`
+     * const tempWithPublicKeyOnly = await prisma.temp.createManyAndReturn({
+     *   select: { publicKey: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TempCreateManyAndReturnArgs>(args?: SelectSubset<T, TempCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Temp.
+     * @param {TempDeleteArgs} args - Arguments to delete one Temp.
+     * @example
+     * // Delete one Temp
+     * const Temp = await prisma.temp.delete({
+     *   where: {
+     *     // ... filter to delete one Temp
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TempDeleteArgs>(args: SelectSubset<T, TempDeleteArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Temp.
+     * @param {TempUpdateArgs} args - Arguments to update one Temp.
+     * @example
+     * // Update one Temp
+     * const temp = await prisma.temp.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TempUpdateArgs>(args: SelectSubset<T, TempUpdateArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Temps.
+     * @param {TempDeleteManyArgs} args - Arguments to filter Temps to delete.
+     * @example
+     * // Delete a few Temps
+     * const { count } = await prisma.temp.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TempDeleteManyArgs>(args?: SelectSubset<T, TempDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Temps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Temps
+     * const temp = await prisma.temp.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TempUpdateManyArgs>(args: SelectSubset<T, TempUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Temps and returns the data updated in the database.
+     * @param {TempUpdateManyAndReturnArgs} args - Arguments to update many Temps.
+     * @example
+     * // Update many Temps
+     * const temp = await prisma.temp.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Temps and only return the `publicKey`
+     * const tempWithPublicKeyOnly = await prisma.temp.updateManyAndReturn({
+     *   select: { publicKey: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TempUpdateManyAndReturnArgs>(args: SelectSubset<T, TempUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Temp.
+     * @param {TempUpsertArgs} args - Arguments to update or create a Temp.
+     * @example
+     * // Update or create a Temp
+     * const temp = await prisma.temp.upsert({
+     *   create: {
+     *     // ... data to create a Temp
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Temp we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TempUpsertArgs>(args: SelectSubset<T, TempUpsertArgs<ExtArgs>>): Prisma__TempClient<$Result.GetResult<Prisma.$TempPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Temps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempCountArgs} args - Arguments to filter Temps to count.
+     * @example
+     * // Count the number of Temps
+     * const count = await prisma.temp.count({
+     *   where: {
+     *     // ... the filter for the Temps we want to count
+     *   }
+     * })
+    **/
+    count<T extends TempCountArgs>(
+      args?: Subset<T, TempCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TempCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Temp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TempAggregateArgs>(args: Subset<T, TempAggregateArgs>): Prisma.PrismaPromise<GetTempAggregateType<T>>
+
+    /**
+     * Group by Temp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TempGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TempGroupByArgs['orderBy'] }
+        : { orderBy?: TempGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TempGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTempGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Temp model
+   */
+  readonly fields: TempFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Temp.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TempClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Temp model
+   */
+  interface TempFieldRefs {
+    readonly publicKey: FieldRef<"Temp", 'String'>
+    readonly nonce: FieldRef<"Temp", 'String'>
+    readonly createdAt: FieldRef<"Temp", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Temp findUnique
+   */
+  export type TempFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * Filter, which Temp to fetch.
+     */
+    where: TempWhereUniqueInput
+  }
+
+  /**
+   * Temp findUniqueOrThrow
+   */
+  export type TempFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * Filter, which Temp to fetch.
+     */
+    where: TempWhereUniqueInput
+  }
+
+  /**
+   * Temp findFirst
+   */
+  export type TempFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * Filter, which Temp to fetch.
+     */
+    where?: TempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Temps to fetch.
+     */
+    orderBy?: TempOrderByWithRelationInput | TempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Temps.
+     */
+    cursor?: TempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Temps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Temps.
+     */
+    distinct?: TempScalarFieldEnum | TempScalarFieldEnum[]
+  }
+
+  /**
+   * Temp findFirstOrThrow
+   */
+  export type TempFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * Filter, which Temp to fetch.
+     */
+    where?: TempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Temps to fetch.
+     */
+    orderBy?: TempOrderByWithRelationInput | TempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Temps.
+     */
+    cursor?: TempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Temps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Temps.
+     */
+    distinct?: TempScalarFieldEnum | TempScalarFieldEnum[]
+  }
+
+  /**
+   * Temp findMany
+   */
+  export type TempFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * Filter, which Temps to fetch.
+     */
+    where?: TempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Temps to fetch.
+     */
+    orderBy?: TempOrderByWithRelationInput | TempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Temps.
+     */
+    cursor?: TempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Temps.
+     */
+    skip?: number
+    distinct?: TempScalarFieldEnum | TempScalarFieldEnum[]
+  }
+
+  /**
+   * Temp create
+   */
+  export type TempCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Temp.
+     */
+    data: XOR<TempCreateInput, TempUncheckedCreateInput>
+  }
+
+  /**
+   * Temp createMany
+   */
+  export type TempCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Temps.
+     */
+    data: TempCreateManyInput | TempCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Temp createManyAndReturn
+   */
+  export type TempCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * The data used to create many Temps.
+     */
+    data: TempCreateManyInput | TempCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Temp update
+   */
+  export type TempUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Temp.
+     */
+    data: XOR<TempUpdateInput, TempUncheckedUpdateInput>
+    /**
+     * Choose, which Temp to update.
+     */
+    where: TempWhereUniqueInput
+  }
+
+  /**
+   * Temp updateMany
+   */
+  export type TempUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Temps.
+     */
+    data: XOR<TempUpdateManyMutationInput, TempUncheckedUpdateManyInput>
+    /**
+     * Filter which Temps to update
+     */
+    where?: TempWhereInput
+    /**
+     * Limit how many Temps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Temp updateManyAndReturn
+   */
+  export type TempUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * The data used to update Temps.
+     */
+    data: XOR<TempUpdateManyMutationInput, TempUncheckedUpdateManyInput>
+    /**
+     * Filter which Temps to update
+     */
+    where?: TempWhereInput
+    /**
+     * Limit how many Temps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Temp upsert
+   */
+  export type TempUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Temp to update in case it exists.
+     */
+    where: TempWhereUniqueInput
+    /**
+     * In case the Temp found by the `where` argument doesn't exist, create a new Temp with this data.
+     */
+    create: XOR<TempCreateInput, TempUncheckedCreateInput>
+    /**
+     * In case the Temp was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TempUpdateInput, TempUncheckedUpdateInput>
+  }
+
+  /**
+   * Temp delete
+   */
+  export type TempDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
+    /**
+     * Filter which Temp to delete.
+     */
+    where: TempWhereUniqueInput
+  }
+
+  /**
+   * Temp deleteMany
+   */
+  export type TempDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Temps to delete
+     */
+    where?: TempWhereInput
+    /**
+     * Limit how many Temps to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Temp without action
+   */
+  export type TempDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Temp
+     */
+    select?: TempSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Temp
+     */
+    omit?: TempOmit<ExtArgs> | null
   }
 
 
@@ -6725,9 +7785,10 @@ export namespace Prisma {
 
   export const ConsumerScalarFieldEnum: {
     id: 'id',
+    fullName: 'fullName',
     publicKey: 'publicKey',
-    nonce: 'nonce',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    status: 'status'
   };
 
   export type ConsumerScalarFieldEnum = (typeof ConsumerScalarFieldEnum)[keyof typeof ConsumerScalarFieldEnum]
@@ -6736,9 +7797,9 @@ export namespace Prisma {
   export const GasAdminScalarFieldEnum: {
     id: 'id',
     publicKey: 'publicKey',
-    nonce: 'nonce',
     createdAt: 'createdAt',
-    companyName: 'companyName'
+    companyName: 'companyName',
+    status: 'status'
   };
 
   export type GasAdminScalarFieldEnum = (typeof GasAdminScalarFieldEnum)[keyof typeof GasAdminScalarFieldEnum]
@@ -6747,11 +7808,19 @@ export namespace Prisma {
   export const AdminScalarFieldEnum: {
     id: 'id',
     publicKey: 'publicKey',
-    nonce: 'nonce',
     createdAt: 'createdAt'
   };
 
   export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
+
+
+  export const TempScalarFieldEnum: {
+    publicKey: 'publicKey',
+    nonce: 'nonce',
+    createdAt: 'createdAt'
+  };
+
+  export type TempScalarFieldEnum = (typeof TempScalarFieldEnum)[keyof typeof TempScalarFieldEnum]
 
 
   export const ProviderRequestScalarFieldEnum: {
@@ -6791,14 +7860,6 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -6870,17 +7931,19 @@ export namespace Prisma {
     OR?: ConsumerWhereInput[]
     NOT?: ConsumerWhereInput | ConsumerWhereInput[]
     id?: StringFilter<"Consumer"> | string
+    fullName?: StringFilter<"Consumer"> | string
     publicKey?: StringFilter<"Consumer"> | string
-    nonce?: StringNullableFilter<"Consumer"> | string | null
     createdAt?: DateTimeFilter<"Consumer"> | Date | string
+    status?: EnumStatusFilter<"Consumer"> | $Enums.Status
     kycRequests?: ConsumerProviderRequestsListRelationFilter
   }
 
   export type ConsumerOrderByWithRelationInput = {
     id?: SortOrder
+    fullName?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    status?: SortOrder
     kycRequests?: consumerProviderRequestsOrderByRelationAggregateInput
   }
 
@@ -6890,16 +7953,18 @@ export namespace Prisma {
     AND?: ConsumerWhereInput | ConsumerWhereInput[]
     OR?: ConsumerWhereInput[]
     NOT?: ConsumerWhereInput | ConsumerWhereInput[]
-    nonce?: StringNullableFilter<"Consumer"> | string | null
+    fullName?: StringFilter<"Consumer"> | string
     createdAt?: DateTimeFilter<"Consumer"> | Date | string
+    status?: EnumStatusFilter<"Consumer"> | $Enums.Status
     kycRequests?: ConsumerProviderRequestsListRelationFilter
   }, "id" | "publicKey">
 
   export type ConsumerOrderByWithAggregationInput = {
     id?: SortOrder
+    fullName?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    status?: SortOrder
     _count?: ConsumerCountOrderByAggregateInput
     _max?: ConsumerMaxOrderByAggregateInput
     _min?: ConsumerMinOrderByAggregateInput
@@ -6910,9 +7975,10 @@ export namespace Prisma {
     OR?: ConsumerScalarWhereWithAggregatesInput[]
     NOT?: ConsumerScalarWhereWithAggregatesInput | ConsumerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Consumer"> | string
+    fullName?: StringWithAggregatesFilter<"Consumer"> | string
     publicKey?: StringWithAggregatesFilter<"Consumer"> | string
-    nonce?: StringNullableWithAggregatesFilter<"Consumer"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Consumer"> | Date | string
+    status?: EnumStatusWithAggregatesFilter<"Consumer"> | $Enums.Status
   }
 
   export type gasAdminWhereInput = {
@@ -6921,9 +7987,9 @@ export namespace Prisma {
     NOT?: gasAdminWhereInput | gasAdminWhereInput[]
     id?: StringFilter<"gasAdmin"> | string
     publicKey?: StringFilter<"gasAdmin"> | string
-    nonce?: StringNullableFilter<"gasAdmin"> | string | null
     createdAt?: DateTimeFilter<"gasAdmin"> | Date | string
-    companyName?: StringNullableFilter<"gasAdmin"> | string | null
+    companyName?: StringFilter<"gasAdmin"> | string
+    status?: EnumStatusFilter<"gasAdmin"> | $Enums.Status
     approvalRequests?: ProviderRequestListRelationFilter
     consumerRequests?: ConsumerProviderRequestsListRelationFilter
   }
@@ -6931,9 +7997,9 @@ export namespace Prisma {
   export type gasAdminOrderByWithRelationInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    companyName?: SortOrderInput | SortOrder
+    companyName?: SortOrder
+    status?: SortOrder
     approvalRequests?: providerRequestOrderByRelationAggregateInput
     consumerRequests?: consumerProviderRequestsOrderByRelationAggregateInput
   }
@@ -6941,22 +8007,22 @@ export namespace Prisma {
   export type gasAdminWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     publicKey?: string
+    companyName?: string
     AND?: gasAdminWhereInput | gasAdminWhereInput[]
     OR?: gasAdminWhereInput[]
     NOT?: gasAdminWhereInput | gasAdminWhereInput[]
-    nonce?: StringNullableFilter<"gasAdmin"> | string | null
     createdAt?: DateTimeFilter<"gasAdmin"> | Date | string
-    companyName?: StringNullableFilter<"gasAdmin"> | string | null
+    status?: EnumStatusFilter<"gasAdmin"> | $Enums.Status
     approvalRequests?: ProviderRequestListRelationFilter
     consumerRequests?: ConsumerProviderRequestsListRelationFilter
-  }, "id" | "publicKey">
+  }, "id" | "publicKey" | "companyName">
 
   export type gasAdminOrderByWithAggregationInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    companyName?: SortOrderInput | SortOrder
+    companyName?: SortOrder
+    status?: SortOrder
     _count?: gasAdminCountOrderByAggregateInput
     _max?: gasAdminMaxOrderByAggregateInput
     _min?: gasAdminMinOrderByAggregateInput
@@ -6968,9 +8034,9 @@ export namespace Prisma {
     NOT?: gasAdminScalarWhereWithAggregatesInput | gasAdminScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"gasAdmin"> | string
     publicKey?: StringWithAggregatesFilter<"gasAdmin"> | string
-    nonce?: StringNullableWithAggregatesFilter<"gasAdmin"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"gasAdmin"> | Date | string
-    companyName?: StringNullableWithAggregatesFilter<"gasAdmin"> | string | null
+    companyName?: StringWithAggregatesFilter<"gasAdmin"> | string
+    status?: EnumStatusWithAggregatesFilter<"gasAdmin"> | $Enums.Status
   }
 
   export type AdminWhereInput = {
@@ -6979,7 +8045,6 @@ export namespace Prisma {
     NOT?: AdminWhereInput | AdminWhereInput[]
     id?: StringFilter<"Admin"> | string
     publicKey?: StringFilter<"Admin"> | string
-    nonce?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     providerRequests?: ProviderRequestListRelationFilter
   }
@@ -6987,7 +8052,6 @@ export namespace Prisma {
   export type AdminOrderByWithRelationInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     providerRequests?: providerRequestOrderByRelationAggregateInput
   }
@@ -6998,7 +8062,6 @@ export namespace Prisma {
     AND?: AdminWhereInput | AdminWhereInput[]
     OR?: AdminWhereInput[]
     NOT?: AdminWhereInput | AdminWhereInput[]
-    nonce?: StringNullableFilter<"Admin"> | string | null
     createdAt?: DateTimeFilter<"Admin"> | Date | string
     providerRequests?: ProviderRequestListRelationFilter
   }, "id" | "publicKey">
@@ -7006,7 +8069,6 @@ export namespace Prisma {
   export type AdminOrderByWithAggregationInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: AdminCountOrderByAggregateInput
     _max?: AdminMaxOrderByAggregateInput
@@ -7019,8 +8081,49 @@ export namespace Prisma {
     NOT?: AdminScalarWhereWithAggregatesInput | AdminScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Admin"> | string
     publicKey?: StringWithAggregatesFilter<"Admin"> | string
-    nonce?: StringNullableWithAggregatesFilter<"Admin"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
+  }
+
+  export type TempWhereInput = {
+    AND?: TempWhereInput | TempWhereInput[]
+    OR?: TempWhereInput[]
+    NOT?: TempWhereInput | TempWhereInput[]
+    publicKey?: StringFilter<"Temp"> | string
+    nonce?: StringFilter<"Temp"> | string
+    createdAt?: DateTimeFilter<"Temp"> | Date | string
+  }
+
+  export type TempOrderByWithRelationInput = {
+    publicKey?: SortOrder
+    nonce?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TempWhereUniqueInput = Prisma.AtLeast<{
+    publicKey?: string
+    AND?: TempWhereInput | TempWhereInput[]
+    OR?: TempWhereInput[]
+    NOT?: TempWhereInput | TempWhereInput[]
+    nonce?: StringFilter<"Temp"> | string
+    createdAt?: DateTimeFilter<"Temp"> | Date | string
+  }, "publicKey">
+
+  export type TempOrderByWithAggregationInput = {
+    publicKey?: SortOrder
+    nonce?: SortOrder
+    createdAt?: SortOrder
+    _count?: TempCountOrderByAggregateInput
+    _max?: TempMaxOrderByAggregateInput
+    _min?: TempMinOrderByAggregateInput
+  }
+
+  export type TempScalarWhereWithAggregatesInput = {
+    AND?: TempScalarWhereWithAggregatesInput | TempScalarWhereWithAggregatesInput[]
+    OR?: TempScalarWhereWithAggregatesInput[]
+    NOT?: TempScalarWhereWithAggregatesInput | TempScalarWhereWithAggregatesInput[]
+    publicKey?: StringWithAggregatesFilter<"Temp"> | string
+    nonce?: StringWithAggregatesFilter<"Temp"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Temp"> | Date | string
   }
 
   export type providerRequestWhereInput = {
@@ -7146,63 +8249,70 @@ export namespace Prisma {
 
   export type ConsumerCreateInput = {
     id?: string
+    fullName: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
+    status?: $Enums.Status
     kycRequests?: consumerProviderRequestsCreateNestedManyWithoutConsumerInput
   }
 
   export type ConsumerUncheckedCreateInput = {
     id?: string
+    fullName: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
+    status?: $Enums.Status
     kycRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutConsumerInput
   }
 
   export type ConsumerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     kycRequests?: consumerProviderRequestsUpdateManyWithoutConsumerNestedInput
   }
 
   export type ConsumerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     kycRequests?: consumerProviderRequestsUncheckedUpdateManyWithoutConsumerNestedInput
   }
 
   export type ConsumerCreateManyInput = {
     id?: string
+    fullName: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
+    status?: $Enums.Status
   }
 
   export type ConsumerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type ConsumerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type gasAdminCreateInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
-    companyName?: string | null
+    companyName: string
+    status?: $Enums.Status
     approvalRequests?: providerRequestCreateNestedManyWithoutProviderInput
     consumerRequests?: consumerProviderRequestsCreateNestedManyWithoutProviderInput
   }
@@ -7210,9 +8320,9 @@ export namespace Prisma {
   export type gasAdminUncheckedCreateInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
-    companyName?: string | null
+    companyName: string
+    status?: $Enums.Status
     approvalRequests?: providerRequestUncheckedCreateNestedManyWithoutProviderInput
     consumerRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutProviderInput
   }
@@ -7220,9 +8330,9 @@ export namespace Prisma {
   export type gasAdminUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     approvalRequests?: providerRequestUpdateManyWithoutProviderNestedInput
     consumerRequests?: consumerProviderRequestsUpdateManyWithoutProviderNestedInput
   }
@@ -7230,9 +8340,9 @@ export namespace Prisma {
   export type gasAdminUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     approvalRequests?: providerRequestUncheckedUpdateManyWithoutProviderNestedInput
     consumerRequests?: consumerProviderRequestsUncheckedUpdateManyWithoutProviderNestedInput
   }
@@ -7240,31 +8350,30 @@ export namespace Prisma {
   export type gasAdminCreateManyInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
-    companyName?: string | null
+    companyName: string
+    status?: $Enums.Status
   }
 
   export type gasAdminUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type gasAdminUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type AdminCreateInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
     providerRequests?: providerRequestCreateNestedManyWithoutAdminInput
   }
@@ -7272,7 +8381,6 @@ export namespace Prisma {
   export type AdminUncheckedCreateInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
     providerRequests?: providerRequestUncheckedCreateNestedManyWithoutAdminInput
   }
@@ -7280,7 +8388,6 @@ export namespace Prisma {
   export type AdminUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     providerRequests?: providerRequestUpdateManyWithoutAdminNestedInput
   }
@@ -7288,7 +8395,6 @@ export namespace Prisma {
   export type AdminUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     providerRequests?: providerRequestUncheckedUpdateManyWithoutAdminNestedInput
   }
@@ -7296,28 +8402,67 @@ export namespace Prisma {
   export type AdminCreateManyInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
   }
 
   export type AdminUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TempCreateInput = {
+    publicKey: string
+    nonce: string
+    createdAt?: Date | string
+  }
+
+  export type TempUncheckedCreateInput = {
+    publicKey: string
+    nonce: string
+    createdAt?: Date | string
+  }
+
+  export type TempUpdateInput = {
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TempUncheckedUpdateInput = {
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TempCreateManyInput = {
+    publicKey: string
+    nonce: string
+    createdAt?: Date | string
+  }
+
+  export type TempUpdateManyMutationInput = {
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TempUncheckedUpdateManyInput = {
+    publicKey?: StringFieldUpdateOperationsInput | string
+    nonce?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type providerRequestCreateInput = {
     id?: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
     admin: AdminCreateNestedOneWithoutProviderRequestsInput
   }
@@ -7327,7 +8472,7 @@ export namespace Prisma {
     providerPublicKey: string
     adminPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
   }
 
   export type providerRequestUpdateInput = {
@@ -7351,7 +8496,7 @@ export namespace Prisma {
     providerPublicKey: string
     adminPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
   }
 
   export type providerRequestUpdateManyMutationInput = {
@@ -7371,7 +8516,7 @@ export namespace Prisma {
   export type consumerProviderRequestsCreateInput = {
     id?: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
     consumer: ConsumerCreateNestedOneWithoutKycRequestsInput
     provider: gasAdminCreateNestedOneWithoutConsumerRequestsInput
@@ -7382,7 +8527,7 @@ export namespace Prisma {
     consumerPublicKey: string
     providerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
   }
 
@@ -7409,7 +8554,7 @@ export namespace Prisma {
     consumerPublicKey: string
     providerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
   }
 
@@ -7444,21 +8589,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -7470,15 +8600,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type EnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
   export type ConsumerProviderRequestsListRelationFilter = {
     every?: consumerProviderRequestsWhereInput
     some?: consumerProviderRequestsWhereInput
     none?: consumerProviderRequestsWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type consumerProviderRequestsOrderByRelationAggregateInput = {
@@ -7487,23 +8619,26 @@ export namespace Prisma {
 
   export type ConsumerCountOrderByAggregateInput = {
     id?: SortOrder
+    fullName?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
+    status?: SortOrder
   }
 
   export type ConsumerMaxOrderByAggregateInput = {
     id?: SortOrder
+    fullName?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
+    status?: SortOrder
   }
 
   export type ConsumerMinOrderByAggregateInput = {
     id?: SortOrder
+    fullName?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
+    status?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -7524,24 +8659,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -7554,6 +8671,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
   export type ProviderRequestListRelationFilter = {
@@ -7569,53 +8696,61 @@ export namespace Prisma {
   export type gasAdminCountOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
     companyName?: SortOrder
+    status?: SortOrder
   }
 
   export type gasAdminMaxOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
     companyName?: SortOrder
+    status?: SortOrder
   }
 
   export type gasAdminMinOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
     companyName?: SortOrder
+    status?: SortOrder
   }
 
   export type AdminCountOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
   }
 
   export type AdminMaxOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
-    nonce?: SortOrder
     createdAt?: SortOrder
   }
 
   export type AdminMinOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TempCountOrderByAggregateInput = {
+    publicKey?: SortOrder
     nonce?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type EnumStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  export type TempMaxOrderByAggregateInput = {
+    publicKey?: SortOrder
+    nonce?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TempMinOrderByAggregateInput = {
+    publicKey?: SortOrder
+    nonce?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type GasAdminScalarRelationFilter = {
@@ -7650,16 +8785,6 @@ export namespace Prisma {
     adminPublicKey?: SortOrder
     createdAt?: SortOrder
     status?: SortOrder
-  }
-
-  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumStatusFilter<$PrismaModel>
-    _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
   export type ConsumerScalarRelationFilter = {
@@ -7712,12 +8837,12 @@ export namespace Prisma {
     set?: string
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
   }
 
   export type consumerProviderRequestsUpdateManyWithoutConsumerNestedInput = {
@@ -7886,10 +9011,6 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
-  export type EnumStatusFieldUpdateOperationsInput = {
-    set?: $Enums.Status
-  }
-
   export type gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput = {
     create?: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
     connectOrCreate?: gasAdminCreateOrConnectWithoutApprovalRequestsInput
@@ -7948,20 +9069,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -7971,6 +9078,13 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -8001,34 +9115,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -8041,13 +9127,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedEnumStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
   }
 
   export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -8063,7 +9142,7 @@ export namespace Prisma {
   export type consumerProviderRequestsCreateWithoutConsumerInput = {
     id?: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
     provider: gasAdminCreateNestedOneWithoutConsumerRequestsInput
   }
@@ -8072,7 +9151,7 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
   }
 
@@ -8117,7 +9196,7 @@ export namespace Prisma {
   export type providerRequestCreateWithoutProviderInput = {
     id?: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     admin: AdminCreateNestedOneWithoutProviderRequestsInput
   }
 
@@ -8125,7 +9204,7 @@ export namespace Prisma {
     id?: string
     adminPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
   }
 
   export type providerRequestCreateOrConnectWithoutProviderInput = {
@@ -8141,7 +9220,7 @@ export namespace Prisma {
   export type consumerProviderRequestsCreateWithoutProviderInput = {
     id?: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
     consumer: ConsumerCreateNestedOneWithoutKycRequestsInput
   }
@@ -8150,7 +9229,7 @@ export namespace Prisma {
     id?: string
     consumerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
   }
 
@@ -8210,7 +9289,7 @@ export namespace Prisma {
   export type providerRequestCreateWithoutAdminInput = {
     id?: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
   }
 
@@ -8218,7 +9297,7 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
   }
 
   export type providerRequestCreateOrConnectWithoutAdminInput = {
@@ -8250,18 +9329,18 @@ export namespace Prisma {
   export type gasAdminCreateWithoutApprovalRequestsInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
-    companyName?: string | null
+    companyName: string
+    status?: $Enums.Status
     consumerRequests?: consumerProviderRequestsCreateNestedManyWithoutProviderInput
   }
 
   export type gasAdminUncheckedCreateWithoutApprovalRequestsInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
-    companyName?: string | null
+    companyName: string
+    status?: $Enums.Status
     consumerRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutProviderInput
   }
 
@@ -8273,14 +9352,12 @@ export namespace Prisma {
   export type AdminCreateWithoutProviderRequestsInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
   }
 
   export type AdminUncheckedCreateWithoutProviderRequestsInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
   }
 
@@ -8303,18 +9380,18 @@ export namespace Prisma {
   export type gasAdminUpdateWithoutApprovalRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     consumerRequests?: consumerProviderRequestsUpdateManyWithoutProviderNestedInput
   }
 
   export type gasAdminUncheckedUpdateWithoutApprovalRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     consumerRequests?: consumerProviderRequestsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
@@ -8332,29 +9409,29 @@ export namespace Prisma {
   export type AdminUpdateWithoutProviderRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminUncheckedUpdateWithoutProviderRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ConsumerCreateWithoutKycRequestsInput = {
     id?: string
+    fullName: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
+    status?: $Enums.Status
   }
 
   export type ConsumerUncheckedCreateWithoutKycRequestsInput = {
     id?: string
+    fullName: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
+    status?: $Enums.Status
   }
 
   export type ConsumerCreateOrConnectWithoutKycRequestsInput = {
@@ -8365,18 +9442,18 @@ export namespace Prisma {
   export type gasAdminCreateWithoutConsumerRequestsInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
-    companyName?: string | null
+    companyName: string
+    status?: $Enums.Status
     approvalRequests?: providerRequestCreateNestedManyWithoutProviderInput
   }
 
   export type gasAdminUncheckedCreateWithoutConsumerRequestsInput = {
     id?: string
     publicKey: string
-    nonce?: string | null
     createdAt?: Date | string
-    companyName?: string | null
+    companyName: string
+    status?: $Enums.Status
     approvalRequests?: providerRequestUncheckedCreateNestedManyWithoutProviderInput
   }
 
@@ -8398,16 +9475,18 @@ export namespace Prisma {
 
   export type ConsumerUpdateWithoutKycRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type ConsumerUncheckedUpdateWithoutKycRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type gasAdminUpsertWithoutConsumerRequestsInput = {
@@ -8424,18 +9503,18 @@ export namespace Prisma {
   export type gasAdminUpdateWithoutConsumerRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     approvalRequests?: providerRequestUpdateManyWithoutProviderNestedInput
   }
 
   export type gasAdminUncheckedUpdateWithoutConsumerRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
-    nonce?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    companyName?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     approvalRequests?: providerRequestUncheckedUpdateManyWithoutProviderNestedInput
   }
 
@@ -8443,7 +9522,7 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
   }
 
@@ -8475,14 +9554,14 @@ export namespace Prisma {
     id?: string
     adminPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
   }
 
   export type consumerProviderRequestsCreateManyProviderInput = {
     id?: string
     consumerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
     transactionHash: string
   }
 
@@ -8535,7 +9614,7 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
-    status: $Enums.Status
+    status?: $Enums.Status
   }
 
   export type providerRequestUpdateWithoutAdminInput = {

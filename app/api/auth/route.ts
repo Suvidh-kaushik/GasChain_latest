@@ -17,33 +17,21 @@ export async function GET(req: NextRequest){
     if(!walletId) return NextResponse.json({nonce: "", msg: "Wallet Address Required"});
     if(!role) return NextResponse.json({nonce: "", msg: "Role is required"});
 
+    if(role == "admin"){
+        const admin = await prisma.admin.findUnique({
+            where: {publicKey: walletId}
+        })
+        console.log("Admin: " + admin);
+        if(!admin) return NextResponse.json({nonce: "", msg: "You are not an admin"});
+    }
+
     const nonce = getNonce(walletId, role);
 
     try{
         // console.log("Nonce: " + nonce);
-        let user;
-        if(role == "consumer"){
-            user = await prisma.consumer.upsert({
-                where: {publicKey: walletId},
-                create: {publicKey: walletId, nonce},
-                update: {nonce},
-            });
-        }
-        if(role == "provider"){
-            console.log("Role (provider): " + role);
-            user = await prisma.gasAdmin.update({
-                where: {publicKey: walletId},
-                data: {nonce},
-            });
-        }
-        else if(role == "admin"){
-            console.log("Role (admin): " + role);
-            user = await prisma.admin.upsert({
-                where: {publicKey: walletId},
-                create: {publicKey: walletId, nonce},
-                update: {nonce},
-            });
-        }
+        let user = await prisma.temp.create({
+            data: {publicKey: walletId, nonce: nonce}
+        });
 
         return NextResponse.json({nonce: nonce, msg: "Nonce created"});
     }
@@ -66,22 +54,9 @@ export async function POST(req: NextRequest){
     const {signature, walletId, role} = await req.json();
     console.log("Signature: "+ signature);
     try{
-        let user;
-        if(role == "consumer"){
-            user = await prisma.consumer.findUnique({
-                where: {publicKey: walletId},
-            });
-        }
-        else if(role == "provider"){
-            user = await prisma.gasAdmin.findUnique({
-                where: {publicKey: walletId},
-            });
-        }
-        else if(role == "admin"){
-            user = await prisma.admin.findUnique({
-                where: {publicKey: walletId},
-            });
-        }
+        let user = await prisma.temp.findFirst({
+            where: {publicKey: walletId}
+        });
 
         console.log("User: " + user);
 
@@ -91,9 +66,7 @@ export async function POST(req: NextRequest){
         const isVerified = verifySignature(signature, user.nonce, walletId);
 
         if(isVerified){
-            const jwtToken = generateToken(walletId, role);
-            console.log(jwtToken);
-            return NextResponse.json({isVerified: true, msg: "Verified", token: jwtToken});
+            return NextResponse.json({isVerified: true, msg: "Verified"});
         }
         else{
             return NextResponse.json({isVerified: false, msg: "Verification failed"});
@@ -102,5 +75,10 @@ export async function POST(req: NextRequest){
     catch(error: any){
         console.error(error);
         return NextResponse.json({isVerified: false, msg : error.message});
+    }
+    finally{
+        const user = await prisma.temp.delete({
+            where: {publicKey: walletId}
+        })
     }
 }
