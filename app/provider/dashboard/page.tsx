@@ -21,7 +21,7 @@ import {
   Legend,
 } from "@/components/ui/chart"
 
-export default function AdminDashboard() {
+export default function providerDashboard() {
   const [activeTab, setActiveTab] = useState("overview")
 
   // Mock data
@@ -152,7 +152,7 @@ export default function AdminDashboard() {
           <p className="text-muted-foreground">Monitor and manage KYC verifications</p>
         </div>
         <Button asChild className="mt-4 md:mt-0">
-          <Link href="/admin/verification">View All Verifications</Link>
+          <Link href="/provider/verification">View All Verifications</Link>
         </Button>
       </div>
 
@@ -270,7 +270,7 @@ export default function AdminDashboard() {
                         <td className="py-3 px-2">
                           <div className="flex space-x-2">
                             <Button size="sm" variant="outline" asChild>
-                              <Link href={`/admin/verification/${verification.id}`}>View</Link>
+                              <Link href={`/provider/verification/${verification.id}`}>View</Link>
                             </Button>
                           </div>
                         </td>
