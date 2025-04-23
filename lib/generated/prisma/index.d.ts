@@ -5639,6 +5639,7 @@ export namespace Prisma {
     providerPublicKey: string | null
     adminPublicKey: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     status: $Enums.Status | null
   }
 
@@ -5647,6 +5648,7 @@ export namespace Prisma {
     providerPublicKey: string | null
     adminPublicKey: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     status: $Enums.Status | null
   }
 
@@ -5655,6 +5657,7 @@ export namespace Prisma {
     providerPublicKey: number
     adminPublicKey: number
     createdAt: number
+    updatedAt: number
     status: number
     _all: number
   }
@@ -5665,6 +5668,7 @@ export namespace Prisma {
     providerPublicKey?: true
     adminPublicKey?: true
     createdAt?: true
+    updatedAt?: true
     status?: true
   }
 
@@ -5673,6 +5677,7 @@ export namespace Prisma {
     providerPublicKey?: true
     adminPublicKey?: true
     createdAt?: true
+    updatedAt?: true
     status?: true
   }
 
@@ -5681,6 +5686,7 @@ export namespace Prisma {
     providerPublicKey?: true
     adminPublicKey?: true
     createdAt?: true
+    updatedAt?: true
     status?: true
     _all?: true
   }
@@ -5762,6 +5768,7 @@ export namespace Prisma {
     providerPublicKey: string
     adminPublicKey: string
     createdAt: Date
+    updatedAt: Date
     status: $Enums.Status
     _count: ProviderRequestCountAggregateOutputType | null
     _min: ProviderRequestMinAggregateOutputType | null
@@ -5787,6 +5794,7 @@ export namespace Prisma {
     providerPublicKey?: boolean
     adminPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
     provider?: boolean | gasAdminDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -5797,6 +5805,7 @@ export namespace Prisma {
     providerPublicKey?: boolean
     adminPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
     provider?: boolean | gasAdminDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -5807,6 +5816,7 @@ export namespace Prisma {
     providerPublicKey?: boolean
     adminPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
     provider?: boolean | gasAdminDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -5817,10 +5827,11 @@ export namespace Prisma {
     providerPublicKey?: boolean
     adminPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
   }
 
-  export type providerRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerPublicKey" | "adminPublicKey" | "createdAt" | "status", ExtArgs["result"]["providerRequest"]>
+  export type providerRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerPublicKey" | "adminPublicKey" | "createdAt" | "updatedAt" | "status", ExtArgs["result"]["providerRequest"]>
   export type providerRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     provider?: boolean | gasAdminDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
@@ -5845,6 +5856,7 @@ export namespace Prisma {
       providerPublicKey: string
       adminPublicKey: string
       createdAt: Date
+      updatedAt: Date
       status: $Enums.Status
     }, ExtArgs["result"]["providerRequest"]>
     composites: {}
@@ -6275,6 +6287,7 @@ export namespace Prisma {
     readonly providerPublicKey: FieldRef<"providerRequest", 'String'>
     readonly adminPublicKey: FieldRef<"providerRequest", 'String'>
     readonly createdAt: FieldRef<"providerRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"providerRequest", 'DateTime'>
     readonly status: FieldRef<"providerRequest", 'Status'>
   }
     
@@ -6705,6 +6718,7 @@ export namespace Prisma {
     consumerPublicKey: string | null
     providerPublicKey: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     status: $Enums.Status | null
     transactionHash: string | null
   }
@@ -6714,6 +6728,7 @@ export namespace Prisma {
     consumerPublicKey: string | null
     providerPublicKey: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     status: $Enums.Status | null
     transactionHash: string | null
   }
@@ -6723,6 +6738,7 @@ export namespace Prisma {
     consumerPublicKey: number
     providerPublicKey: number
     createdAt: number
+    updatedAt: number
     status: number
     transactionHash: number
     _all: number
@@ -6734,6 +6750,7 @@ export namespace Prisma {
     consumerPublicKey?: true
     providerPublicKey?: true
     createdAt?: true
+    updatedAt?: true
     status?: true
     transactionHash?: true
   }
@@ -6743,6 +6760,7 @@ export namespace Prisma {
     consumerPublicKey?: true
     providerPublicKey?: true
     createdAt?: true
+    updatedAt?: true
     status?: true
     transactionHash?: true
   }
@@ -6752,6 +6770,7 @@ export namespace Prisma {
     consumerPublicKey?: true
     providerPublicKey?: true
     createdAt?: true
+    updatedAt?: true
     status?: true
     transactionHash?: true
     _all?: true
@@ -6834,6 +6853,7 @@ export namespace Prisma {
     consumerPublicKey: string
     providerPublicKey: string
     createdAt: Date
+    updatedAt: Date
     status: $Enums.Status
     transactionHash: string
     _count: ConsumerProviderRequestsCountAggregateOutputType | null
@@ -6860,6 +6880,7 @@ export namespace Prisma {
     consumerPublicKey?: boolean
     providerPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
     transactionHash?: boolean
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
@@ -6871,6 +6892,7 @@ export namespace Prisma {
     consumerPublicKey?: boolean
     providerPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
     transactionHash?: boolean
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
@@ -6882,6 +6904,7 @@ export namespace Prisma {
     consumerPublicKey?: boolean
     providerPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
     transactionHash?: boolean
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
@@ -6893,11 +6916,12 @@ export namespace Prisma {
     consumerPublicKey?: boolean
     providerPublicKey?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     status?: boolean
     transactionHash?: boolean
   }
 
-  export type consumerProviderRequestsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "consumerPublicKey" | "providerPublicKey" | "createdAt" | "status" | "transactionHash", ExtArgs["result"]["consumerProviderRequests"]>
+  export type consumerProviderRequestsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "consumerPublicKey" | "providerPublicKey" | "createdAt" | "updatedAt" | "status" | "transactionHash", ExtArgs["result"]["consumerProviderRequests"]>
   export type consumerProviderRequestsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
     provider?: boolean | gasAdminDefaultArgs<ExtArgs>
@@ -6922,6 +6946,7 @@ export namespace Prisma {
       consumerPublicKey: string
       providerPublicKey: string
       createdAt: Date
+      updatedAt: Date
       status: $Enums.Status
       transactionHash: string
     }, ExtArgs["result"]["consumerProviderRequests"]>
@@ -7353,6 +7378,7 @@ export namespace Prisma {
     readonly consumerPublicKey: FieldRef<"consumerProviderRequests", 'String'>
     readonly providerPublicKey: FieldRef<"consumerProviderRequests", 'String'>
     readonly createdAt: FieldRef<"consumerProviderRequests", 'DateTime'>
+    readonly updatedAt: FieldRef<"consumerProviderRequests", 'DateTime'>
     readonly status: FieldRef<"consumerProviderRequests", 'Status'>
     readonly transactionHash: FieldRef<"consumerProviderRequests", 'String'>
   }
@@ -7828,6 +7854,7 @@ export namespace Prisma {
     providerPublicKey: 'providerPublicKey',
     adminPublicKey: 'adminPublicKey',
     createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     status: 'status'
   };
 
@@ -7839,6 +7866,7 @@ export namespace Prisma {
     consumerPublicKey: 'consumerPublicKey',
     providerPublicKey: 'providerPublicKey',
     createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     status: 'status',
     transactionHash: 'transactionHash'
   };
@@ -8134,6 +8162,7 @@ export namespace Prisma {
     providerPublicKey?: StringFilter<"providerRequest"> | string
     adminPublicKey?: StringFilter<"providerRequest"> | string
     createdAt?: DateTimeFilter<"providerRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"providerRequest"> | Date | string
     status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
     provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
@@ -8144,6 +8173,7 @@ export namespace Prisma {
     providerPublicKey?: SortOrder
     adminPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
     provider?: gasAdminOrderByWithRelationInput
     admin?: AdminOrderByWithRelationInput
@@ -8157,6 +8187,7 @@ export namespace Prisma {
     providerPublicKey?: StringFilter<"providerRequest"> | string
     adminPublicKey?: StringFilter<"providerRequest"> | string
     createdAt?: DateTimeFilter<"providerRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"providerRequest"> | Date | string
     status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
     provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
@@ -8167,6 +8198,7 @@ export namespace Prisma {
     providerPublicKey?: SortOrder
     adminPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
     _count?: providerRequestCountOrderByAggregateInput
     _max?: providerRequestMaxOrderByAggregateInput
@@ -8181,6 +8213,7 @@ export namespace Prisma {
     providerPublicKey?: StringWithAggregatesFilter<"providerRequest"> | string
     adminPublicKey?: StringWithAggregatesFilter<"providerRequest"> | string
     createdAt?: DateTimeWithAggregatesFilter<"providerRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"providerRequest"> | Date | string
     status?: EnumStatusWithAggregatesFilter<"providerRequest"> | $Enums.Status
   }
 
@@ -8192,6 +8225,7 @@ export namespace Prisma {
     consumerPublicKey?: StringFilter<"consumerProviderRequests"> | string
     providerPublicKey?: StringFilter<"consumerProviderRequests"> | string
     createdAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
+    updatedAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
     status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
     transactionHash?: StringFilter<"consumerProviderRequests"> | string
     consumer?: XOR<ConsumerScalarRelationFilter, ConsumerWhereInput>
@@ -8203,6 +8237,7 @@ export namespace Prisma {
     consumerPublicKey?: SortOrder
     providerPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
     transactionHash?: SortOrder
     consumer?: ConsumerOrderByWithRelationInput
@@ -8217,6 +8252,7 @@ export namespace Prisma {
     consumerPublicKey?: StringFilter<"consumerProviderRequests"> | string
     providerPublicKey?: StringFilter<"consumerProviderRequests"> | string
     createdAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
+    updatedAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
     status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
     transactionHash?: StringFilter<"consumerProviderRequests"> | string
     consumer?: XOR<ConsumerScalarRelationFilter, ConsumerWhereInput>
@@ -8228,6 +8264,7 @@ export namespace Prisma {
     consumerPublicKey?: SortOrder
     providerPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
     transactionHash?: SortOrder
     _count?: consumerProviderRequestsCountOrderByAggregateInput
@@ -8243,6 +8280,7 @@ export namespace Prisma {
     consumerPublicKey?: StringWithAggregatesFilter<"consumerProviderRequests"> | string
     providerPublicKey?: StringWithAggregatesFilter<"consumerProviderRequests"> | string
     createdAt?: DateTimeWithAggregatesFilter<"consumerProviderRequests"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"consumerProviderRequests"> | Date | string
     status?: EnumStatusWithAggregatesFilter<"consumerProviderRequests"> | $Enums.Status
     transactionHash?: StringWithAggregatesFilter<"consumerProviderRequests"> | string
   }
@@ -8462,6 +8500,7 @@ export namespace Prisma {
   export type providerRequestCreateInput = {
     id?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
     admin: AdminCreateNestedOneWithoutProviderRequestsInput
@@ -8472,12 +8511,14 @@ export namespace Prisma {
     providerPublicKey: string
     adminPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
   }
 
   export type providerRequestUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     provider?: gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput
     admin?: AdminUpdateOneRequiredWithoutProviderRequestsNestedInput
@@ -8488,6 +8529,7 @@ export namespace Prisma {
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     adminPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
@@ -8496,12 +8538,14 @@ export namespace Prisma {
     providerPublicKey: string
     adminPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
   }
 
   export type providerRequestUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
@@ -8510,12 +8554,14 @@ export namespace Prisma {
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     adminPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type consumerProviderRequestsCreateInput = {
     id?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
     consumer: ConsumerCreateNestedOneWithoutKycRequestsInput
@@ -8527,6 +8573,7 @@ export namespace Prisma {
     consumerPublicKey: string
     providerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
   }
@@ -8534,6 +8581,7 @@ export namespace Prisma {
   export type consumerProviderRequestsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
     consumer?: ConsumerUpdateOneRequiredWithoutKycRequestsNestedInput
@@ -8545,6 +8593,7 @@ export namespace Prisma {
     consumerPublicKey?: StringFieldUpdateOperationsInput | string
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
   }
@@ -8554,6 +8603,7 @@ export namespace Prisma {
     consumerPublicKey: string
     providerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
   }
@@ -8561,6 +8611,7 @@ export namespace Prisma {
   export type consumerProviderRequestsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
   }
@@ -8570,6 +8621,7 @@ export namespace Prisma {
     consumerPublicKey?: StringFieldUpdateOperationsInput | string
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
   }
@@ -8768,6 +8820,7 @@ export namespace Prisma {
     providerPublicKey?: SortOrder
     adminPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
   }
 
@@ -8776,6 +8829,7 @@ export namespace Prisma {
     providerPublicKey?: SortOrder
     adminPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
   }
 
@@ -8784,6 +8838,7 @@ export namespace Prisma {
     providerPublicKey?: SortOrder
     adminPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
   }
 
@@ -8797,6 +8852,7 @@ export namespace Prisma {
     consumerPublicKey?: SortOrder
     providerPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
     transactionHash?: SortOrder
   }
@@ -8806,6 +8862,7 @@ export namespace Prisma {
     consumerPublicKey?: SortOrder
     providerPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
     transactionHash?: SortOrder
   }
@@ -8815,6 +8872,7 @@ export namespace Prisma {
     consumerPublicKey?: SortOrder
     providerPublicKey?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     status?: SortOrder
     transactionHash?: SortOrder
   }
@@ -9142,6 +9200,7 @@ export namespace Prisma {
   export type consumerProviderRequestsCreateWithoutConsumerInput = {
     id?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
     provider: gasAdminCreateNestedOneWithoutConsumerRequestsInput
@@ -9151,6 +9210,7 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
   }
@@ -9189,6 +9249,7 @@ export namespace Prisma {
     consumerPublicKey?: StringFilter<"consumerProviderRequests"> | string
     providerPublicKey?: StringFilter<"consumerProviderRequests"> | string
     createdAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
+    updatedAt?: DateTimeFilter<"consumerProviderRequests"> | Date | string
     status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
     transactionHash?: StringFilter<"consumerProviderRequests"> | string
   }
@@ -9196,6 +9257,7 @@ export namespace Prisma {
   export type providerRequestCreateWithoutProviderInput = {
     id?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     admin: AdminCreateNestedOneWithoutProviderRequestsInput
   }
@@ -9204,6 +9266,7 @@ export namespace Prisma {
     id?: string
     adminPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
   }
 
@@ -9220,6 +9283,7 @@ export namespace Prisma {
   export type consumerProviderRequestsCreateWithoutProviderInput = {
     id?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
     consumer: ConsumerCreateNestedOneWithoutKycRequestsInput
@@ -9229,6 +9293,7 @@ export namespace Prisma {
     id?: string
     consumerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
   }
@@ -9267,6 +9332,7 @@ export namespace Prisma {
     providerPublicKey?: StringFilter<"providerRequest"> | string
     adminPublicKey?: StringFilter<"providerRequest"> | string
     createdAt?: DateTimeFilter<"providerRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"providerRequest"> | Date | string
     status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
   }
 
@@ -9289,6 +9355,7 @@ export namespace Prisma {
   export type providerRequestCreateWithoutAdminInput = {
     id?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
   }
@@ -9297,6 +9364,7 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
   }
 
@@ -9522,6 +9590,7 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
   }
@@ -9529,6 +9598,7 @@ export namespace Prisma {
   export type consumerProviderRequestsUpdateWithoutConsumerInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
     provider?: gasAdminUpdateOneRequiredWithoutConsumerRequestsNestedInput
@@ -9538,6 +9608,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
   }
@@ -9546,6 +9617,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
   }
@@ -9554,6 +9626,7 @@ export namespace Prisma {
     id?: string
     adminPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
   }
 
@@ -9561,6 +9634,7 @@ export namespace Prisma {
     id?: string
     consumerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
   }
@@ -9568,6 +9642,7 @@ export namespace Prisma {
   export type providerRequestUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     admin?: AdminUpdateOneRequiredWithoutProviderRequestsNestedInput
   }
@@ -9576,6 +9651,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     adminPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
@@ -9583,12 +9659,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     adminPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
   export type consumerProviderRequestsUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
     consumer?: ConsumerUpdateOneRequiredWithoutKycRequestsNestedInput
@@ -9598,6 +9676,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     consumerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
   }
@@ -9606,6 +9685,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     consumerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
   }
@@ -9614,12 +9694,14 @@ export namespace Prisma {
     id?: string
     providerPublicKey: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     status?: $Enums.Status
   }
 
   export type providerRequestUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     provider?: gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput
   }
@@ -9628,6 +9710,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
@@ -9635,6 +9718,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     providerPublicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 

@@ -58,6 +58,7 @@ model providerRequest {
   providerPublicKey String
   adminPublicKey    String
   createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
   status            Status   @default(PENDING)
   provider gasAdmin @relation(fields: [providerPublicKey], references: [publicKey])
   admin    Admin    @relation(fields: [adminPublicKey], references: [publicKey]) 
@@ -68,6 +69,7 @@ model consumerProviderRequests {
   consumerPublicKey String
   providerPublicKey String
   createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
   status            Status   @default(PENDING)
   transactionHash String
   consumer  Consumer  @relation(fields: [consumerPublicKey], references: [publicKey])

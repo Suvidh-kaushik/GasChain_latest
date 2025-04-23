@@ -3,8 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import axios from "axios"
-import { request } from "http"
-import { CheckCircle2, Clock, Users, XCircle } from "lucide-react"
+import { Clock, Users, XCircle } from "lucide-react"
 import { useEffect, useState } from "react"
 
 const stats = [
@@ -28,26 +27,33 @@ const stats = [
     },
   ]
 
-  const pendingVerifications = [
-    {
-      id: "VER-1229",
-      companyName: "Emily Davis",
-      submittedDate: "2023-04-09",
-      status: "pending",
-    },
-    {
-      id: "VER-1228",
-      companyName: "David Wilson",
-      submittedDate: "2023-04-08",
-      status: "pending",
-    },
-    {
-      id: "VER-1227",
-      companyName: "Lisa Martinez",
-      submittedDate: "2023-04-08",
-      status: "pending",
+  async function handleApprove(requestId: string) {
+    try{
+      const response = await axios.patch(`http://localhost:3000/api/admin/requests/${requestId}`,{
+        status: true
+      })
+      console.log(response.data)
+      alert(response.data.msg)
     }
-  ]
+    catch(error: any){
+      console.error(error)
+      alert("Something went wrong");
+    }
+  }
+
+  async function handleReject(requestId: string) {
+      try{
+        const response = await axios.patch(`http://localhost:3000/api/admin/requests/${requestId}`,{
+          status: false
+        });
+        console.log(response.data)
+        alert(response.data.msg);
+      }
+      catch(error: any){
+        console.error(error)
+        alert("Something went wrong");
+      }
+  }
 
   type pendingRequestsType = {
     id: string,
@@ -132,10 +138,10 @@ export default function AdminDashBoard(){
                                 <td className="py-3 px-2">{formatDate(request.createdAt)}</td>
                                 <td className="py-3 px-2">
                                   <div className="flex space-x-2 justify-center">
-                                    <Button size="sm" variant="outline" className="bg-green-600" >
+                                    <Button onClick={() => handleApprove(request.id)} size="sm" variant="outline" className="bg-green-600" >
                                       Approve
                                     </Button>
-                                    <Button size="sm" variant="outline" className="bg-red-600">
+                                    <Button onClick={() => handleReject(request.id)} size="sm" variant="outline" className="bg-red-600">
                                       Reject
                                     </Button>
                                   </div>
