@@ -10,25 +10,23 @@ import { useTheme as useNextTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Input } from "@/components/ui/input"
+
 
 import {ethers} from "ethers";
 import axios from "axios";
 
-type NonceType = {
-    nonce: string,
-    msg: string
-}
 
-async function getNonce(address: String, role: String): Promise<NonceType> {
+async function getNonce(address: String, role: String): Promise<string> {
 
   try{
     const response = await axios.get(`http://localhost:3000/api/auth?address=${address}&role=${role}`);
 
-    return response.data;
+    return response.data.nonce;
   }
-  catch(error: any){
+  catch(error){
     console.log(error);
-    return {nonce: "", msg: error.message};
+    return "";
   }
 
 }
@@ -48,9 +46,10 @@ async function verifySignature(signature: string, address: String, role: String)
   }
 }
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [isConnecting, setIsConnecting] = useState(false)
-  const [role, setRole] = useState<"consumer" | "admin" | "provider">("consumer")
+  const [role, setRole] = useState<"consumer" | "provider">("consumer")
+  const [name, setName] = useState<string | null>(null);
   const router = useRouter()
   const { theme, setTheme } = useNextTheme()
 
@@ -74,30 +73,25 @@ export default function LoginPage() {
       const account = await signer.getAddress();
       console.log("Account: " + account);
       //Get nonce
-      console.log("Role: " + role);
-      if(role == "provider"){
-        const response = await axios.get(`http://localhost:3000/api/auth/login?address=${account}`)
-        if(!response.data.isAccepted){
-          alert(response.data.msg);
-          return;
-        }
-      }
-
-      const data: NonceType = await getNonce(account, role);
-      console.log("Nonce: " + data.nonce);
+      const nonce: string = await getNonce(account, role);
+      console.log("Nonce: " + nonce);
       //Sign the message
-      if(data.nonce){
-        const signature: string = await signer.signMessage(data.nonce);
+      if(nonce){
+        const signature: string = await signer.signMessage(nonce);
         console.log("Signature: " + signature);
         const response = await verifySignature(signature, account, role);
         console.log(response)
         if(response.isVerified){
-          localStorage.setItem("walletId", account);
-          router.push(`/${role}/dashboard`);
+          const registerResponse = await axios.post("http://localhost:3000/api/auth/register",{
+            name: name,
+            walletId: account,
+            role: role
+          })
+          console.log(registerResponse.data);
+          alert(registerResponse.data.msg);
         }
-        else alert("Invalid signature");
       }
-      else alert(data.msg);
+      else alert("Nonce not generated: " + nonce);
     } 
     catch (error) {
       console.error("Error connecting to MetaMask:", error)
@@ -130,22 +124,22 @@ export default function LoginPage() {
             <div className="flex justify-center mb-4">
               <Image src="/placeholder.svg?height=60&width=60" alt="Logo" width={60} height={60} />
             </div>
-            <CardTitle className="text-2xl">Connect to GasChain KYC</CardTitle>
-            <CardDescription>Sign in with your MetaMask wallet to continue</CardDescription>
+            <CardTitle className="text-2xl">Register to GasChain KYC</CardTitle>
+            <CardDescription>Sign up with your MetaMask wallet to continue</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs
               defaultValue="consumer"
               className="w-full"
-              onValueChange={(value) => setRole(value as "consumer" | "admin")}
+              onValueChange={(value) => setRole(value as "consumer" | "provider")}
             >
-              <TabsList className="grid w-full grid-cols-3 mb-6">
+              <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="consumer">Consumer</TabsTrigger>
                 <TabsTrigger value="provider">Gas Provider</TabsTrigger>
-                <TabsTrigger value="admin">Admin</TabsTrigger>
               </TabsList>
               <TabsContent value="consumer">
                 <div className="text-center mb-4">
+                  <Input className="mb-2" required onChange={(e) => setName(e.target.value)}  placeholder="Enter Full Name as per Aadhar" />
                   <p className="text-sm text-muted-foreground">
                     Connect as a gas consumer to upload documents and track your verification status
                   </p>
@@ -153,15 +147,9 @@ export default function LoginPage() {
               </TabsContent>
               <TabsContent value="provider">
                 <div className="text-center mb-4">
+                  <Input className="mb-2" required onChange={(e) => setName(e.target.value)} placeholder="Enter Company Name" />
                   <p className="text-sm text-muted-foreground">
-                  Connect as an admin to verify consumer documents and manage the platform
-                  </p>
-                </div>
-              </TabsContent>
-              <TabsContent value="admin">
-                <div className="text-center mb-4">
-                  <p className="text-sm text-muted-foreground">
-                    Connect as an admin to verify providers and manage the platform
+                  Connect as an gas provider to verify consumer documents and manage the platform
                   </p>
                 </div>
               </TabsContent>
@@ -171,6 +159,7 @@ export default function LoginPage() {
               className="w-full relative group overflow-hidden"
               size="lg"
               onClick={handleConnect}
+              disabled={(isConnecting || !name ? true : false) && (role == "provider" || role == "consumer")}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               {isConnecting ? (
