@@ -25,6 +25,12 @@ export async function GET(req: NextRequest){
         if(!admin) return NextResponse.json({nonce: "", msg: "You are not an admin"});
     }
 
+    if(role == "consumer"){
+        const consumer = await prisma.consumer.findUnique({
+            where: {publicKey: walletId}
+        })
+        if(!consumer) return NextResponse.json({nonce: "", msg: "Please Register"});
+    }
     const nonce = getNonce(walletId, role);
 
     try{
