@@ -75,13 +75,13 @@ export default function LoginPage() {
       console.log("Account: " + account);
       //Get nonce
       console.log("Role: " + role);
-      if(role == "provider"){
-        const response = await axios.get(`http://localhost:3000/api/auth/login?address=${account}`)
-        if(!response.data.isAccepted){
-          alert(response.data.msg);
-          return;
-        }
+
+      const response = await axios.get(`http://localhost:3000/api/auth/login?address=${account}&role=${role}`)
+      if(!response.data.isAccepted){
+        alert(response.data.msg);
+        return;
       }
+      
 
       const data: NonceType = await getNonce(account, role);
       console.log("Nonce: " + data.nonce);

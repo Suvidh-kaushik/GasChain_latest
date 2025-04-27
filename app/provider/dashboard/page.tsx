@@ -4,6 +4,7 @@ import { useState } from "react"
 import { CheckCircle2, Clock, Users, XCircle } from "lucide-react"
 import Link from "next/link"
 
+import PendingDashboard from "@/components/custom/PendingDashboard"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -242,45 +243,7 @@ export default function providerDashboard() {
         </TabsContent>
 
         <TabsContent value="pending" className="space-y-6">
-          <Card className="relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-            <CardHeader>
-              <CardTitle>Pending Verifications</CardTitle>
-              <CardDescription>KYC documents awaiting verification</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b">
-                      <th className="text-left py-3 px-2">ID</th>
-                      <th className="text-left py-3 px-2">User</th>
-                      <th className="text-left py-3 px-2">Documents</th>
-                      <th className="text-left py-3 px-2">Submitted Date</th>
-                      <th className="text-left py-3 px-2">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pendingVerifications.map((verification) => (
-                      <tr key={verification.id} className="border-b">
-                        <td className="py-3 px-2 font-medium">{verification.id}</td>
-                        <td className="py-3 px-2">{verification.user}</td>
-                        <td className="py-3 px-2">{verification.documentCount} documents</td>
-                        <td className="py-3 px-2">{verification.submittedDate}</td>
-                        <td className="py-3 px-2">
-                          <div className="flex space-x-2">
-                            <Button size="sm" variant="outline" asChild>
-                              <Link href={`/provider/verification/${verification.id}`}>View</Link>
-                            </Button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
+            <PendingDashboard/>
         </TabsContent>
 
         <TabsContent value="activity" className="space-y-6">

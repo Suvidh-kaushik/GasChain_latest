@@ -19,10 +19,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type Consumer = $Result.DefaultSelection<Prisma.$ConsumerPayload>
 /**
- * Model gasAdmin
+ * Model gasProvider
  * 
  */
-export type gasAdmin = $Result.DefaultSelection<Prisma.$gasAdminPayload>
+export type gasProvider = $Result.DefaultSelection<Prisma.$gasProviderPayload>
 /**
  * Model Admin
  * 
@@ -198,14 +198,14 @@ export class PrismaClient<
   get consumer(): Prisma.ConsumerDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.gasAdmin`: Exposes CRUD operations for the **gasAdmin** model.
+   * `prisma.gasProvider`: Exposes CRUD operations for the **gasProvider** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more GasAdmins
-    * const gasAdmins = await prisma.gasAdmin.findMany()
+    * // Fetch zero or more GasProviders
+    * const gasProviders = await prisma.gasProvider.findMany()
     * ```
     */
-  get gasAdmin(): Prisma.gasAdminDelegate<ExtArgs, ClientOptions>;
+  get gasProvider(): Prisma.gasProviderDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.admin`: Exposes CRUD operations for the **Admin** model.
@@ -687,7 +687,7 @@ export namespace Prisma {
 
   export const ModelName: {
     Consumer: 'Consumer',
-    gasAdmin: 'gasAdmin',
+    gasProvider: 'gasProvider',
     Admin: 'Admin',
     Temp: 'Temp',
     providerRequest: 'providerRequest',
@@ -710,7 +710,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "consumer" | "gasAdmin" | "admin" | "temp" | "providerRequest" | "consumerProviderRequests"
+      modelProps: "consumer" | "gasProvider" | "admin" | "temp" | "providerRequest" | "consumerProviderRequests"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -788,77 +788,77 @@ export namespace Prisma {
           }
         }
       }
-      gasAdmin: {
-        payload: Prisma.$gasAdminPayload<ExtArgs>
-        fields: Prisma.gasAdminFieldRefs
+      gasProvider: {
+        payload: Prisma.$gasProviderPayload<ExtArgs>
+        fields: Prisma.gasProviderFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.gasAdminFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload> | null
+            args: Prisma.gasProviderFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.gasAdminFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>
+            args: Prisma.gasProviderFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>
           }
           findFirst: {
-            args: Prisma.gasAdminFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload> | null
+            args: Prisma.gasProviderFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.gasAdminFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>
+            args: Prisma.gasProviderFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>
           }
           findMany: {
-            args: Prisma.gasAdminFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>[]
+            args: Prisma.gasProviderFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>[]
           }
           create: {
-            args: Prisma.gasAdminCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>
+            args: Prisma.gasProviderCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>
           }
           createMany: {
-            args: Prisma.gasAdminCreateManyArgs<ExtArgs>
+            args: Prisma.gasProviderCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.gasAdminCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>[]
+            args: Prisma.gasProviderCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>[]
           }
           delete: {
-            args: Prisma.gasAdminDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>
+            args: Prisma.gasProviderDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>
           }
           update: {
-            args: Prisma.gasAdminUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>
+            args: Prisma.gasProviderUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>
           }
           deleteMany: {
-            args: Prisma.gasAdminDeleteManyArgs<ExtArgs>
+            args: Prisma.gasProviderDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.gasAdminUpdateManyArgs<ExtArgs>
+            args: Prisma.gasProviderUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.gasAdminUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>[]
+            args: Prisma.gasProviderUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>[]
           }
           upsert: {
-            args: Prisma.gasAdminUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$gasAdminPayload>
+            args: Prisma.gasProviderUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$gasProviderPayload>
           }
           aggregate: {
-            args: Prisma.GasAdminAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateGasAdmin>
+            args: Prisma.GasProviderAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGasProvider>
           }
           groupBy: {
-            args: Prisma.gasAdminGroupByArgs<ExtArgs>
-            result: $Utils.Optional<GasAdminGroupByOutputType>[]
+            args: Prisma.gasProviderGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GasProviderGroupByOutputType>[]
           }
           count: {
-            args: Prisma.gasAdminCountArgs<ExtArgs>
-            result: $Utils.Optional<GasAdminCountAggregateOutputType> | number
+            args: Prisma.gasProviderCountArgs<ExtArgs>
+            result: $Utils.Optional<GasProviderCountAggregateOutputType> | number
           }
         }
       }
@@ -1243,7 +1243,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     consumer?: ConsumerOmit
-    gasAdmin?: gasAdminOmit
+    gasProvider?: gasProviderOmit
     admin?: AdminOmit
     temp?: TempOmit
     providerRequest?: providerRequestOmit
@@ -1369,41 +1369,41 @@ export namespace Prisma {
 
 
   /**
-   * Count Type GasAdminCountOutputType
+   * Count Type GasProviderCountOutputType
    */
 
-  export type GasAdminCountOutputType = {
+  export type GasProviderCountOutputType = {
     approvalRequests: number
     consumerRequests: number
   }
 
-  export type GasAdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    approvalRequests?: boolean | GasAdminCountOutputTypeCountApprovalRequestsArgs
-    consumerRequests?: boolean | GasAdminCountOutputTypeCountConsumerRequestsArgs
+  export type GasProviderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    approvalRequests?: boolean | GasProviderCountOutputTypeCountApprovalRequestsArgs
+    consumerRequests?: boolean | GasProviderCountOutputTypeCountConsumerRequestsArgs
   }
 
   // Custom InputTypes
   /**
-   * GasAdminCountOutputType without action
+   * GasProviderCountOutputType without action
    */
-  export type GasAdminCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GasProviderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the GasAdminCountOutputType
+     * Select specific fields to fetch from the GasProviderCountOutputType
      */
-    select?: GasAdminCountOutputTypeSelect<ExtArgs> | null
+    select?: GasProviderCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * GasAdminCountOutputType without action
+   * GasProviderCountOutputType without action
    */
-  export type GasAdminCountOutputTypeCountApprovalRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GasProviderCountOutputTypeCountApprovalRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: providerRequestWhereInput
   }
 
   /**
-   * GasAdminCountOutputType without action
+   * GasProviderCountOutputType without action
    */
-  export type GasAdminCountOutputTypeCountConsumerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GasProviderCountOutputTypeCountConsumerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: consumerProviderRequestsWhereInput
   }
 
@@ -2514,16 +2514,16 @@ export namespace Prisma {
 
 
   /**
-   * Model gasAdmin
+   * Model gasProvider
    */
 
-  export type AggregateGasAdmin = {
-    _count: GasAdminCountAggregateOutputType | null
-    _min: GasAdminMinAggregateOutputType | null
-    _max: GasAdminMaxAggregateOutputType | null
+  export type AggregateGasProvider = {
+    _count: GasProviderCountAggregateOutputType | null
+    _min: GasProviderMinAggregateOutputType | null
+    _max: GasProviderMaxAggregateOutputType | null
   }
 
-  export type GasAdminMinAggregateOutputType = {
+  export type GasProviderMinAggregateOutputType = {
     id: string | null
     publicKey: string | null
     createdAt: Date | null
@@ -2531,7 +2531,7 @@ export namespace Prisma {
     status: $Enums.Status | null
   }
 
-  export type GasAdminMaxAggregateOutputType = {
+  export type GasProviderMaxAggregateOutputType = {
     id: string | null
     publicKey: string | null
     createdAt: Date | null
@@ -2539,7 +2539,7 @@ export namespace Prisma {
     status: $Enums.Status | null
   }
 
-  export type GasAdminCountAggregateOutputType = {
+  export type GasProviderCountAggregateOutputType = {
     id: number
     publicKey: number
     createdAt: number
@@ -2549,7 +2549,7 @@ export namespace Prisma {
   }
 
 
-  export type GasAdminMinAggregateInputType = {
+  export type GasProviderMinAggregateInputType = {
     id?: true
     publicKey?: true
     createdAt?: true
@@ -2557,7 +2557,7 @@ export namespace Prisma {
     status?: true
   }
 
-  export type GasAdminMaxAggregateInputType = {
+  export type GasProviderMaxAggregateInputType = {
     id?: true
     publicKey?: true
     createdAt?: true
@@ -2565,7 +2565,7 @@ export namespace Prisma {
     status?: true
   }
 
-  export type GasAdminCountAggregateInputType = {
+  export type GasProviderCountAggregateInputType = {
     id?: true
     publicKey?: true
     createdAt?: true
@@ -2574,131 +2574,131 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type GasAdminAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GasProviderAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which gasAdmin to aggregate.
+     * Filter which gasProvider to aggregate.
      */
-    where?: gasAdminWhereInput
+    where?: gasProviderWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of gasAdmins to fetch.
+     * Determine the order of gasProviders to fetch.
      */
-    orderBy?: gasAdminOrderByWithRelationInput | gasAdminOrderByWithRelationInput[]
+    orderBy?: gasProviderOrderByWithRelationInput | gasProviderOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: gasAdminWhereUniqueInput
+    cursor?: gasProviderWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` gasAdmins from the position of the cursor.
+     * Take `±n` gasProviders from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` gasAdmins.
+     * Skip the first `n` gasProviders.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned gasAdmins
+     * Count returned gasProviders
     **/
-    _count?: true | GasAdminCountAggregateInputType
+    _count?: true | GasProviderCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: GasAdminMinAggregateInputType
+    _min?: GasProviderMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: GasAdminMaxAggregateInputType
+    _max?: GasProviderMaxAggregateInputType
   }
 
-  export type GetGasAdminAggregateType<T extends GasAdminAggregateArgs> = {
-        [P in keyof T & keyof AggregateGasAdmin]: P extends '_count' | 'count'
+  export type GetGasProviderAggregateType<T extends GasProviderAggregateArgs> = {
+        [P in keyof T & keyof AggregateGasProvider]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateGasAdmin[P]>
-      : GetScalarType<T[P], AggregateGasAdmin[P]>
+        : GetScalarType<T[P], AggregateGasProvider[P]>
+      : GetScalarType<T[P], AggregateGasProvider[P]>
   }
 
 
 
 
-  export type gasAdminGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: gasAdminWhereInput
-    orderBy?: gasAdminOrderByWithAggregationInput | gasAdminOrderByWithAggregationInput[]
-    by: GasAdminScalarFieldEnum[] | GasAdminScalarFieldEnum
-    having?: gasAdminScalarWhereWithAggregatesInput
+  export type gasProviderGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: gasProviderWhereInput
+    orderBy?: gasProviderOrderByWithAggregationInput | gasProviderOrderByWithAggregationInput[]
+    by: GasProviderScalarFieldEnum[] | GasProviderScalarFieldEnum
+    having?: gasProviderScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: GasAdminCountAggregateInputType | true
-    _min?: GasAdminMinAggregateInputType
-    _max?: GasAdminMaxAggregateInputType
+    _count?: GasProviderCountAggregateInputType | true
+    _min?: GasProviderMinAggregateInputType
+    _max?: GasProviderMaxAggregateInputType
   }
 
-  export type GasAdminGroupByOutputType = {
+  export type GasProviderGroupByOutputType = {
     id: string
     publicKey: string
     createdAt: Date
     companyName: string
     status: $Enums.Status
-    _count: GasAdminCountAggregateOutputType | null
-    _min: GasAdminMinAggregateOutputType | null
-    _max: GasAdminMaxAggregateOutputType | null
+    _count: GasProviderCountAggregateOutputType | null
+    _min: GasProviderMinAggregateOutputType | null
+    _max: GasProviderMaxAggregateOutputType | null
   }
 
-  type GetGasAdminGroupByPayload<T extends gasAdminGroupByArgs> = Prisma.PrismaPromise<
+  type GetGasProviderGroupByPayload<T extends gasProviderGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<GasAdminGroupByOutputType, T['by']> &
+      PickEnumerable<GasProviderGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof GasAdminGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof GasProviderGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], GasAdminGroupByOutputType[P]>
-            : GetScalarType<T[P], GasAdminGroupByOutputType[P]>
+              : GetScalarType<T[P], GasProviderGroupByOutputType[P]>
+            : GetScalarType<T[P], GasProviderGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type gasAdminSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type gasProviderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
     createdAt?: boolean
     companyName?: boolean
     status?: boolean
-    approvalRequests?: boolean | gasAdmin$approvalRequestsArgs<ExtArgs>
-    consumerRequests?: boolean | gasAdmin$consumerRequestsArgs<ExtArgs>
-    _count?: boolean | GasAdminCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["gasAdmin"]>
+    approvalRequests?: boolean | gasProvider$approvalRequestsArgs<ExtArgs>
+    consumerRequests?: boolean | gasProvider$consumerRequestsArgs<ExtArgs>
+    _count?: boolean | GasProviderCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gasProvider"]>
 
-  export type gasAdminSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type gasProviderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
     createdAt?: boolean
     companyName?: boolean
     status?: boolean
-  }, ExtArgs["result"]["gasAdmin"]>
+  }, ExtArgs["result"]["gasProvider"]>
 
-  export type gasAdminSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type gasProviderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     publicKey?: boolean
     createdAt?: boolean
     companyName?: boolean
     status?: boolean
-  }, ExtArgs["result"]["gasAdmin"]>
+  }, ExtArgs["result"]["gasProvider"]>
 
-  export type gasAdminSelectScalar = {
+  export type gasProviderSelectScalar = {
     id?: boolean
     publicKey?: boolean
     createdAt?: boolean
@@ -2706,17 +2706,17 @@ export namespace Prisma {
     status?: boolean
   }
 
-  export type gasAdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "createdAt" | "companyName" | "status", ExtArgs["result"]["gasAdmin"]>
-  export type gasAdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    approvalRequests?: boolean | gasAdmin$approvalRequestsArgs<ExtArgs>
-    consumerRequests?: boolean | gasAdmin$consumerRequestsArgs<ExtArgs>
-    _count?: boolean | GasAdminCountOutputTypeDefaultArgs<ExtArgs>
+  export type gasProviderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "createdAt" | "companyName" | "status", ExtArgs["result"]["gasProvider"]>
+  export type gasProviderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    approvalRequests?: boolean | gasProvider$approvalRequestsArgs<ExtArgs>
+    consumerRequests?: boolean | gasProvider$consumerRequestsArgs<ExtArgs>
+    _count?: boolean | GasProviderCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type gasAdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type gasAdminIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type gasProviderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type gasProviderIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $gasAdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "gasAdmin"
+  export type $gasProviderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "gasProvider"
     objects: {
       approvalRequests: Prisma.$providerRequestPayload<ExtArgs>[]
       consumerRequests: Prisma.$consumerProviderRequestsPayload<ExtArgs>[]
@@ -2727,136 +2727,136 @@ export namespace Prisma {
       createdAt: Date
       companyName: string
       status: $Enums.Status
-    }, ExtArgs["result"]["gasAdmin"]>
+    }, ExtArgs["result"]["gasProvider"]>
     composites: {}
   }
 
-  type gasAdminGetPayload<S extends boolean | null | undefined | gasAdminDefaultArgs> = $Result.GetResult<Prisma.$gasAdminPayload, S>
+  type gasProviderGetPayload<S extends boolean | null | undefined | gasProviderDefaultArgs> = $Result.GetResult<Prisma.$gasProviderPayload, S>
 
-  type gasAdminCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<gasAdminFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: GasAdminCountAggregateInputType | true
+  type gasProviderCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<gasProviderFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GasProviderCountAggregateInputType | true
     }
 
-  export interface gasAdminDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['gasAdmin'], meta: { name: 'gasAdmin' } }
+  export interface gasProviderDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['gasProvider'], meta: { name: 'gasProvider' } }
     /**
-     * Find zero or one GasAdmin that matches the filter.
-     * @param {gasAdminFindUniqueArgs} args - Arguments to find a GasAdmin
+     * Find zero or one GasProvider that matches the filter.
+     * @param {gasProviderFindUniqueArgs} args - Arguments to find a GasProvider
      * @example
-     * // Get one GasAdmin
-     * const gasAdmin = await prisma.gasAdmin.findUnique({
+     * // Get one GasProvider
+     * const gasProvider = await prisma.gasProvider.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends gasAdminFindUniqueArgs>(args: SelectSubset<T, gasAdminFindUniqueArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends gasProviderFindUniqueArgs>(args: SelectSubset<T, gasProviderFindUniqueArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one GasAdmin that matches the filter or throw an error with `error.code='P2025'`
+     * Find one GasProvider that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {gasAdminFindUniqueOrThrowArgs} args - Arguments to find a GasAdmin
+     * @param {gasProviderFindUniqueOrThrowArgs} args - Arguments to find a GasProvider
      * @example
-     * // Get one GasAdmin
-     * const gasAdmin = await prisma.gasAdmin.findUniqueOrThrow({
+     * // Get one GasProvider
+     * const gasProvider = await prisma.gasProvider.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends gasAdminFindUniqueOrThrowArgs>(args: SelectSubset<T, gasAdminFindUniqueOrThrowArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends gasProviderFindUniqueOrThrowArgs>(args: SelectSubset<T, gasProviderFindUniqueOrThrowArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first GasAdmin that matches the filter.
+     * Find the first GasProvider that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {gasAdminFindFirstArgs} args - Arguments to find a GasAdmin
+     * @param {gasProviderFindFirstArgs} args - Arguments to find a GasProvider
      * @example
-     * // Get one GasAdmin
-     * const gasAdmin = await prisma.gasAdmin.findFirst({
+     * // Get one GasProvider
+     * const gasProvider = await prisma.gasProvider.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends gasAdminFindFirstArgs>(args?: SelectSubset<T, gasAdminFindFirstArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends gasProviderFindFirstArgs>(args?: SelectSubset<T, gasProviderFindFirstArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first GasAdmin that matches the filter or
+     * Find the first GasProvider that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {gasAdminFindFirstOrThrowArgs} args - Arguments to find a GasAdmin
+     * @param {gasProviderFindFirstOrThrowArgs} args - Arguments to find a GasProvider
      * @example
-     * // Get one GasAdmin
-     * const gasAdmin = await prisma.gasAdmin.findFirstOrThrow({
+     * // Get one GasProvider
+     * const gasProvider = await prisma.gasProvider.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends gasAdminFindFirstOrThrowArgs>(args?: SelectSubset<T, gasAdminFindFirstOrThrowArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends gasProviderFindFirstOrThrowArgs>(args?: SelectSubset<T, gasProviderFindFirstOrThrowArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more GasAdmins that matches the filter.
+     * Find zero or more GasProviders that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {gasAdminFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {gasProviderFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all GasAdmins
-     * const gasAdmins = await prisma.gasAdmin.findMany()
+     * // Get all GasProviders
+     * const gasProviders = await prisma.gasProvider.findMany()
      * 
-     * // Get first 10 GasAdmins
-     * const gasAdmins = await prisma.gasAdmin.findMany({ take: 10 })
+     * // Get first 10 GasProviders
+     * const gasProviders = await prisma.gasProvider.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const gasAdminWithIdOnly = await prisma.gasAdmin.findMany({ select: { id: true } })
+     * const gasProviderWithIdOnly = await prisma.gasProvider.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends gasAdminFindManyArgs>(args?: SelectSubset<T, gasAdminFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends gasProviderFindManyArgs>(args?: SelectSubset<T, gasProviderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a GasAdmin.
-     * @param {gasAdminCreateArgs} args - Arguments to create a GasAdmin.
+     * Create a GasProvider.
+     * @param {gasProviderCreateArgs} args - Arguments to create a GasProvider.
      * @example
-     * // Create one GasAdmin
-     * const GasAdmin = await prisma.gasAdmin.create({
+     * // Create one GasProvider
+     * const GasProvider = await prisma.gasProvider.create({
      *   data: {
-     *     // ... data to create a GasAdmin
+     *     // ... data to create a GasProvider
      *   }
      * })
      * 
      */
-    create<T extends gasAdminCreateArgs>(args: SelectSubset<T, gasAdminCreateArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends gasProviderCreateArgs>(args: SelectSubset<T, gasProviderCreateArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many GasAdmins.
-     * @param {gasAdminCreateManyArgs} args - Arguments to create many GasAdmins.
+     * Create many GasProviders.
+     * @param {gasProviderCreateManyArgs} args - Arguments to create many GasProviders.
      * @example
-     * // Create many GasAdmins
-     * const gasAdmin = await prisma.gasAdmin.createMany({
+     * // Create many GasProviders
+     * const gasProvider = await prisma.gasProvider.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends gasAdminCreateManyArgs>(args?: SelectSubset<T, gasAdminCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends gasProviderCreateManyArgs>(args?: SelectSubset<T, gasProviderCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many GasAdmins and returns the data saved in the database.
-     * @param {gasAdminCreateManyAndReturnArgs} args - Arguments to create many GasAdmins.
+     * Create many GasProviders and returns the data saved in the database.
+     * @param {gasProviderCreateManyAndReturnArgs} args - Arguments to create many GasProviders.
      * @example
-     * // Create many GasAdmins
-     * const gasAdmin = await prisma.gasAdmin.createManyAndReturn({
+     * // Create many GasProviders
+     * const gasProvider = await prisma.gasProvider.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many GasAdmins and only return the `id`
-     * const gasAdminWithIdOnly = await prisma.gasAdmin.createManyAndReturn({
+     * // Create many GasProviders and only return the `id`
+     * const gasProviderWithIdOnly = await prisma.gasProvider.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2866,28 +2866,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends gasAdminCreateManyAndReturnArgs>(args?: SelectSubset<T, gasAdminCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends gasProviderCreateManyAndReturnArgs>(args?: SelectSubset<T, gasProviderCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a GasAdmin.
-     * @param {gasAdminDeleteArgs} args - Arguments to delete one GasAdmin.
+     * Delete a GasProvider.
+     * @param {gasProviderDeleteArgs} args - Arguments to delete one GasProvider.
      * @example
-     * // Delete one GasAdmin
-     * const GasAdmin = await prisma.gasAdmin.delete({
+     * // Delete one GasProvider
+     * const GasProvider = await prisma.gasProvider.delete({
      *   where: {
-     *     // ... filter to delete one GasAdmin
+     *     // ... filter to delete one GasProvider
      *   }
      * })
      * 
      */
-    delete<T extends gasAdminDeleteArgs>(args: SelectSubset<T, gasAdminDeleteArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends gasProviderDeleteArgs>(args: SelectSubset<T, gasProviderDeleteArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one GasAdmin.
-     * @param {gasAdminUpdateArgs} args - Arguments to update one GasAdmin.
+     * Update one GasProvider.
+     * @param {gasProviderUpdateArgs} args - Arguments to update one GasProvider.
      * @example
-     * // Update one GasAdmin
-     * const gasAdmin = await prisma.gasAdmin.update({
+     * // Update one GasProvider
+     * const gasProvider = await prisma.gasProvider.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2897,30 +2897,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends gasAdminUpdateArgs>(args: SelectSubset<T, gasAdminUpdateArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends gasProviderUpdateArgs>(args: SelectSubset<T, gasProviderUpdateArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more GasAdmins.
-     * @param {gasAdminDeleteManyArgs} args - Arguments to filter GasAdmins to delete.
+     * Delete zero or more GasProviders.
+     * @param {gasProviderDeleteManyArgs} args - Arguments to filter GasProviders to delete.
      * @example
-     * // Delete a few GasAdmins
-     * const { count } = await prisma.gasAdmin.deleteMany({
+     * // Delete a few GasProviders
+     * const { count } = await prisma.gasProvider.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends gasAdminDeleteManyArgs>(args?: SelectSubset<T, gasAdminDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends gasProviderDeleteManyArgs>(args?: SelectSubset<T, gasProviderDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more GasAdmins.
+     * Update zero or more GasProviders.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {gasAdminUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {gasProviderUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many GasAdmins
-     * const gasAdmin = await prisma.gasAdmin.updateMany({
+     * // Update many GasProviders
+     * const gasProvider = await prisma.gasProvider.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2930,14 +2930,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends gasAdminUpdateManyArgs>(args: SelectSubset<T, gasAdminUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends gasProviderUpdateManyArgs>(args: SelectSubset<T, gasProviderUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more GasAdmins and returns the data updated in the database.
-     * @param {gasAdminUpdateManyAndReturnArgs} args - Arguments to update many GasAdmins.
+     * Update zero or more GasProviders and returns the data updated in the database.
+     * @param {gasProviderUpdateManyAndReturnArgs} args - Arguments to update many GasProviders.
      * @example
-     * // Update many GasAdmins
-     * const gasAdmin = await prisma.gasAdmin.updateManyAndReturn({
+     * // Update many GasProviders
+     * const gasProvider = await prisma.gasProvider.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2946,8 +2946,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more GasAdmins and only return the `id`
-     * const gasAdminWithIdOnly = await prisma.gasAdmin.updateManyAndReturn({
+     * // Update zero or more GasProviders and only return the `id`
+     * const gasProviderWithIdOnly = await prisma.gasProvider.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2960,56 +2960,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends gasAdminUpdateManyAndReturnArgs>(args: SelectSubset<T, gasAdminUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends gasProviderUpdateManyAndReturnArgs>(args: SelectSubset<T, gasProviderUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one GasAdmin.
-     * @param {gasAdminUpsertArgs} args - Arguments to update or create a GasAdmin.
+     * Create or update one GasProvider.
+     * @param {gasProviderUpsertArgs} args - Arguments to update or create a GasProvider.
      * @example
-     * // Update or create a GasAdmin
-     * const gasAdmin = await prisma.gasAdmin.upsert({
+     * // Update or create a GasProvider
+     * const gasProvider = await prisma.gasProvider.upsert({
      *   create: {
-     *     // ... data to create a GasAdmin
+     *     // ... data to create a GasProvider
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the GasAdmin we want to update
+     *     // ... the filter for the GasProvider we want to update
      *   }
      * })
      */
-    upsert<T extends gasAdminUpsertArgs>(args: SelectSubset<T, gasAdminUpsertArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends gasProviderUpsertArgs>(args: SelectSubset<T, gasProviderUpsertArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of GasAdmins.
+     * Count the number of GasProviders.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {gasAdminCountArgs} args - Arguments to filter GasAdmins to count.
+     * @param {gasProviderCountArgs} args - Arguments to filter GasProviders to count.
      * @example
-     * // Count the number of GasAdmins
-     * const count = await prisma.gasAdmin.count({
+     * // Count the number of GasProviders
+     * const count = await prisma.gasProvider.count({
      *   where: {
-     *     // ... the filter for the GasAdmins we want to count
+     *     // ... the filter for the GasProviders we want to count
      *   }
      * })
     **/
-    count<T extends gasAdminCountArgs>(
-      args?: Subset<T, gasAdminCountArgs>,
+    count<T extends gasProviderCountArgs>(
+      args?: Subset<T, gasProviderCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], GasAdminCountAggregateOutputType>
+          : GetScalarType<T['select'], GasProviderCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a GasAdmin.
+     * Allows you to perform aggregations operations on a GasProvider.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {GasAdminAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {GasProviderAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3029,13 +3029,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends GasAdminAggregateArgs>(args: Subset<T, GasAdminAggregateArgs>): Prisma.PrismaPromise<GetGasAdminAggregateType<T>>
+    aggregate<T extends GasProviderAggregateArgs>(args: Subset<T, GasProviderAggregateArgs>): Prisma.PrismaPromise<GetGasProviderAggregateType<T>>
 
     /**
-     * Group by GasAdmin.
+     * Group by GasProvider.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {gasAdminGroupByArgs} args - Group by arguments.
+     * @param {gasProviderGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3050,14 +3050,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends gasAdminGroupByArgs,
+      T extends gasProviderGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: gasAdminGroupByArgs['orderBy'] }
-        : { orderBy?: gasAdminGroupByArgs['orderBy'] },
+        ? { orderBy: gasProviderGroupByArgs['orderBy'] }
+        : { orderBy?: gasProviderGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3106,23 +3106,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, gasAdminGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGasAdminGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, gasProviderGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGasProviderGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the gasAdmin model
+   * Fields of the gasProvider model
    */
-  readonly fields: gasAdminFieldRefs;
+  readonly fields: gasProviderFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for gasAdmin.
+   * The delegate class that acts as a "Promise-like" for gasProvider.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__gasAdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__gasProviderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    approvalRequests<T extends gasAdmin$approvalRequestsArgs<ExtArgs> = {}>(args?: Subset<T, gasAdmin$approvalRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    consumerRequests<T extends gasAdmin$consumerRequestsArgs<ExtArgs> = {}>(args?: Subset<T, gasAdmin$consumerRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    approvalRequests<T extends gasProvider$approvalRequestsArgs<ExtArgs> = {}>(args?: Subset<T, gasProvider$approvalRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$providerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    consumerRequests<T extends gasProvider$consumerRequestsArgs<ExtArgs> = {}>(args?: Subset<T, gasProvider$consumerRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$consumerProviderRequestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3149,405 +3149,405 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the gasAdmin model
+   * Fields of the gasProvider model
    */
-  interface gasAdminFieldRefs {
-    readonly id: FieldRef<"gasAdmin", 'String'>
-    readonly publicKey: FieldRef<"gasAdmin", 'String'>
-    readonly createdAt: FieldRef<"gasAdmin", 'DateTime'>
-    readonly companyName: FieldRef<"gasAdmin", 'String'>
-    readonly status: FieldRef<"gasAdmin", 'Status'>
+  interface gasProviderFieldRefs {
+    readonly id: FieldRef<"gasProvider", 'String'>
+    readonly publicKey: FieldRef<"gasProvider", 'String'>
+    readonly createdAt: FieldRef<"gasProvider", 'DateTime'>
+    readonly companyName: FieldRef<"gasProvider", 'String'>
+    readonly status: FieldRef<"gasProvider", 'Status'>
   }
     
 
   // Custom InputTypes
   /**
-   * gasAdmin findUnique
+   * gasProvider findUnique
    */
-  export type gasAdminFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * Filter, which gasAdmin to fetch.
+     * Filter, which gasProvider to fetch.
      */
-    where: gasAdminWhereUniqueInput
+    where: gasProviderWhereUniqueInput
   }
 
   /**
-   * gasAdmin findUniqueOrThrow
+   * gasProvider findUniqueOrThrow
    */
-  export type gasAdminFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * Filter, which gasAdmin to fetch.
+     * Filter, which gasProvider to fetch.
      */
-    where: gasAdminWhereUniqueInput
+    where: gasProviderWhereUniqueInput
   }
 
   /**
-   * gasAdmin findFirst
+   * gasProvider findFirst
    */
-  export type gasAdminFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * Filter, which gasAdmin to fetch.
+     * Filter, which gasProvider to fetch.
      */
-    where?: gasAdminWhereInput
+    where?: gasProviderWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of gasAdmins to fetch.
+     * Determine the order of gasProviders to fetch.
      */
-    orderBy?: gasAdminOrderByWithRelationInput | gasAdminOrderByWithRelationInput[]
+    orderBy?: gasProviderOrderByWithRelationInput | gasProviderOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for gasAdmins.
+     * Sets the position for searching for gasProviders.
      */
-    cursor?: gasAdminWhereUniqueInput
+    cursor?: gasProviderWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` gasAdmins from the position of the cursor.
+     * Take `±n` gasProviders from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` gasAdmins.
+     * Skip the first `n` gasProviders.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of gasAdmins.
+     * Filter by unique combinations of gasProviders.
      */
-    distinct?: GasAdminScalarFieldEnum | GasAdminScalarFieldEnum[]
+    distinct?: GasProviderScalarFieldEnum | GasProviderScalarFieldEnum[]
   }
 
   /**
-   * gasAdmin findFirstOrThrow
+   * gasProvider findFirstOrThrow
    */
-  export type gasAdminFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * Filter, which gasAdmin to fetch.
+     * Filter, which gasProvider to fetch.
      */
-    where?: gasAdminWhereInput
+    where?: gasProviderWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of gasAdmins to fetch.
+     * Determine the order of gasProviders to fetch.
      */
-    orderBy?: gasAdminOrderByWithRelationInput | gasAdminOrderByWithRelationInput[]
+    orderBy?: gasProviderOrderByWithRelationInput | gasProviderOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for gasAdmins.
+     * Sets the position for searching for gasProviders.
      */
-    cursor?: gasAdminWhereUniqueInput
+    cursor?: gasProviderWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` gasAdmins from the position of the cursor.
+     * Take `±n` gasProviders from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` gasAdmins.
+     * Skip the first `n` gasProviders.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of gasAdmins.
+     * Filter by unique combinations of gasProviders.
      */
-    distinct?: GasAdminScalarFieldEnum | GasAdminScalarFieldEnum[]
+    distinct?: GasProviderScalarFieldEnum | GasProviderScalarFieldEnum[]
   }
 
   /**
-   * gasAdmin findMany
+   * gasProvider findMany
    */
-  export type gasAdminFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * Filter, which gasAdmins to fetch.
+     * Filter, which gasProviders to fetch.
      */
-    where?: gasAdminWhereInput
+    where?: gasProviderWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of gasAdmins to fetch.
+     * Determine the order of gasProviders to fetch.
      */
-    orderBy?: gasAdminOrderByWithRelationInput | gasAdminOrderByWithRelationInput[]
+    orderBy?: gasProviderOrderByWithRelationInput | gasProviderOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing gasAdmins.
+     * Sets the position for listing gasProviders.
      */
-    cursor?: gasAdminWhereUniqueInput
+    cursor?: gasProviderWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` gasAdmins from the position of the cursor.
+     * Take `±n` gasProviders from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` gasAdmins.
+     * Skip the first `n` gasProviders.
      */
     skip?: number
-    distinct?: GasAdminScalarFieldEnum | GasAdminScalarFieldEnum[]
+    distinct?: GasProviderScalarFieldEnum | GasProviderScalarFieldEnum[]
   }
 
   /**
-   * gasAdmin create
+   * gasProvider create
    */
-  export type gasAdminCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * The data needed to create a gasAdmin.
+     * The data needed to create a gasProvider.
      */
-    data: XOR<gasAdminCreateInput, gasAdminUncheckedCreateInput>
+    data: XOR<gasProviderCreateInput, gasProviderUncheckedCreateInput>
   }
 
   /**
-   * gasAdmin createMany
+   * gasProvider createMany
    */
-  export type gasAdminCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many gasAdmins.
+     * The data used to create many gasProviders.
      */
-    data: gasAdminCreateManyInput | gasAdminCreateManyInput[]
+    data: gasProviderCreateManyInput | gasProviderCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * gasAdmin createManyAndReturn
+   * gasProvider createManyAndReturn
    */
-  export type gasAdminCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelectCreateManyAndReturn<ExtArgs> | null
+    select?: gasProviderSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
-     * The data used to create many gasAdmins.
+     * The data used to create many gasProviders.
      */
-    data: gasAdminCreateManyInput | gasAdminCreateManyInput[]
+    data: gasProviderCreateManyInput | gasProviderCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * gasAdmin update
+   * gasProvider update
    */
-  export type gasAdminUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * The data needed to update a gasAdmin.
+     * The data needed to update a gasProvider.
      */
-    data: XOR<gasAdminUpdateInput, gasAdminUncheckedUpdateInput>
+    data: XOR<gasProviderUpdateInput, gasProviderUncheckedUpdateInput>
     /**
-     * Choose, which gasAdmin to update.
+     * Choose, which gasProvider to update.
      */
-    where: gasAdminWhereUniqueInput
+    where: gasProviderWhereUniqueInput
   }
 
   /**
-   * gasAdmin updateMany
+   * gasProvider updateMany
    */
-  export type gasAdminUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update gasAdmins.
+     * The data used to update gasProviders.
      */
-    data: XOR<gasAdminUpdateManyMutationInput, gasAdminUncheckedUpdateManyInput>
+    data: XOR<gasProviderUpdateManyMutationInput, gasProviderUncheckedUpdateManyInput>
     /**
-     * Filter which gasAdmins to update
+     * Filter which gasProviders to update
      */
-    where?: gasAdminWhereInput
+    where?: gasProviderWhereInput
     /**
-     * Limit how many gasAdmins to update.
+     * Limit how many gasProviders to update.
      */
     limit?: number
   }
 
   /**
-   * gasAdmin updateManyAndReturn
+   * gasProvider updateManyAndReturn
    */
-  export type gasAdminUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: gasProviderSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
-     * The data used to update gasAdmins.
+     * The data used to update gasProviders.
      */
-    data: XOR<gasAdminUpdateManyMutationInput, gasAdminUncheckedUpdateManyInput>
+    data: XOR<gasProviderUpdateManyMutationInput, gasProviderUncheckedUpdateManyInput>
     /**
-     * Filter which gasAdmins to update
+     * Filter which gasProviders to update
      */
-    where?: gasAdminWhereInput
+    where?: gasProviderWhereInput
     /**
-     * Limit how many gasAdmins to update.
+     * Limit how many gasProviders to update.
      */
     limit?: number
   }
 
   /**
-   * gasAdmin upsert
+   * gasProvider upsert
    */
-  export type gasAdminUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * The filter to search for the gasAdmin to update in case it exists.
+     * The filter to search for the gasProvider to update in case it exists.
      */
-    where: gasAdminWhereUniqueInput
+    where: gasProviderWhereUniqueInput
     /**
-     * In case the gasAdmin found by the `where` argument doesn't exist, create a new gasAdmin with this data.
+     * In case the gasProvider found by the `where` argument doesn't exist, create a new gasProvider with this data.
      */
-    create: XOR<gasAdminCreateInput, gasAdminUncheckedCreateInput>
+    create: XOR<gasProviderCreateInput, gasProviderUncheckedCreateInput>
     /**
-     * In case the gasAdmin was found with the provided `where` argument, update it with this data.
+     * In case the gasProvider was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<gasAdminUpdateInput, gasAdminUncheckedUpdateInput>
+    update: XOR<gasProviderUpdateInput, gasProviderUncheckedUpdateInput>
   }
 
   /**
-   * gasAdmin delete
+   * gasProvider delete
    */
-  export type gasAdminDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
     /**
-     * Filter which gasAdmin to delete.
+     * Filter which gasProvider to delete.
      */
-    where: gasAdminWhereUniqueInput
+    where: gasProviderWhereUniqueInput
   }
 
   /**
-   * gasAdmin deleteMany
+   * gasProvider deleteMany
    */
-  export type gasAdminDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which gasAdmins to delete
+     * Filter which gasProviders to delete
      */
-    where?: gasAdminWhereInput
+    where?: gasProviderWhereInput
     /**
-     * Limit how many gasAdmins to delete.
+     * Limit how many gasProviders to delete.
      */
     limit?: number
   }
 
   /**
-   * gasAdmin.approvalRequests
+   * gasProvider.approvalRequests
    */
-  export type gasAdmin$approvalRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProvider$approvalRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the providerRequest
      */
@@ -3569,9 +3569,9 @@ export namespace Prisma {
   }
 
   /**
-   * gasAdmin.consumerRequests
+   * gasProvider.consumerRequests
    */
-  export type gasAdmin$consumerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProvider$consumerRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the consumerProviderRequests
      */
@@ -3593,21 +3593,21 @@ export namespace Prisma {
   }
 
   /**
-   * gasAdmin without action
+   * gasProvider without action
    */
-  export type gasAdminDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type gasProviderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the gasAdmin
+     * Select specific fields to fetch from the gasProvider
      */
-    select?: gasAdminSelect<ExtArgs> | null
+    select?: gasProviderSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the gasAdmin
+     * Omit specific fields from the gasProvider
      */
-    omit?: gasAdminOmit<ExtArgs> | null
+    omit?: gasProviderOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: gasAdminInclude<ExtArgs> | null
+    include?: gasProviderInclude<ExtArgs> | null
   }
 
 
@@ -5641,6 +5641,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     status: $Enums.Status | null
+    transactionHash: string | null
   }
 
   export type ProviderRequestMaxAggregateOutputType = {
@@ -5650,6 +5651,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     status: $Enums.Status | null
+    transactionHash: string | null
   }
 
   export type ProviderRequestCountAggregateOutputType = {
@@ -5659,6 +5661,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     status: number
+    transactionHash: number
     _all: number
   }
 
@@ -5670,6 +5673,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     status?: true
+    transactionHash?: true
   }
 
   export type ProviderRequestMaxAggregateInputType = {
@@ -5679,6 +5683,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     status?: true
+    transactionHash?: true
   }
 
   export type ProviderRequestCountAggregateInputType = {
@@ -5688,6 +5693,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     status?: true
+    transactionHash?: true
     _all?: true
   }
 
@@ -5770,6 +5776,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     status: $Enums.Status
+    transactionHash: string
     _count: ProviderRequestCountAggregateOutputType | null
     _min: ProviderRequestMinAggregateOutputType | null
     _max: ProviderRequestMaxAggregateOutputType | null
@@ -5796,7 +5803,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     status?: boolean
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    transactionHash?: boolean
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["providerRequest"]>
 
@@ -5807,7 +5815,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     status?: boolean
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    transactionHash?: boolean
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["providerRequest"]>
 
@@ -5818,7 +5827,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     status?: boolean
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    transactionHash?: boolean
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["providerRequest"]>
 
@@ -5829,26 +5839,27 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     status?: boolean
+    transactionHash?: boolean
   }
 
-  export type providerRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerPublicKey" | "adminPublicKey" | "createdAt" | "updatedAt" | "status", ExtArgs["result"]["providerRequest"]>
+  export type providerRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerPublicKey" | "adminPublicKey" | "createdAt" | "updatedAt" | "status" | "transactionHash", ExtArgs["result"]["providerRequest"]>
   export type providerRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
   export type providerRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
   export type providerRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
     admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
 
   export type $providerRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "providerRequest"
     objects: {
-      provider: Prisma.$gasAdminPayload<ExtArgs>
+      provider: Prisma.$gasProviderPayload<ExtArgs>
       admin: Prisma.$AdminPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -5858,6 +5869,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       status: $Enums.Status
+      transactionHash: string
     }, ExtArgs["result"]["providerRequest"]>
     composites: {}
   }
@@ -6252,7 +6264,7 @@ export namespace Prisma {
    */
   export interface Prisma__providerRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    provider<T extends gasAdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, gasAdminDefaultArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    provider<T extends gasProviderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, gasProviderDefaultArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6289,6 +6301,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"providerRequest", 'DateTime'>
     readonly updatedAt: FieldRef<"providerRequest", 'DateTime'>
     readonly status: FieldRef<"providerRequest", 'Status'>
+    readonly transactionHash: FieldRef<"providerRequest", 'String'>
   }
     
 
@@ -6884,7 +6897,7 @@ export namespace Prisma {
     status?: boolean
     transactionHash?: boolean
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consumerProviderRequests"]>
 
   export type consumerProviderRequestsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6896,7 +6909,7 @@ export namespace Prisma {
     status?: boolean
     transactionHash?: boolean
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consumerProviderRequests"]>
 
   export type consumerProviderRequestsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6908,7 +6921,7 @@ export namespace Prisma {
     status?: boolean
     transactionHash?: boolean
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consumerProviderRequests"]>
 
   export type consumerProviderRequestsSelectScalar = {
@@ -6924,22 +6937,22 @@ export namespace Prisma {
   export type consumerProviderRequestsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "consumerPublicKey" | "providerPublicKey" | "createdAt" | "updatedAt" | "status" | "transactionHash", ExtArgs["result"]["consumerProviderRequests"]>
   export type consumerProviderRequestsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
   }
   export type consumerProviderRequestsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
   }
   export type consumerProviderRequestsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     consumer?: boolean | ConsumerDefaultArgs<ExtArgs>
-    provider?: boolean | gasAdminDefaultArgs<ExtArgs>
+    provider?: boolean | gasProviderDefaultArgs<ExtArgs>
   }
 
   export type $consumerProviderRequestsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "consumerProviderRequests"
     objects: {
       consumer: Prisma.$ConsumerPayload<ExtArgs>
-      provider: Prisma.$gasAdminPayload<ExtArgs>
+      provider: Prisma.$gasProviderPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7344,7 +7357,7 @@ export namespace Prisma {
   export interface Prisma__consumerProviderRequestsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     consumer<T extends ConsumerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ConsumerDefaultArgs<ExtArgs>>): Prisma__ConsumerClient<$Result.GetResult<Prisma.$ConsumerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    provider<T extends gasAdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, gasAdminDefaultArgs<ExtArgs>>): Prisma__gasAdminClient<$Result.GetResult<Prisma.$gasAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    provider<T extends gasProviderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, gasProviderDefaultArgs<ExtArgs>>): Prisma__gasProviderClient<$Result.GetResult<Prisma.$gasProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7820,7 +7833,7 @@ export namespace Prisma {
   export type ConsumerScalarFieldEnum = (typeof ConsumerScalarFieldEnum)[keyof typeof ConsumerScalarFieldEnum]
 
 
-  export const GasAdminScalarFieldEnum: {
+  export const GasProviderScalarFieldEnum: {
     id: 'id',
     publicKey: 'publicKey',
     createdAt: 'createdAt',
@@ -7828,7 +7841,7 @@ export namespace Prisma {
     status: 'status'
   };
 
-  export type GasAdminScalarFieldEnum = (typeof GasAdminScalarFieldEnum)[keyof typeof GasAdminScalarFieldEnum]
+  export type GasProviderScalarFieldEnum = (typeof GasProviderScalarFieldEnum)[keyof typeof GasProviderScalarFieldEnum]
 
 
   export const AdminScalarFieldEnum: {
@@ -7855,7 +7868,8 @@ export namespace Prisma {
     adminPublicKey: 'adminPublicKey',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    status: 'status'
+    status: 'status',
+    transactionHash: 'transactionHash'
   };
 
   export type ProviderRequestScalarFieldEnum = (typeof ProviderRequestScalarFieldEnum)[keyof typeof ProviderRequestScalarFieldEnum]
@@ -8009,20 +8023,20 @@ export namespace Prisma {
     status?: EnumStatusWithAggregatesFilter<"Consumer"> | $Enums.Status
   }
 
-  export type gasAdminWhereInput = {
-    AND?: gasAdminWhereInput | gasAdminWhereInput[]
-    OR?: gasAdminWhereInput[]
-    NOT?: gasAdminWhereInput | gasAdminWhereInput[]
-    id?: StringFilter<"gasAdmin"> | string
-    publicKey?: StringFilter<"gasAdmin"> | string
-    createdAt?: DateTimeFilter<"gasAdmin"> | Date | string
-    companyName?: StringFilter<"gasAdmin"> | string
-    status?: EnumStatusFilter<"gasAdmin"> | $Enums.Status
+  export type gasProviderWhereInput = {
+    AND?: gasProviderWhereInput | gasProviderWhereInput[]
+    OR?: gasProviderWhereInput[]
+    NOT?: gasProviderWhereInput | gasProviderWhereInput[]
+    id?: StringFilter<"gasProvider"> | string
+    publicKey?: StringFilter<"gasProvider"> | string
+    createdAt?: DateTimeFilter<"gasProvider"> | Date | string
+    companyName?: StringFilter<"gasProvider"> | string
+    status?: EnumStatusFilter<"gasProvider"> | $Enums.Status
     approvalRequests?: ProviderRequestListRelationFilter
     consumerRequests?: ConsumerProviderRequestsListRelationFilter
   }
 
-  export type gasAdminOrderByWithRelationInput = {
+  export type gasProviderOrderByWithRelationInput = {
     id?: SortOrder
     publicKey?: SortOrder
     createdAt?: SortOrder
@@ -8032,39 +8046,39 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsOrderByRelationAggregateInput
   }
 
-  export type gasAdminWhereUniqueInput = Prisma.AtLeast<{
+  export type gasProviderWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     publicKey?: string
     companyName?: string
-    AND?: gasAdminWhereInput | gasAdminWhereInput[]
-    OR?: gasAdminWhereInput[]
-    NOT?: gasAdminWhereInput | gasAdminWhereInput[]
-    createdAt?: DateTimeFilter<"gasAdmin"> | Date | string
-    status?: EnumStatusFilter<"gasAdmin"> | $Enums.Status
+    AND?: gasProviderWhereInput | gasProviderWhereInput[]
+    OR?: gasProviderWhereInput[]
+    NOT?: gasProviderWhereInput | gasProviderWhereInput[]
+    createdAt?: DateTimeFilter<"gasProvider"> | Date | string
+    status?: EnumStatusFilter<"gasProvider"> | $Enums.Status
     approvalRequests?: ProviderRequestListRelationFilter
     consumerRequests?: ConsumerProviderRequestsListRelationFilter
   }, "id" | "publicKey" | "companyName">
 
-  export type gasAdminOrderByWithAggregationInput = {
+  export type gasProviderOrderByWithAggregationInput = {
     id?: SortOrder
     publicKey?: SortOrder
     createdAt?: SortOrder
     companyName?: SortOrder
     status?: SortOrder
-    _count?: gasAdminCountOrderByAggregateInput
-    _max?: gasAdminMaxOrderByAggregateInput
-    _min?: gasAdminMinOrderByAggregateInput
+    _count?: gasProviderCountOrderByAggregateInput
+    _max?: gasProviderMaxOrderByAggregateInput
+    _min?: gasProviderMinOrderByAggregateInput
   }
 
-  export type gasAdminScalarWhereWithAggregatesInput = {
-    AND?: gasAdminScalarWhereWithAggregatesInput | gasAdminScalarWhereWithAggregatesInput[]
-    OR?: gasAdminScalarWhereWithAggregatesInput[]
-    NOT?: gasAdminScalarWhereWithAggregatesInput | gasAdminScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"gasAdmin"> | string
-    publicKey?: StringWithAggregatesFilter<"gasAdmin"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"gasAdmin"> | Date | string
-    companyName?: StringWithAggregatesFilter<"gasAdmin"> | string
-    status?: EnumStatusWithAggregatesFilter<"gasAdmin"> | $Enums.Status
+  export type gasProviderScalarWhereWithAggregatesInput = {
+    AND?: gasProviderScalarWhereWithAggregatesInput | gasProviderScalarWhereWithAggregatesInput[]
+    OR?: gasProviderScalarWhereWithAggregatesInput[]
+    NOT?: gasProviderScalarWhereWithAggregatesInput | gasProviderScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"gasProvider"> | string
+    publicKey?: StringWithAggregatesFilter<"gasProvider"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"gasProvider"> | Date | string
+    companyName?: StringWithAggregatesFilter<"gasProvider"> | string
+    status?: EnumStatusWithAggregatesFilter<"gasProvider"> | $Enums.Status
   }
 
   export type AdminWhereInput = {
@@ -8164,7 +8178,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"providerRequest"> | Date | string
     updatedAt?: DateTimeFilter<"providerRequest"> | Date | string
     status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
-    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+    transactionHash?: StringFilter<"providerRequest"> | string
+    provider?: XOR<GasProviderScalarRelationFilter, gasProviderWhereInput>
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }
 
@@ -8175,7 +8190,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     status?: SortOrder
-    provider?: gasAdminOrderByWithRelationInput
+    transactionHash?: SortOrder
+    provider?: gasProviderOrderByWithRelationInput
     admin?: AdminOrderByWithRelationInput
   }
 
@@ -8189,7 +8205,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"providerRequest"> | Date | string
     updatedAt?: DateTimeFilter<"providerRequest"> | Date | string
     status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
-    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+    transactionHash?: StringFilter<"providerRequest"> | string
+    provider?: XOR<GasProviderScalarRelationFilter, gasProviderWhereInput>
     admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
   }, "id">
 
@@ -8200,6 +8217,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     status?: SortOrder
+    transactionHash?: SortOrder
     _count?: providerRequestCountOrderByAggregateInput
     _max?: providerRequestMaxOrderByAggregateInput
     _min?: providerRequestMinOrderByAggregateInput
@@ -8215,6 +8233,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"providerRequest"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"providerRequest"> | Date | string
     status?: EnumStatusWithAggregatesFilter<"providerRequest"> | $Enums.Status
+    transactionHash?: StringWithAggregatesFilter<"providerRequest"> | string
   }
 
   export type consumerProviderRequestsWhereInput = {
@@ -8229,7 +8248,7 @@ export namespace Prisma {
     status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
     transactionHash?: StringFilter<"consumerProviderRequests"> | string
     consumer?: XOR<ConsumerScalarRelationFilter, ConsumerWhereInput>
-    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+    provider?: XOR<GasProviderScalarRelationFilter, gasProviderWhereInput>
   }
 
   export type consumerProviderRequestsOrderByWithRelationInput = {
@@ -8241,7 +8260,7 @@ export namespace Prisma {
     status?: SortOrder
     transactionHash?: SortOrder
     consumer?: ConsumerOrderByWithRelationInput
-    provider?: gasAdminOrderByWithRelationInput
+    provider?: gasProviderOrderByWithRelationInput
   }
 
   export type consumerProviderRequestsWhereUniqueInput = Prisma.AtLeast<{
@@ -8256,7 +8275,7 @@ export namespace Prisma {
     status?: EnumStatusFilter<"consumerProviderRequests"> | $Enums.Status
     transactionHash?: StringFilter<"consumerProviderRequests"> | string
     consumer?: XOR<ConsumerScalarRelationFilter, ConsumerWhereInput>
-    provider?: XOR<GasAdminScalarRelationFilter, gasAdminWhereInput>
+    provider?: XOR<GasProviderScalarRelationFilter, gasProviderWhereInput>
   }, "id">
 
   export type consumerProviderRequestsOrderByWithAggregationInput = {
@@ -8345,7 +8364,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
-  export type gasAdminCreateInput = {
+  export type gasProviderCreateInput = {
     id?: string
     publicKey: string
     createdAt?: Date | string
@@ -8355,7 +8374,7 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsCreateNestedManyWithoutProviderInput
   }
 
-  export type gasAdminUncheckedCreateInput = {
+  export type gasProviderUncheckedCreateInput = {
     id?: string
     publicKey: string
     createdAt?: Date | string
@@ -8365,7 +8384,7 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutProviderInput
   }
 
-  export type gasAdminUpdateInput = {
+  export type gasProviderUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8375,7 +8394,7 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsUpdateManyWithoutProviderNestedInput
   }
 
-  export type gasAdminUncheckedUpdateInput = {
+  export type gasProviderUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8385,7 +8404,7 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
-  export type gasAdminCreateManyInput = {
+  export type gasProviderCreateManyInput = {
     id?: string
     publicKey: string
     createdAt?: Date | string
@@ -8393,7 +8412,7 @@ export namespace Prisma {
     status?: $Enums.Status
   }
 
-  export type gasAdminUpdateManyMutationInput = {
+  export type gasProviderUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8401,7 +8420,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
-  export type gasAdminUncheckedUpdateManyInput = {
+  export type gasProviderUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8502,7 +8521,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
-    provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
+    transactionHash?: string
+    provider: gasProviderCreateNestedOneWithoutApprovalRequestsInput
     admin: AdminCreateNestedOneWithoutProviderRequestsInput
   }
 
@@ -8513,6 +8533,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
+    transactionHash?: string
   }
 
   export type providerRequestUpdateInput = {
@@ -8520,7 +8541,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
-    provider?: gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput
+    transactionHash?: StringFieldUpdateOperationsInput | string
+    provider?: gasProviderUpdateOneRequiredWithoutApprovalRequestsNestedInput
     admin?: AdminUpdateOneRequiredWithoutProviderRequestsNestedInput
   }
 
@@ -8531,6 +8553,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type providerRequestCreateManyInput = {
@@ -8540,6 +8563,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
+    transactionHash?: string
   }
 
   export type providerRequestUpdateManyMutationInput = {
@@ -8547,6 +8571,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type providerRequestUncheckedUpdateManyInput = {
@@ -8556,6 +8581,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type consumerProviderRequestsCreateInput = {
@@ -8565,7 +8591,7 @@ export namespace Prisma {
     status?: $Enums.Status
     transactionHash: string
     consumer: ConsumerCreateNestedOneWithoutKycRequestsInput
-    provider: gasAdminCreateNestedOneWithoutConsumerRequestsInput
+    provider: gasProviderCreateNestedOneWithoutConsumerRequestsInput
   }
 
   export type consumerProviderRequestsUncheckedCreateInput = {
@@ -8585,7 +8611,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
     consumer?: ConsumerUpdateOneRequiredWithoutKycRequestsNestedInput
-    provider?: gasAdminUpdateOneRequiredWithoutConsumerRequestsNestedInput
+    provider?: gasProviderUpdateOneRequiredWithoutConsumerRequestsNestedInput
   }
 
   export type consumerProviderRequestsUncheckedUpdateInput = {
@@ -8745,7 +8771,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type gasAdminCountOrderByAggregateInput = {
+  export type gasProviderCountOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
     createdAt?: SortOrder
@@ -8753,7 +8779,7 @@ export namespace Prisma {
     status?: SortOrder
   }
 
-  export type gasAdminMaxOrderByAggregateInput = {
+  export type gasProviderMaxOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
     createdAt?: SortOrder
@@ -8761,7 +8787,7 @@ export namespace Prisma {
     status?: SortOrder
   }
 
-  export type gasAdminMinOrderByAggregateInput = {
+  export type gasProviderMinOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
     createdAt?: SortOrder
@@ -8805,9 +8831,9 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type GasAdminScalarRelationFilter = {
-    is?: gasAdminWhereInput
-    isNot?: gasAdminWhereInput
+  export type GasProviderScalarRelationFilter = {
+    is?: gasProviderWhereInput
+    isNot?: gasProviderWhereInput
   }
 
   export type AdminScalarRelationFilter = {
@@ -8822,6 +8848,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     status?: SortOrder
+    transactionHash?: SortOrder
   }
 
   export type providerRequestMaxOrderByAggregateInput = {
@@ -8831,6 +8858,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     status?: SortOrder
+    transactionHash?: SortOrder
   }
 
   export type providerRequestMinOrderByAggregateInput = {
@@ -8840,6 +8868,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     status?: SortOrder
+    transactionHash?: SortOrder
   }
 
   export type ConsumerScalarRelationFilter = {
@@ -9057,10 +9086,10 @@ export namespace Prisma {
     deleteMany?: providerRequestScalarWhereInput | providerRequestScalarWhereInput[]
   }
 
-  export type gasAdminCreateNestedOneWithoutApprovalRequestsInput = {
-    create?: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
-    connectOrCreate?: gasAdminCreateOrConnectWithoutApprovalRequestsInput
-    connect?: gasAdminWhereUniqueInput
+  export type gasProviderCreateNestedOneWithoutApprovalRequestsInput = {
+    create?: XOR<gasProviderCreateWithoutApprovalRequestsInput, gasProviderUncheckedCreateWithoutApprovalRequestsInput>
+    connectOrCreate?: gasProviderCreateOrConnectWithoutApprovalRequestsInput
+    connect?: gasProviderWhereUniqueInput
   }
 
   export type AdminCreateNestedOneWithoutProviderRequestsInput = {
@@ -9069,12 +9098,12 @@ export namespace Prisma {
     connect?: AdminWhereUniqueInput
   }
 
-  export type gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput = {
-    create?: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
-    connectOrCreate?: gasAdminCreateOrConnectWithoutApprovalRequestsInput
-    upsert?: gasAdminUpsertWithoutApprovalRequestsInput
-    connect?: gasAdminWhereUniqueInput
-    update?: XOR<XOR<gasAdminUpdateToOneWithWhereWithoutApprovalRequestsInput, gasAdminUpdateWithoutApprovalRequestsInput>, gasAdminUncheckedUpdateWithoutApprovalRequestsInput>
+  export type gasProviderUpdateOneRequiredWithoutApprovalRequestsNestedInput = {
+    create?: XOR<gasProviderCreateWithoutApprovalRequestsInput, gasProviderUncheckedCreateWithoutApprovalRequestsInput>
+    connectOrCreate?: gasProviderCreateOrConnectWithoutApprovalRequestsInput
+    upsert?: gasProviderUpsertWithoutApprovalRequestsInput
+    connect?: gasProviderWhereUniqueInput
+    update?: XOR<XOR<gasProviderUpdateToOneWithWhereWithoutApprovalRequestsInput, gasProviderUpdateWithoutApprovalRequestsInput>, gasProviderUncheckedUpdateWithoutApprovalRequestsInput>
   }
 
   export type AdminUpdateOneRequiredWithoutProviderRequestsNestedInput = {
@@ -9091,10 +9120,10 @@ export namespace Prisma {
     connect?: ConsumerWhereUniqueInput
   }
 
-  export type gasAdminCreateNestedOneWithoutConsumerRequestsInput = {
-    create?: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
-    connectOrCreate?: gasAdminCreateOrConnectWithoutConsumerRequestsInput
-    connect?: gasAdminWhereUniqueInput
+  export type gasProviderCreateNestedOneWithoutConsumerRequestsInput = {
+    create?: XOR<gasProviderCreateWithoutConsumerRequestsInput, gasProviderUncheckedCreateWithoutConsumerRequestsInput>
+    connectOrCreate?: gasProviderCreateOrConnectWithoutConsumerRequestsInput
+    connect?: gasProviderWhereUniqueInput
   }
 
   export type ConsumerUpdateOneRequiredWithoutKycRequestsNestedInput = {
@@ -9105,12 +9134,12 @@ export namespace Prisma {
     update?: XOR<XOR<ConsumerUpdateToOneWithWhereWithoutKycRequestsInput, ConsumerUpdateWithoutKycRequestsInput>, ConsumerUncheckedUpdateWithoutKycRequestsInput>
   }
 
-  export type gasAdminUpdateOneRequiredWithoutConsumerRequestsNestedInput = {
-    create?: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
-    connectOrCreate?: gasAdminCreateOrConnectWithoutConsumerRequestsInput
-    upsert?: gasAdminUpsertWithoutConsumerRequestsInput
-    connect?: gasAdminWhereUniqueInput
-    update?: XOR<XOR<gasAdminUpdateToOneWithWhereWithoutConsumerRequestsInput, gasAdminUpdateWithoutConsumerRequestsInput>, gasAdminUncheckedUpdateWithoutConsumerRequestsInput>
+  export type gasProviderUpdateOneRequiredWithoutConsumerRequestsNestedInput = {
+    create?: XOR<gasProviderCreateWithoutConsumerRequestsInput, gasProviderUncheckedCreateWithoutConsumerRequestsInput>
+    connectOrCreate?: gasProviderCreateOrConnectWithoutConsumerRequestsInput
+    upsert?: gasProviderUpsertWithoutConsumerRequestsInput
+    connect?: gasProviderWhereUniqueInput
+    update?: XOR<XOR<gasProviderUpdateToOneWithWhereWithoutConsumerRequestsInput, gasProviderUpdateWithoutConsumerRequestsInput>, gasProviderUncheckedUpdateWithoutConsumerRequestsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9203,7 +9232,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     status?: $Enums.Status
     transactionHash: string
-    provider: gasAdminCreateNestedOneWithoutConsumerRequestsInput
+    provider: gasProviderCreateNestedOneWithoutConsumerRequestsInput
   }
 
   export type consumerProviderRequestsUncheckedCreateWithoutConsumerInput = {
@@ -9259,6 +9288,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
+    transactionHash?: string
     admin: AdminCreateNestedOneWithoutProviderRequestsInput
   }
 
@@ -9268,6 +9298,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
+    transactionHash?: string
   }
 
   export type providerRequestCreateOrConnectWithoutProviderInput = {
@@ -9334,6 +9365,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"providerRequest"> | Date | string
     updatedAt?: DateTimeFilter<"providerRequest"> | Date | string
     status?: EnumStatusFilter<"providerRequest"> | $Enums.Status
+    transactionHash?: StringFilter<"providerRequest"> | string
   }
 
   export type consumerProviderRequestsUpsertWithWhereUniqueWithoutProviderInput = {
@@ -9357,7 +9389,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
-    provider: gasAdminCreateNestedOneWithoutApprovalRequestsInput
+    transactionHash?: string
+    provider: gasProviderCreateNestedOneWithoutApprovalRequestsInput
   }
 
   export type providerRequestUncheckedCreateWithoutAdminInput = {
@@ -9366,6 +9399,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
+    transactionHash?: string
   }
 
   export type providerRequestCreateOrConnectWithoutAdminInput = {
@@ -9394,7 +9428,7 @@ export namespace Prisma {
     data: XOR<providerRequestUpdateManyMutationInput, providerRequestUncheckedUpdateManyWithoutAdminInput>
   }
 
-  export type gasAdminCreateWithoutApprovalRequestsInput = {
+  export type gasProviderCreateWithoutApprovalRequestsInput = {
     id?: string
     publicKey: string
     createdAt?: Date | string
@@ -9403,7 +9437,7 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsCreateNestedManyWithoutProviderInput
   }
 
-  export type gasAdminUncheckedCreateWithoutApprovalRequestsInput = {
+  export type gasProviderUncheckedCreateWithoutApprovalRequestsInput = {
     id?: string
     publicKey: string
     createdAt?: Date | string
@@ -9412,9 +9446,9 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsUncheckedCreateNestedManyWithoutProviderInput
   }
 
-  export type gasAdminCreateOrConnectWithoutApprovalRequestsInput = {
-    where: gasAdminWhereUniqueInput
-    create: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
+  export type gasProviderCreateOrConnectWithoutApprovalRequestsInput = {
+    where: gasProviderWhereUniqueInput
+    create: XOR<gasProviderCreateWithoutApprovalRequestsInput, gasProviderUncheckedCreateWithoutApprovalRequestsInput>
   }
 
   export type AdminCreateWithoutProviderRequestsInput = {
@@ -9434,18 +9468,18 @@ export namespace Prisma {
     create: XOR<AdminCreateWithoutProviderRequestsInput, AdminUncheckedCreateWithoutProviderRequestsInput>
   }
 
-  export type gasAdminUpsertWithoutApprovalRequestsInput = {
-    update: XOR<gasAdminUpdateWithoutApprovalRequestsInput, gasAdminUncheckedUpdateWithoutApprovalRequestsInput>
-    create: XOR<gasAdminCreateWithoutApprovalRequestsInput, gasAdminUncheckedCreateWithoutApprovalRequestsInput>
-    where?: gasAdminWhereInput
+  export type gasProviderUpsertWithoutApprovalRequestsInput = {
+    update: XOR<gasProviderUpdateWithoutApprovalRequestsInput, gasProviderUncheckedUpdateWithoutApprovalRequestsInput>
+    create: XOR<gasProviderCreateWithoutApprovalRequestsInput, gasProviderUncheckedCreateWithoutApprovalRequestsInput>
+    where?: gasProviderWhereInput
   }
 
-  export type gasAdminUpdateToOneWithWhereWithoutApprovalRequestsInput = {
-    where?: gasAdminWhereInput
-    data: XOR<gasAdminUpdateWithoutApprovalRequestsInput, gasAdminUncheckedUpdateWithoutApprovalRequestsInput>
+  export type gasProviderUpdateToOneWithWhereWithoutApprovalRequestsInput = {
+    where?: gasProviderWhereInput
+    data: XOR<gasProviderUpdateWithoutApprovalRequestsInput, gasProviderUncheckedUpdateWithoutApprovalRequestsInput>
   }
 
-  export type gasAdminUpdateWithoutApprovalRequestsInput = {
+  export type gasProviderUpdateWithoutApprovalRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9454,7 +9488,7 @@ export namespace Prisma {
     consumerRequests?: consumerProviderRequestsUpdateManyWithoutProviderNestedInput
   }
 
-  export type gasAdminUncheckedUpdateWithoutApprovalRequestsInput = {
+  export type gasProviderUncheckedUpdateWithoutApprovalRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9507,7 +9541,7 @@ export namespace Prisma {
     create: XOR<ConsumerCreateWithoutKycRequestsInput, ConsumerUncheckedCreateWithoutKycRequestsInput>
   }
 
-  export type gasAdminCreateWithoutConsumerRequestsInput = {
+  export type gasProviderCreateWithoutConsumerRequestsInput = {
     id?: string
     publicKey: string
     createdAt?: Date | string
@@ -9516,7 +9550,7 @@ export namespace Prisma {
     approvalRequests?: providerRequestCreateNestedManyWithoutProviderInput
   }
 
-  export type gasAdminUncheckedCreateWithoutConsumerRequestsInput = {
+  export type gasProviderUncheckedCreateWithoutConsumerRequestsInput = {
     id?: string
     publicKey: string
     createdAt?: Date | string
@@ -9525,9 +9559,9 @@ export namespace Prisma {
     approvalRequests?: providerRequestUncheckedCreateNestedManyWithoutProviderInput
   }
 
-  export type gasAdminCreateOrConnectWithoutConsumerRequestsInput = {
-    where: gasAdminWhereUniqueInput
-    create: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
+  export type gasProviderCreateOrConnectWithoutConsumerRequestsInput = {
+    where: gasProviderWhereUniqueInput
+    create: XOR<gasProviderCreateWithoutConsumerRequestsInput, gasProviderUncheckedCreateWithoutConsumerRequestsInput>
   }
 
   export type ConsumerUpsertWithoutKycRequestsInput = {
@@ -9557,18 +9591,18 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
-  export type gasAdminUpsertWithoutConsumerRequestsInput = {
-    update: XOR<gasAdminUpdateWithoutConsumerRequestsInput, gasAdminUncheckedUpdateWithoutConsumerRequestsInput>
-    create: XOR<gasAdminCreateWithoutConsumerRequestsInput, gasAdminUncheckedCreateWithoutConsumerRequestsInput>
-    where?: gasAdminWhereInput
+  export type gasProviderUpsertWithoutConsumerRequestsInput = {
+    update: XOR<gasProviderUpdateWithoutConsumerRequestsInput, gasProviderUncheckedUpdateWithoutConsumerRequestsInput>
+    create: XOR<gasProviderCreateWithoutConsumerRequestsInput, gasProviderUncheckedCreateWithoutConsumerRequestsInput>
+    where?: gasProviderWhereInput
   }
 
-  export type gasAdminUpdateToOneWithWhereWithoutConsumerRequestsInput = {
-    where?: gasAdminWhereInput
-    data: XOR<gasAdminUpdateWithoutConsumerRequestsInput, gasAdminUncheckedUpdateWithoutConsumerRequestsInput>
+  export type gasProviderUpdateToOneWithWhereWithoutConsumerRequestsInput = {
+    where?: gasProviderWhereInput
+    data: XOR<gasProviderUpdateWithoutConsumerRequestsInput, gasProviderUncheckedUpdateWithoutConsumerRequestsInput>
   }
 
-  export type gasAdminUpdateWithoutConsumerRequestsInput = {
+  export type gasProviderUpdateWithoutConsumerRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9577,7 +9611,7 @@ export namespace Prisma {
     approvalRequests?: providerRequestUpdateManyWithoutProviderNestedInput
   }
 
-  export type gasAdminUncheckedUpdateWithoutConsumerRequestsInput = {
+  export type gasProviderUncheckedUpdateWithoutConsumerRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     publicKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9601,7 +9635,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     transactionHash?: StringFieldUpdateOperationsInput | string
-    provider?: gasAdminUpdateOneRequiredWithoutConsumerRequestsNestedInput
+    provider?: gasProviderUpdateOneRequiredWithoutConsumerRequestsNestedInput
   }
 
   export type consumerProviderRequestsUncheckedUpdateWithoutConsumerInput = {
@@ -9628,6 +9662,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
+    transactionHash?: string
   }
 
   export type consumerProviderRequestsCreateManyProviderInput = {
@@ -9644,6 +9679,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
     admin?: AdminUpdateOneRequiredWithoutProviderRequestsNestedInput
   }
 
@@ -9653,6 +9689,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type providerRequestUncheckedUpdateManyWithoutProviderInput = {
@@ -9661,6 +9698,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type consumerProviderRequestsUpdateWithoutProviderInput = {
@@ -9696,6 +9734,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     status?: $Enums.Status
+    transactionHash?: string
   }
 
   export type providerRequestUpdateWithoutAdminInput = {
@@ -9703,7 +9742,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
-    provider?: gasAdminUpdateOneRequiredWithoutApprovalRequestsNestedInput
+    transactionHash?: StringFieldUpdateOperationsInput | string
+    provider?: gasProviderUpdateOneRequiredWithoutApprovalRequestsNestedInput
   }
 
   export type providerRequestUncheckedUpdateWithoutAdminInput = {
@@ -9712,6 +9752,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type providerRequestUncheckedUpdateManyWithoutAdminInput = {
@@ -9720,6 +9761,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    transactionHash?: StringFieldUpdateOperationsInput | string
   }
 
 

@@ -6,6 +6,8 @@ import axios from "axios"
 import { Clock, Users, XCircle } from "lucide-react"
 import { useEffect, useState } from "react"
 
+import formatDate from "@/utils/DateFormat"
+
 const stats = [
     {
       name: "Total Gas Providers",
@@ -64,13 +66,6 @@ const stats = [
     }
   }
 
-function formatDate(data: string): string{
-  const date = new Date(data);
-  
-  const formatted = date.toLocaleDateString();
-
-  return formatted;
-}
 
 export default function AdminDashBoard(){
   const [pendingRequests, setPendingRequest] = useState<pendingRequestsType[] | []>([]);

@@ -17,20 +17,7 @@ export async function GET(req: NextRequest){
     if(!walletId) return NextResponse.json({nonce: "", msg: "Wallet Address Required"});
     if(!role) return NextResponse.json({nonce: "", msg: "Role is required"});
 
-    if(role == "admin"){
-        const admin = await prisma.admin.findUnique({
-            where: {publicKey: walletId}
-        })
-        console.log("Admin: " + admin);
-        if(!admin) return NextResponse.json({nonce: "", msg: "You are not an admin"});
-    }
 
-    if(role == "consumer"){
-        const consumer = await prisma.consumer.findUnique({
-            where: {publicKey: walletId}
-        })
-        if(!consumer) return NextResponse.json({nonce: "", msg: "Please Register"});
-    }
     const nonce = getNonce(walletId, role);
 
     try{

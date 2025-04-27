@@ -9,14 +9,14 @@ CREATE TABLE "Consumer" (
 );
 
 -- CreateTable
-CREATE TABLE "gasAdmin" (
+CREATE TABLE "gasProvider" (
     "id" TEXT NOT NULL,
     "publicKey" TEXT NOT NULL,
     "nonce" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "companyName" TEXT,
 
-    CONSTRAINT "gasAdmin_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "gasProvider_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -36,10 +36,10 @@ CREATE UNIQUE INDEX "Consumer_publicKey_key" ON "Consumer"("publicKey");
 CREATE INDEX "Consumer_publicKey_idx" ON "Consumer"("publicKey");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "gasAdmin_publicKey_key" ON "gasAdmin"("publicKey");
+CREATE UNIQUE INDEX "gasProvider_publicKey_key" ON "gasProvider"("publicKey");
 
 -- CreateIndex
-CREATE INDEX "gasAdmin_publicKey_idx" ON "gasAdmin"("publicKey");
+CREATE INDEX "gasProvider_publicKey_idx" ON "gasProvider"("publicKey");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Admin_publicKey_key" ON "Admin"("publicKey");

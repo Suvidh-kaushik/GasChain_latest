@@ -18,13 +18,13 @@ export async function PATCH(req: NextRequest, context: {params: {requestId: stri
         })
 
         if(status){
-            await prisma.gasAdmin.update({
+            await prisma.gasProvider.update({
                 where: {publicKey: provider.providerPublicKey},
                 data: {status: "ACCEPTED"},
             })
         }
         else{
-            await prisma.gasAdmin.delete({
+            await prisma.gasProvider.delete({
                 where: {publicKey: provider.providerPublicKey},
             })
         }

@@ -22,7 +22,7 @@ async function getNonce(address: String, role: String): Promise<string> {
   try{
     const response = await axios.get(`http://localhost:3000/api/auth?address=${address}&role=${role}`);
 
-    return response.data.nonce;
+    return response.data;
   }
   catch(error){
     console.log(error);
@@ -73,11 +73,11 @@ export default function RegisterPage() {
       const account = await signer.getAddress();
       console.log("Account: " + account);
       //Get nonce
-      const nonce: string = await getNonce(account, role);
-      console.log("Nonce: " + nonce);
+      const data = await getNonce(account, role);
+      console.log("Nonce: " + JSON.stringify(data));
       //Sign the message
-      if(nonce){
-        const signature: string = await signer.signMessage(nonce);
+      if(data.nonce){
+        const signature: string = await signer.signMessage(data.nonce);
         console.log("Signature: " + signature);
         const response = await verifySignature(signature, account, role);
         console.log(response)
@@ -91,7 +91,7 @@ export default function RegisterPage() {
           alert(registerResponse.data.msg);
         }
       }
-      else alert("Nonce not generated: " + nonce);
+      else alert("Nonce not generated");
     } 
     catch (error) {
       console.error("Error connecting to MetaMask:", error)
