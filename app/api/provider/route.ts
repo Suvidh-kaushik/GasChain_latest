@@ -5,7 +5,8 @@ import { Provider } from "@radix-ui/react-toast";
 export async function GET(req: NextRequest){
     
     try{
-        const providers = await prisma.gasAdmin.findMany({
+        const providers = await prisma.gasProvider.findMany({
+            where: {status: "ACCEPTED"},
             select: {
                 companyName: true,
                 publicKey: true,

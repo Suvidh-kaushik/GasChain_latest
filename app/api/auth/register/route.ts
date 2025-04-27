@@ -23,13 +23,13 @@ export async function POST(req: NextResponse) {
         else return NextResponse.json({isCreated : false, msg: "Failed to Create Consumer"})
     }
     else if(role == "provider"){
-        const gasProvider = await prisma.gasAdmin.findUnique({
+        const gasProvider = await prisma.gasProvider.findUnique({
             where: { companyName : name, publicKey: walletId}
         })
         if(gasProvider?.status == "PENDING") return NextResponse.json({isCreated: false, msg: "Registration request is already submitted, still in pending state"});
         if(gasProvider?.status == "ACCEPTED") return NextResponse.json({isCreated: false, msg: "Already registered, Please Login"})
         
-        const provider = await prisma.gasAdmin.create({
+        const provider = await prisma.gasProvider.create({
             data: {
                 companyName: name,
                 publicKey: walletId,

@@ -13,7 +13,7 @@ CREATE TABLE "providerRequest" (
 );
 
 -- AddForeignKey
-ALTER TABLE "providerRequest" ADD CONSTRAINT "providerRequest_providerPublicKey_fkey" FOREIGN KEY ("providerPublicKey") REFERENCES "gasAdmin"("publicKey") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "providerRequest" ADD CONSTRAINT "providerRequest_providerPublicKey_fkey" FOREIGN KEY ("providerPublicKey") REFERENCES "gasProvider"("publicKey") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "providerRequest" ADD CONSTRAINT "providerRequest_adminPublicKey_fkey" FOREIGN KEY ("adminPublicKey") REFERENCES "Admin"("publicKey") ON DELETE RESTRICT ON UPDATE CASCADE;

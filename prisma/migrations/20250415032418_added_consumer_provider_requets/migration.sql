@@ -14,4 +14,4 @@ CREATE TABLE "consumerProviderRequests" (
 ALTER TABLE "consumerProviderRequests" ADD CONSTRAINT "consumerProviderRequests_consumerPublicKey_fkey" FOREIGN KEY ("consumerPublicKey") REFERENCES "Consumer"("publicKey") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "consumerProviderRequests" ADD CONSTRAINT "consumerProviderRequests_providerPublicKey_fkey" FOREIGN KEY ("providerPublicKey") REFERENCES "gasAdmin"("publicKey") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "consumerProviderRequests" ADD CONSTRAINT "consumerProviderRequests_providerPublicKey_fkey" FOREIGN KEY ("providerPublicKey") REFERENCES "gasProvider"("publicKey") ON DELETE RESTRICT ON UPDATE CASCADE;

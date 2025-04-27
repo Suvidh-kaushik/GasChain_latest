@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-
+import prisma from "@/lib/db"
  
 import {
   Select,
@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import axios from "axios"
 import { Card, CardContent } from "@/components/ui/card"
-
+import { Calendar } from "@/components/ui/calendar"
 
 export default function KYCSubmission(){
     return (
@@ -38,6 +38,7 @@ export default function KYCSubmission(){
 
 function KYCForm() {
 
+    const [name, setName] = useState<string>()
     const [check, setCheck] = useState<null | "true" | "false">("false")
     const [aadharCard, setAadharCard] = useState<File | null>(null)
     const [electricityBill, setElectricityBill] = useState<File | null>(null);
@@ -65,7 +66,23 @@ function KYCForm() {
         }
       }
 
+      async function getUserDeatils(){
+        const walletId = localStorage.getItem("walletId");
+          try{
+            const response = await axios.get(`http://localhost:3000/api/consumer?walletId=${walletId}`)
+            
+            if(response.data.consumer){
+              setName(response.data.consumer.fullName);
+            }
+            else alert(response.data.msg);
+          }
+          catch(error: any){
+            console.log(error.message);
+          }
+      }
+
       getAllProviders();
+      getUserDeatils();
     },[])
 
     async function handleSubmit(event: React.FormEvent){
@@ -113,7 +130,7 @@ function KYCForm() {
           <form onSubmit={handleSubmit} className="space-y-8 max-w-3xl mx-auto py-10">
               <div className="space-y-2">
                   <Label>Enter Your Name</Label>
-                  <Input required onChange={handleChange} name="fullName" value={formData.fullName} placeholder="Enter your name" />
+                  <Input required onChange={handleChange} name="fullName" value={name} disabled placeholder="Full Name" />
               </div>
               <div className="space-y-2">
                   <Label>Enter Your Email</Label>
@@ -143,8 +160,8 @@ function KYCForm() {
                     <SelectContent>
                       <SelectGroup>
                       {
-                        gasProviders.map((provider) =>{
-                          return <SelectItem value={provider.publicKey} >{provider.companyName || "ABC"}</SelectItem>
+                        gasProviders.map((provider, idx) =>{
+                          return <SelectItem key={idx} value={provider.publicKey} >{provider.companyName}</SelectItem>
                         })
                       }
                         {/* <SelectItem value="apple">Apple</SelectItem>

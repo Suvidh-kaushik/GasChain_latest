@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { CheckCircle2, Clock, Eye, Search, XCircle } from "lucide-react"
 
@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import axios from "axios"
 
 export default function VerificationPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -81,6 +82,18 @@ export default function VerificationPage() {
       status: "approved",
     },
   ]
+
+  useEffect(() =>{
+    async function getConsumerDetails(){
+        try{
+          const response = await axios.get("http://localhost:3000/api/")
+        }
+        catch(error){
+          console.log(error);
+        }
+    };
+    
+  },[])
 
   // Filter verifications based on search query and status
   const filteredVerifications = verifications.filter((verification) => {
