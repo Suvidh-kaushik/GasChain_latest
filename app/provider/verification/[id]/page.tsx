@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -21,6 +21,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import axios from "axios"
 
 export default  function VerificationDetailPage({ params }: { params: { id: string } }) {
 
@@ -73,6 +74,37 @@ export default  function VerificationDetailPage({ params }: { params: { id: stri
     submittedDate: "2023-04-07",
     status: "pending",
   }
+
+  type consumerDetails = {
+    fullName: string,
+    phoneNUmber: string,
+    email: string,
+    walletId: string,
+    kyc : {
+      id: string,
+      createdAt: string,
+      transactionHash: string,
+      poiCID: string,
+      poaCID: string
+    }
+  }
+
+  useEffect(() =>{
+      async function getDetails(){
+          try{
+              const {data} = await axios.get(`/api/consumer/${id}`); 
+              if(data.consumerDetails){
+                console.log(data);
+              }
+              else alert(data.msg);
+          }
+          catch(error){
+              console.log(error);
+          }
+      }
+
+      getDetails();
+  },[])
 
   const handleApprove = () => {
     setStatus("approved")

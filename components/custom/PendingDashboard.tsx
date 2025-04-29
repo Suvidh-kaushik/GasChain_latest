@@ -45,7 +45,7 @@ export default function PendingDashboard(){
                     <tr className="border-b">
                       <th className="text-left py-3 px-2">ID</th>
                       <th className="text-left py-3 px-2">Consumer</th>
-                      <th className="text-left py-3 px-2">Documents</th>
+                      {/* <th className="text-left py-3 px-2">Documents</th> */}
                       <th className="text-left py-3 px-2">Submitted Date</th>
                       <th className="text-left py-3 px-2">Actions</th>
                     </tr>
@@ -54,8 +54,8 @@ export default function PendingDashboard(){
                     {pendingVerifications.map((verification) => (
                       <tr key={verification.id} className="border-b">
                         <td className="py-3 px-2 font-medium">{verification.id.slice(0, 4) + "..." + verification.id.slice(-4)}</td>
-                        <td className="py-3 px-2">{verification.consumerPublicKey.slice(0,4) + "..." + verification.consumerPublicKey.slice(-4)}</td>
-                        <td className="py-3 px-2">{verification.documentCount || 2} documents</td>
+                        <td className="py-3 px-2">{verification.consumerPublicKey.slice(0,15) + "..." + verification.consumerPublicKey.slice(-4)}</td>
+                        {/* <td className="py-3 px-2">{verification.documentCount || 2} documents</td> */}
                         <td className="py-3 px-2">{formatDate(verification.createdAt)}</td>
                         <td className="py-3 px-2">
                           <div className="flex space-x-2">
