@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import axios from "axios";
 import { Card, CardContent } from "@/components/ui/card";
-import { ethers } from "ethers";
+import { BrowserProvider, ethers } from "ethers";
 import KYCGasConsumerABI from "@/abi/KycContract.json";
 
 export default function KYCSubmission() {
@@ -87,7 +87,11 @@ function KYCForm() {
       return null;
     }
 
+<<<<<<< HEAD
     const provider = new ethers.BrowserProvider(window.ethereum);
+=======
+    const provider = new BrowserProvider(window.ethereum);
+>>>>>>> 44b099de30baf004648e180e6b64b62e85f6567e
 
     const signer = await provider.getSigner();
 
