@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import KYCGasConsumerABI from "@/abi/KycContract.json";
 
 const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS||"";
-const provider = new ethers.JsonRpcProvider("https://eth-sepolia.g.alchemy.com/v2/lD-zkHvWdHuNLtqW4LE82y15bBK3r3tH");
+const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
 const PRIVATE_KEY =process.env.PRIVATE_KEY||"";
 const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 const contract = new ethers.Contract(CONTRACT_ADDRESS, KYCGasConsumerABI, wallet);
