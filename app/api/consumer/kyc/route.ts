@@ -54,10 +54,32 @@ export async function POST(req: NextRequest){
             },
         })
 
-        if(requestRespone) return NextResponse.json({isSubmitted: true, msg: "KYC submitted"});
+        if(requestRespone) return NextResponse.json({isSubmitted: true, msg: "KYC submitted",aadharCid:aadharRespones.cid,electricityCid:electricityRespones.cid});
         else return NextResponse.json({isSubmitted: false, msg: "Failed to submit KYC"});
     }
     catch(error: any){
+        console.error(error.message);
+        return NextResponse.json({isSubmitted: false, msg: "Something went wrong, Try again later."})
+    }
+}
+
+
+export async function PATCH(req:NextRequest){
+    const {dbId,transactionHash}=await req.json();
+
+    try{
+        const response=await prisma.consumerProviderRequests.update({
+            where:{
+                id:dbId
+            },
+            data:{
+                transactionHash:transactionHash
+            }
+        })
+        if(response) return NextResponse.json({isSubmitted: true, msg: "Updated"});
+        else return NextResponse.json({isSubmitted: false, msg: "Failed to upodate"});
+    }
+    catch(error:any){
         console.error(error.message);
         return NextResponse.json({isSubmitted: false, msg: "Something went wrong, Try again later."})
     }

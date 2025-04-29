@@ -4,9 +4,9 @@ pragma solidity ^0.8.20;
 contract KYCGasConsumer {
     address public owner;
 
-    enum KYCStatus {PENDING, APPROVED, REJECTED}
+    enum KYCStatus {PENDING, APPROVED, REJECTED}    // enum for the status of request
 
-    struct User {
+    struct User {                                   //details of each user in the Request Contract
         string aadhar_ipfsHash;
         string electricity_ipfsHash;
         address currentProvider;
@@ -15,22 +15,31 @@ contract KYCGasConsumer {
         uint submittedAt;
     }
 
-    mapping(address => User) public users;
-    mapping(address => bool) public isGasProvider;
-    mapping(address => address[]) public providerApprovedUsers;
+// admin ---> owner, who is deploying the Contract
+// gasProvider ----> company representative who is giving gas connection
+// user ----> consumer who is getting a gasConnection
+
+
+
+    mapping(address => User) public users;  // user address to user data
+    mapping(address => bool) public isGasProvider;   //list of gasProviders
+    mapping(address => address[]) public providerApprovedUsers;  
     mapping(address => address[]) public providerPendingUsers;
     mapping(address => address[]) public providerRejectedUsers;
-    mapping(address => mapping(address => bool)) public hasApplied;
+    mapping(address => mapping(address => bool)) public hasApplied;  // LIST OF GAS ADMIN to user who has applied
 
-    event KYCSubmitted(address indexed user, string aadharHash, string electricityHash, address indexed provider);
-    event AppliedToProvider(address indexed user, address indexed provider);
-    event Approved(address indexed user, address indexed provider, uint blockNumber, uint timestamp);
-    event Rejected(address indexed user, address indexed provider);
-    event ProviderChanged(address indexed user, address indexed oldProvider, address indexed newProvider);
-    event ProviderChangeRequested(address indexed user, address indexed newProvider);
-    event ProviderAdded(address indexed provider);
-    event ProviderRemoved(address indexed provider);
-    event KYCViewed(address indexed requester, address indexed user);
+
+
+
+    event KYCSubmitted(address user, string aadharHash, string electricityHash, address provider);
+    event AppliedToProvider(address user, address provider);
+    event Approved(address user, address provider, uint blockNumber, uint timestamp);
+    event Rejected(address user, address provider);
+    event ProviderChanged(address user, address oldProvider, address newProvider);
+    event ProviderChangeRequested(address user, address newProvider);
+    event ProviderAdded(address provider);
+    event ProviderRemoved(address provider);
+    event KYCViewed(address requester, address user);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Not contract owner");
@@ -44,8 +53,6 @@ contract KYCGasConsumer {
 
     constructor() {
         owner = msg.sender;
-        isGasProvider[msg.sender] = true;
-        emit ProviderAdded(msg.sender);
     }
 
     function addProvider(address _provider) external onlyOwner {
@@ -60,7 +67,11 @@ contract KYCGasConsumer {
         emit ProviderRemoved(_provider);
     }
 
-    // ✅ User selects provider directly during KYC submission
+
+//calldata - a type of memeroy location which is mainly used in external modifiers functions, it is immutable and read-onlyOwner
+// similar to memory
+
+
     function submitKYC(
         string calldata a_ipfsHash,
         string calldata e_ipfsHash,
@@ -89,6 +100,7 @@ contract KYCGasConsumer {
         require(hasApplied[msg.sender][_user], "User did not apply to this provider");
 
         _removeFromArray(providerPendingUsers[msg.sender], _user);
+        
         hasApplied[msg.sender][_user] = false;
 
         address oldProvider = users[_user].currentProvider;
@@ -101,7 +113,6 @@ contract KYCGasConsumer {
         users[_user].currentProvider = msg.sender;
         users[_user].Status = KYCStatus.APPROVED;
 
-        // ✅ Include block info in approval event
         emit Approved(_user, msg.sender, block.number, block.timestamp);
     }
 
