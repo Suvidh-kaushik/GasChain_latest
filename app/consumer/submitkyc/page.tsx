@@ -36,29 +36,34 @@ export default function KYCSubmission() {
 }
 
 function KYCForm() {
-  const [name, setName] = useState<string>();
-  const [check, setCheck] = useState<null | "true" | "false">("false");
-  const [aadharCard, setAadharCard] = useState<File | null>(null);
-  const [electricityBill, setElectricityBill] = useState<File | null>(null);
-  const [gasProviders, setGasProviders] = useState([]);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    dateOfBirth: null,
-    phoneNumber: "",
-    gasProvider: "",
-  });
 
-  useEffect(() => {
-    async function getAllProviders() {
-      try {
-        const response = await axios.get("http://localhost:3000/api/provider");
-        if (response.data.providers.length > 0) setGasProviders(response.data.providers);
-        else alert(response.data.msg);
-      } catch (error: any) {
-        console.log(error);
+    const [name, setName] = useState<string>()
+    const [check, setCheck] = useState<null | "true" | "false">("false")
+    const [aadharCard, setAadharCard] = useState<File | null>(null)
+    const [electricityBill, setElectricityBill] = useState<File | null>(null);
+    const [gasProviders, setGasProviders] = useState([]);
+    const [formData, setFormData] = useState({
+      fullName: "",
+      email: "",
+      dateOfBirth: null,
+      phoneNumber: "",
+      gasProvider: "",
+    })
+    
+    useEffect(() =>{
+      async function getAllProviders(){
+        console.log("Fetching....");
+        try{
+          const response = await axios.get('http://localhost:3000/api/providers');
+          console.log(response.data);
+
+          if(response.data.providers.length > 0) setGasProviders(response.data.providers);
+          else alert(response.data.msg);
+        }
+        catch(error: any){
+          console.log(error);
+        }
       }
-    }
 
     async function getUserDeatils() {
       const walletId = localStorage.getItem("walletId");

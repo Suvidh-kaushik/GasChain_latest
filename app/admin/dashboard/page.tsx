@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import axios from "axios"
 import { Clock, Users, XCircle } from "lucide-react"
 import { useEffect, useState } from "react"
+import { ethers } from "ethers"
 
 import formatDate from "@/utils/DateFormat"
 
@@ -133,10 +134,10 @@ export default function AdminDashBoard(){
                                 <td className="py-3 px-2">{formatDate(request.createdAt)}</td>
                                 <td className="py-3 px-2">
                                   <div className="flex space-x-2 justify-center">
-                                    <Button onClick={() => handleApprove(request.id)} size="sm" variant="outline" className="bg-green-600" >
+                                    <Button onClick={() => handleApprove(request.id)} size="sm" >
                                       Approve
                                     </Button>
-                                    <Button onClick={() => handleReject(request.id)} size="sm" variant="outline" className="bg-red-600">
+                                    <Button onClick={() => handleReject(request.id)} size="sm" variant="destructive" >
                                       Reject
                                     </Button>
                                   </div>
