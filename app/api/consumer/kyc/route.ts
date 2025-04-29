@@ -50,11 +50,13 @@ export async function POST(req: NextRequest){
                 providerPublicKey: providerPublicKey.toString(),
                 status: "PENDING",
                 transactionHash: "#",
-
             },
+            select: {
+                id: true,
+            }
         })
 
-        if(requestRespone) return NextResponse.json({isSubmitted: true, msg: "KYC submitted",aadharCid:aadharRespones.cid,electricityCid:electricityRespones.cid});
+        if(requestRespone) return NextResponse.json({requestRespone, isSubmitted: true, msg: "KYC submitted",aadharCid:aadharRespones.cid,electricityCid:electricityRespones.cid});
         else return NextResponse.json({isSubmitted: false, msg: "Failed to submit KYC"});
     }
     catch(error: any){

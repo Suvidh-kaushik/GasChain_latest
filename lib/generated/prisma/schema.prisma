@@ -70,7 +70,7 @@ model consumerProviderRequests {
   providerPublicKey String
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
-  status            Status      @default(PENDING)
+  status            Status      @default(NONE)
   transactionHash   String
   consumer          Consumer    @relation(fields: [consumerPublicKey], references: [publicKey])
   provider          gasProvider @relation(fields: [providerPublicKey], references: [publicKey])
@@ -80,4 +80,5 @@ enum Status {
   PENDING
   ACCEPTED
   REJECTED
+  NONE
 }

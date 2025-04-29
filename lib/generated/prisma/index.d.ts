@@ -51,7 +51,8 @@ export namespace $Enums {
   export const Status: {
   PENDING: 'PENDING',
   ACCEPTED: 'ACCEPTED',
-  REJECTED: 'REJECTED'
+  REJECTED: 'REJECTED',
+  NONE: 'NONE'
 };
 
 export type Status = (typeof Status)[keyof typeof Status]
