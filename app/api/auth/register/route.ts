@@ -38,7 +38,7 @@ export async function POST(req: NextResponse) {
         const providerRequest = await prisma.providerRequest.create({
             data : {
                 providerPublicKey: walletId,
-                adminPublicKey: "0xF3Ca1430d70C853ded5c1d8624d5C59644620165"
+                adminPublicKey: "0x00fd25E833A5b001AE3a91505c203aDc95b0AA6a"
             }
         })
         if(provider && providerRequest) return NextResponse.json({isCreated: true, msg: "Request generated successfully"});
