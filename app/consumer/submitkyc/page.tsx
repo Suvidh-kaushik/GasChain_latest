@@ -54,7 +54,7 @@ function KYCForm() {
       async function getAllProviders(){
         console.log("Fetching....");
         try{
-          const response = await axios.get('http://localhost:3000/api/providers');
+          const response = await axios.get('http://localhost:3000/api/provider');
           console.log(response.data);
 
           if(response.data.providers.length > 0) setGasProviders(response.data.providers);
@@ -87,7 +87,11 @@ function KYCForm() {
       return null;
     }
 
+<<<<<<< HEAD
+    const provider = new ethers.BrowserProvider(window.ethereum);
+=======
     const provider = new BrowserProvider(window.ethereum);
+>>>>>>> 44b099de30baf004648e180e6b64b62e85f6567e
 
     const signer = await provider.getSigner();
 
@@ -98,7 +102,8 @@ function KYCForm() {
     try {
       const tx = await contract.submitKYC(aadharCid, electricityCid, providerPublicKey);
       const receipt = await tx.wait();
-      return receipt.transactionHash;
+      console.log(receipt);
+      return receipt.hash;
     } catch (error: any) {
       console.error(error.message);
       return null;
@@ -138,7 +143,7 @@ function KYCForm() {
       }
 
       await axios.patch("http://localhost:3000/api/consumer/kyc", {
-        dbId: uploadResponse.data.dbId,
+        dbId: uploadResponse.data.requestRespone.id,
         transactionHash: txHash,
       });
 

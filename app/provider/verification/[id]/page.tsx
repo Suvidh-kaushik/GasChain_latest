@@ -22,12 +22,18 @@ import {
 } from "@/components/ui/dialog"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import axios from "axios"
+import formatDate from "@/utils/DateFormat"
+
+import KYCGasConsumerABI from "@/abi/KycContract.json";
+import { BrowserProvider, ethers } from "ethers";
 
 export default  function VerificationDetailPage({ params }: { params: { id: string } }) {
 
   const localParams = useParams() as { id: string }
   const { id } = localParams
 
+
+  const [consumerDetails, setConsumerDetails] = useState<consumerDetailsType | null>(null);
 
   const [status, setStatus] = useState<"pending" | "approved" | "rejected">("pending")
   const [feedback, setFeedback] = useState("")
@@ -75,17 +81,45 @@ export default  function VerificationDetailPage({ params }: { params: { id: stri
     status: "pending",
   }
 
-  type consumerDetails = {
-    fullName: string,
-    phoneNUmber: string,
-    email: string,
-    walletId: string,
-    kyc : {
-      id: string,
-      createdAt: string,
-      transactionHash: string,
-      poiCID: string,
-      poaCID: string
+  const handleApprove1 = async (id: string) => {
+    try {
+      const provider = new BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "";
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, KYCGasConsumerABI, signer);
+      const tx = await contract.approveKYCRequest(id);
+      await tx.wait();
+      alert("Approved successfully!");
+    } catch (error) {
+      console.error("Approval error:", error);
+      alert("Failed to approve.");
+    }
+  };
+  
+  const handleReject2 = async (id: string) => {
+    try {
+      const provider = new BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "";
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, KYCGasConsumerABI, signer);
+      const tx = await contract.rejectKYCRequest(id);
+      await tx.wait();
+      alert("Rejected successfully!");
+    } catch (error) {
+      console.error("Rejection error:", error);
+      alert("Failed to reject.");
+    }
+  };
+
+  type consumerDetailsType = {
+    id: string,
+    createdAt: string,
+    transactionHash: string,
+    poiCID: string,
+    poaCID: string
+    userDetails : {
+      fullName: string,
+      walletAdd: string
     }
   }
 
@@ -95,6 +129,7 @@ export default  function VerificationDetailPage({ params }: { params: { id: stri
               const {data} = await axios.get(`/api/consumer/${id}`); 
               if(data.consumerDetails){
                 console.log(data);
+                setConsumerDetails(data.consumerDetails);
               }
               else alert(data.msg);
           }
@@ -151,7 +186,7 @@ export default  function VerificationDetailPage({ params }: { params: { id: stri
         <div>
           <h1 className="text-2xl md:text-3xl font-bold">Verification Details</h1>
           <p className="text-muted-foreground">
-            ID: {verification.id} | Submitted: {verification.submittedDate}
+            ID: {verification.id} | Submitted: {formatDate(consumerDetails?.createdAt || "")}
           </p>
         </div>
       </div>
@@ -265,7 +300,7 @@ export default  function VerificationDetailPage({ params }: { params: { id: stri
             <CardContent className="space-y-4">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Name</p>
-                <p>{verification.user.name}</p>
+                <p>{"asdfasfas"}</p>
               </div>
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Email</p>
