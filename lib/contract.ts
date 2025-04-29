@@ -1,13 +1,13 @@
 import { ethers, Provider } from "ethers"
 import KYCGasConsumerABI from "../contract/artifacts/KYCGasConsumer.json" assert { type: "json" }
-import "dotenv/config";
+// import "dotenv/config";
 
 let provider: Provider
 let contract: ethers.Contract
 
 console.log("Provider: " + process.env.ETHEREUM_RPC_URL)
 // Initialize the contract
-export function initKYCGasConsumerContract(contractAddress: string, providerUrl: string = process.env.ETHEREUM_RPC_URL || "") {
+export function initKYCGasConsumerContract(contractAddress: string, provider: Provider) {
   provider = new ethers.JsonRpcProvider(providerUrl)
   contract = new ethers.Contract(contractAddress, KYCGasConsumerABI.abi, provider)
   return contract
@@ -20,8 +20,7 @@ export function getConsumerContractWithSigner(privateKey: string): ethers.Contra
 }
 
 // Admin functions
-export async function addProvider(adminPrivateKey: string, providerAddress: string): Promise<ethers.ContractTransaction> {
-  const contractWithSigner = getConsumerContractWithSigner(adminPrivateKey)
+export async function addProvider(providerAddress: string): Promise<ethers.ContractTransaction> {
   return await contractWithSigner.addProvider(providerAddress)
 }
 
@@ -84,12 +83,30 @@ export async function getRejectedUsers(providerAddress: string): Promise<string[
 }
 
 
-async function main() {
-  const a = initKYCGasConsumerContract("0xE5a20B71feCc19cb89704e1881bD0342ae80aBBf")
-  console.log("Contract initialized at:", a.target)
-  const b = await addProvider("0dc93e94376baa1e564d70b78e34e3451a57fee54e7bac13a94aeddb4cddc9f5","0xE5a20B71feCc19cb89704e1881bD0342ae80aBBf")
-  const tnx = await (b as ethers.TransactionResponse).wait()
-  console.log("Add Provider Tx:", tnx)
+async function connectWallet(): Promise<any>{
+  if(!window.ethereum){
+      console.log("No metamask");
+      return;
+  }
+  
+  await window.ethereum.request({ method: "eth_requestAccounts" });
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  const signer = await provider.getSigner();
+  return { provider, signer };
 }
 
-main();
+// export async function main(provider, signer, providerWalletId) {
+
+//   const contract = initKYCGasConsumerContract("0xE5a20B71feCc19cb89704e1881bD0342ae80aBBf", provider)
+//   console.log("Contract initialized at:", contract.target)
+
+//   try{
+//     const tx = await contract.connect(signer).addProvider(providerWalletId);
+//     console.log(tx);
+//     const receipt = await tx.wait();
+//     console.log(receipt);
+//   }
+//   catch(e){
+//     console.log(e);
+//   }
+// }

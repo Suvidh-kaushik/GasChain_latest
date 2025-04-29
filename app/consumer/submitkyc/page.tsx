@@ -38,7 +38,7 @@ export default function KYCSubmission(){
 
 function KYCForm() {
 
-    const [name, setName] = useState<string>()
+    const [name, setName] = useState<string>("")
     const [check, setCheck] = useState<null | "true" | "false">("false")
     const [aadharCard, setAadharCard] = useState<File | null>(null)
     const [electricityBill, setElectricityBill] = useState<File | null>(null);
@@ -55,7 +55,7 @@ function KYCForm() {
       async function getAllProviders(){
         console.log("Fetching....");
         try{
-          const response = await axios.get('http://localhost:3000/api/providers');
+          const response = await axios.get('http://localhost:3000/api/provider');
           console.log(response.data);
 
           if(response.data.providers.length > 0) setGasProviders(response.data.providers);

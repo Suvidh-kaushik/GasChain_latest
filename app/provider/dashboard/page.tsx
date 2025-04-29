@@ -91,44 +91,6 @@ export default function providerDashboard() {
     },
   ]
 
-  const pendingVerifications = [
-    {
-      id: "VER-1229",
-      user: "Emily Davis",
-      documentCount: 3,
-      submittedDate: "2023-04-09",
-      status: "pending",
-    },
-    {
-      id: "VER-1228",
-      user: "David Wilson",
-      documentCount: 4,
-      submittedDate: "2023-04-08",
-      status: "pending",
-    },
-    {
-      id: "VER-1227",
-      user: "Lisa Martinez",
-      documentCount: 2,
-      submittedDate: "2023-04-08",
-      status: "pending",
-    },
-    {
-      id: "VER-1226",
-      user: "Thomas Anderson",
-      documentCount: 3,
-      submittedDate: "2023-04-07",
-      status: "pending",
-    },
-    {
-      id: "VER-1225",
-      user: "Jennifer Taylor",
-      documentCount: 5,
-      submittedDate: "2023-04-07",
-      status: "pending",
-    },
-  ]
-
   // Chart data
   const kycData = [
     { name: "Jan", approved: 65, rejected: 12, pending: 23 },
